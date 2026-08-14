@@ -4,13 +4,9 @@
 
 Questo documento definisce la gestione delle persone associate ai contenuti e alle fonti di StamoTenti.
 
-Il modello deve permettere di identificare in modo stabile:
+Il modello deve permettere di identificare in modo stabile le persone associate alle fonti, evitando duplicazioni e mantenendo correttamente le informazioni bibliografiche.
 
-- autori delle fonti;
-- traduttori;
-- altre persone eventualmente associate a una fonte quando il loro ruolo sia editorialmente significativo.
-
-La gestione deve evitare duplicazioni e mantenere separati i diversi ruoli.
+La stessa persona può svolgere ruoli differenti in fonti differenti.
 
 ---
 
@@ -26,21 +22,21 @@ Gli agenti non devono modificare autonomamente l'autore degli articoli.
 
 ---
 
-## 3. Autori delle fonti
+## 3. Persone associate alle fonti
 
-Gli autori delle fonti sono entità riutilizzabili.
+Le persone associate alle fonti sono entità riutilizzabili.
 
-Una stessa persona può essere autore di molte fonti.
+Una stessa persona può essere associata a molte fonti.
 
 Le informazioni relative alla persona devono essere mantenute una sola volta quando ciò è possibile.
 
-Le fonti devono quindi riferire gli autori tramite identificativi stabili invece di duplicarne i dati.
+Le fonti devono quindi riferire le persone tramite identificativi stabili invece di duplicarne i dati.
 
 ---
 
 ## 4. Identificativo
 
-Ogni autore deve possedere un identificativo stabile.
+Ogni persona deve possedere un identificativo stabile.
 
 L'identificativo deve essere:
 
@@ -50,24 +46,22 @@ L'identificativo deve essere:
 - stabile nel tempo;
 - indipendente dal nome visualizzato.
 
-Il nome della persona può cambiare o essere corretto senza modificare necessariamente l'identità dell'entità.
-
-L'identificativo non deve essere generato arbitrariamente in modi differenti dalle diverse parti del sistema.
+Il nome della persona può essere corretto o modificato senza modificare necessariamente l'identità dell'entità.
 
 ---
 
 ## 5. Nome
 
-Un autore può possedere:
+Una persona può possedere:
 
 - nome completo;
 - nome visualizzato;
-- eventuale forma bibliografica;
+- forma bibliografica;
 - eventuali forme alternative del nome.
 
 La forma bibliografica può essere diversa dal nome visualizzato.
 
-Il sistema deve evitare di perdere la forma utilizzata dalla fonte originale.
+Il sistema deve conservare, quando disponibile, la forma utilizzata dalla fonte originale.
 
 ---
 
@@ -81,7 +75,7 @@ Gli alias possono comprendere:
 - varianti ortografiche;
 - traslitterazioni;
 - forme abbreviate;
-- nomi con differenti convenzioni bibliografiche;
+- differenti convenzioni bibliografiche;
 - nomi in differenti alfabeti;
 - variazioni dovute a differenti sistemi di romanizzazione.
 
@@ -97,7 +91,7 @@ In caso di dubbio, l'agente deve proporre l'associazione e richiedere una decisi
 
 ## 7. Verifica dell'identità
 
-Quando un agente incontra un autore non ancora presente nel sistema, deve cercare di determinare se:
+Quando un agente incontra una persona non ancora presente nel sistema, deve verificare se:
 
 1. la persona esiste già nel repository;
 2. il nome corrisponde a un alias esistente;
@@ -109,7 +103,7 @@ La verifica deve utilizzare le informazioni disponibili nella fonte e, quando ne
 
 ## 8. Ricerca online
 
-Quando esiste un dubbio sull'identità di un autore o sulla validità di un alias, l'agente può effettuare una ricerca online.
+Quando esiste un dubbio sull'identità di una persona o sulla validità di un alias, l'agente può effettuare una ricerca online.
 
 La ricerca deve privilegiare, quando disponibili:
 
@@ -120,7 +114,7 @@ La ricerca deve privilegiare, quando disponibili:
 - editori;
 - DOI e metadati bibliografici;
 - cataloghi bibliografici autorevoli;
-- siti ufficiali dell'autore.
+- siti ufficiali della persona.
 
 La ricerca online serve a raccogliere evidenze.
 
@@ -128,13 +122,15 @@ Non autorizza automaticamente l'agente a modificare l'entità.
 
 Quando le evidenze non sono sufficienti, l'agente deve segnalare il caso per una decisione umana.
 
+Le ricerche online devono essere proporzionate al problema e non devono consumare risorse inutilmente.
+
 ---
 
 ## 9. Informazioni biografiche
 
-Le informazioni biografiche devono essere raccolte soltanto quando hanno un'utilità editoriale.
+Le informazioni biografiche devono essere raccolte soltanto quando hanno un'utilità editoriale o bibliografica.
 
-Non è necessario creare una biografia completa per ogni autore.
+Non è necessario creare una biografia completa per ogni persona.
 
 Quando sono necessarie, le informazioni devono essere ricavate preferibilmente da:
 
@@ -163,21 +159,27 @@ Esempi:
 
 Gli identificatori esterni non sostituiscono necessariamente l'identificativo interno del progetto.
 
-Servono a facilitare la disambiguazione e la verifica.
+Servono a facilitare disambiguazione e verifica.
 
 ---
 
-## 11. Traduttori
+## 11. Autori e traduttori
 
-I traduttori sono persone identificabili nel sistema.
+Una persona associata a una fonte può svolgere differenti ruoli bibliografici.
 
-Una fonte può avere uno o più traduttori.
+Tra questi possono rientrare:
 
-Il traduttore deve essere distinto dall'autore dell'opera originale.
+- autore;
+- curatore;
+- traduttore;
+- editore;
+- altri ruoli bibliograficamente significativi.
 
-La stessa persona può naturalmente svolgere ruoli differenti in fonti differenti.
+Il ruolo è una proprietà della relazione tra persona e fonte, non dell'identità della persona.
 
-I traduttori sono particolarmente importanti per:
+Un traduttore non deve quindi essere trasformato in una categoria di persona separata.
+
+Per StamoTenti è importante poter dare visibilità anche a chi ha tradotto un'opera, soprattutto nel caso di:
 
 - testi filosofici;
 - testi religiosi;
@@ -186,26 +188,17 @@ I traduttori sono particolarmente importanti per:
 - edizioni critiche;
 - traduzioni accademiche.
 
-Il ruolo di traduttore deve essere rappresentato dalla relazione con la fonte o con il contenuto e non richiede una seconda entità persona.
+Quando appropriato, la rappresentazione bibliografica deve poter mostrare sia l'autore dell'opera sia il traduttore.
+
+Esempio concettuale:
+
+Platone — traduzione di Mario Rossi
+
+Platone e Mario Rossi rimangono due persone distinte, ma entrambe possono essere associate alla stessa fonte con ruoli differenti.
 
 ---
 
-## 12. Autori e traduttori
-
-Una persona può essere contemporaneamente:
-
-- autore di una fonte;
-- traduttore di un'altra fonte;
-- autore e traduttore della stessa opera in differenti edizioni;
-- autore di un articolo futuro, se il progetto dovesse evolvere in tal senso.
-
-Il ruolo non deve quindi essere incorporato nell'identità della persona.
-
-L'identità della persona e il ruolo svolto devono rimanere concettualmente distinti.
-
----
-
-## 13. Più autori
+## 12. Più autori
 
 Una fonte può avere più autori.
 
@@ -215,9 +208,9 @@ Gli agenti non devono riordinare arbitrariamente gli autori.
 
 ---
 
-## 14. Autori anonimi o non identificati
+## 13. Autori anonimi o non identificati
 
-Una fonte può non avere un autore identificabile.
+Una fonte può non avere una persona identificabile come autore.
 
 In questi casi non deve essere inventata una persona.
 
@@ -225,9 +218,9 @@ La fonte deve essere rappresentata secondo le informazioni bibliografiche effett
 
 ---
 
-## 15. Autori con identità incerte
+## 14. Identità incerte
 
-Quando l'identità di un autore non può essere determinata con sufficiente sicurezza, l'agente deve mantenere l'incertezza invece di forzare un'identificazione.
+Quando l'identità di una persona non può essere determinata con sufficiente sicurezza, l'agente deve mantenere l'incertezza invece di forzare un'identificazione.
 
 La situazione può essere segnalata per revisione umana.
 
@@ -235,13 +228,13 @@ Non devono essere create relazioni definitive sulla base di una semplice somigli
 
 ---
 
-## 16. Modifica manuale
+## 15. Modifica manuale
 
-Il proprietario del progetto deve poter modificare manualmente le informazioni sugli autori.
+Il proprietario del progetto deve poter modificare manualmente le informazioni sulle persone.
 
 Deve poter:
 
-- creare un autore;
+- creare una persona;
 - modificare un nome;
 - aggiungere un alias;
 - correggere un alias;
@@ -254,7 +247,7 @@ Gli agenti non devono rendere obbligatorio il proprio utilizzo.
 
 ---
 
-## 17. Informazioni fornite direttamente dal proprietario
+## 16. Informazioni fornite direttamente dal proprietario
 
 Il proprietario può fornire direttamente:
 
@@ -264,13 +257,14 @@ Il proprietario può fornire direttamente:
 - informazioni biografiche;
 - collegamenti;
 - fonti;
+- ruoli bibliografici;
 - correzioni.
 
 Quando queste informazioni sono sufficienti per risolvere il problema, l'agente non deve effettuare ricerche online inutili.
 
 ---
 
-## 18. Principio di non duplicazione
+## 17. Principio di non duplicazione
 
 Prima di creare una nuova persona, il sistema deve verificare se esiste già un'entità compatibile.
 
@@ -289,35 +283,35 @@ Le differenze reali di identità devono invece essere preservate.
 
 ---
 
-## 19. Fonti e autori
+## 18. Persone e fonti
 
-Una fonte deve riferire gli autori tramite le entità definite nel sistema.
+Una fonte deve riferire le persone tramite le entità definite nel sistema.
 
-Le informazioni relative agli autori non devono essere duplicate nella scheda della fonte quando possono essere richiamate.
+Le informazioni relative alle persone non devono essere duplicate nella scheda della fonte quando possono essere richiamate.
 
-La fonte mantiene invece le informazioni specifiche dell'edizione o del documento.
+La fonte mantiene invece le informazioni specifiche dell'edizione o del documento e i ruoli bibliografici delle persone associate.
 
 ---
 
-## 20. Autori e articoli
+## 19. Persone e articoli
 
 Gli articoli di StamoTenti sono normalmente attribuiti al proprietario del progetto.
 
-Gli autori delle fonti utilizzate negli articoli non devono essere trattati come autori dell'articolo.
+Le persone associate alle fonti utilizzate negli articoli non devono essere trattate come autori dell'articolo.
 
 Il sistema deve mantenere chiaramente distinti:
 
 - autore dell'articolo;
-- autore della fonte;
-- traduttore della fonte.
+- persone associate alle fonti;
+- relativi ruoli bibliografici.
 
 ---
 
-## 21. Regola per gli agenti
+## 20. Regola per gli agenti
 
-Quando un agente incontra un autore:
+Quando un agente incontra una persona:
 
-1. verifica se l'autore esiste già;
+1. verifica se la persona esiste già;
 2. verifica gli alias conosciuti;
 3. verifica le informazioni disponibili nella fonte;
 4. effettua una ricerca online solo quando utile;
@@ -331,9 +325,9 @@ Quando il proprietario fornisce direttamente una soluzione, questa deve essere c
 
 ---
 
-## 22. Principio di semplicità
+## 21. Principio di semplicità
 
-Il sistema degli autori deve rimanere semplice.
+Il sistema delle persone deve rimanere semplice.
 
 Non devono essere introdotti prematuramente:
 
@@ -347,11 +341,13 @@ La complessità può essere introdotta in futuro se la crescita del progetto ne 
 
 ---
 
-## 23. Intervento umano
+## 22. Intervento umano
 
 L'automazione deve assistere il proprietario del progetto, non sostituirlo.
 
 Ogni informazione gestita dagli agenti deve poter essere verificata e modificata manualmente.
+
+Il proprietario deve poter fornire direttamente informazioni o correggere il lavoro dell'agente senza essere vincolato al sistema automatico.
 
 Quando l'agente non dispone di evidenze sufficienti, deve preferire una proposta da sottoporre al proprietario rispetto a una decisione irreversibile.
 
@@ -359,7 +355,7 @@ Il repository deve rimanere sempre utilizzabile anche senza gli agenti.
 
 ---
 
-## 24. Gerarchia delle specifiche
+## 23. Gerarchia delle specifiche
 
 In caso di conflitto:
 
