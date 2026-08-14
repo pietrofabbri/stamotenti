@@ -341,7 +341,7 @@ Non devono essere introdotti:
 
 - grafi semantici complessi;
 - database;
-- sistemi di alias;
+- sistemi di alias generici o non necessari;
 - ontologie;
 - livelli gerarchici artificiali;
 - relazioni duplicate;
