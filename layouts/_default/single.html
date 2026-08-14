@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<article>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Description }}
+        <p>{{ . }}</p>
+    {{ end }}
+
+    {{ with .Params.tags }}
+        <p>
+            Tag:
+            {{ range . }}
+                <a href="{{ (printf "/tags/%s/" .) | relLangURL }}">
+                    {{ . }}
+                </a>
+            {{ end }}
+        </p>
+    {{ end }}
+
+    <hr>
+
+    {{ .Content }}
+
+    {{ partial "bibliography.html" . }}
+
+</article>
+
+{{ end }}

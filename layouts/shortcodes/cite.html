@@ -1,0 +1,37 @@
+{{- range $i, $sourceID := .Params -}}
+
+    {{- if $i }}; {{ end -}}
+
+    {{- $found := false -}}
+
+    {{- range hugo.Data.sources -}}
+        {{- if eq .id $sourceID -}}
+
+            {{- $found = true -}}
+
+            {{- $authors := .authors -}}
+            {{- $firstAuthorID := index $authors 0 -}}
+            {{- $firstAuthor := "" -}}
+
+            {{- range hugo.Data.authors -}}
+                {{- if eq .id $firstAuthorID -}}
+                    {{- $firstAuthor = .name -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{- $firstAuthor = replaceRE " [A-Z]\\.?$" "" $firstAuthor -}}
+
+            {{- if $i }}{{ end -}}
+
+            <a href="#source-{{ .id }}" class="citation">
+                {{ $firstAuthor }}{{ if gt (len $authors) 1 }} et al.{{ end }}, {{ .year }}
+            </a>
+
+        {{- end -}}
+    {{- end -}}
+
+    {{- if not $found -}}
+        <strong>[FONTE NON TROVATA: {{ $sourceID }}]</strong>
+    {{- end -}}
+
+{{- end -}}

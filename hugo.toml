@@ -1,0 +1,20 @@
+baseURL = 'https://stamotenti.it/'
+title = 'StamoTenti'
+
+defaultContentLanguage = 'it'
+defaultContentLanguageInSubdir = false
+
+[taxonomies]
+tag = 'tags'
+
+[languages]
+
+[languages.it]
+label = 'Italiano'
+locale = 'it-IT'
+weight = 1
+
+[languages.en]
+label = 'English'
+locale = 'en-US'
+weight = 2

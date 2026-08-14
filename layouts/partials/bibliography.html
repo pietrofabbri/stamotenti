@@ -1,0 +1,89 @@
+{{ with .Params.sources }}
+    <h2>Fonti</h2>
+
+    <ul>
+        {{ range . }}
+            {{ $sourceID := . }}
+
+            {{ range hugo.Data.sources }}
+                {{ if eq .id $sourceID }}
+
+                    <li id="source-{{ .id }}">
+
+                        {{ if or (eq .type "paper") (eq .type "review") (eq .type "meta-analysis") }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            <em>{{ .title }}</em>.
+                            {{ .journal }}.
+
+                            {{ with .doi }}
+                                <a href="https://doi.org/{{ . }}">https://doi.org/{{ . }}</a>
+                            {{ end }}
+
+                        {{ else if eq .type "book" }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            <em>{{ .title }}</em>.
+                            {{ .publisher }}.
+
+                            {{ with .isbn }}
+                                ISBN: {{ . }}
+                            {{ end }}
+
+                        {{ else if eq .type "web" }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            <em>{{ .title }}</em>.
+                            <a href="{{ .url }}">Pagina web</a>
+
+                        {{ else if eq .type "pdf" }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            <em>{{ .title }}</em>.
+                            <a href="{{ .file }}">PDF</a>
+
+                        {{ end }}
+
+                    </li>
+
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ul>
+{{ end }}

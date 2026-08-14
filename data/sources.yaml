@@ -1,0 +1,35 @@
+- id: esempio2024
+  type: paper
+  title: "Titolo dello studio di esempio"
+  authors:
+    - rossi
+    - bianchi
+  year: 2024
+  journal: "Journal of Meditation Research"
+  doi: "10.1234/example"
+  url: "https://example.org"
+
+- id: libro2020
+  type: book
+  title: "Meditazione e attenzione"
+  authors:
+    - rossi
+  year: 2020
+  publisher: "Editore di esempio"
+  isbn: "978-00-000000-0"
+
+- id: sito2026
+  type: web
+  title: "Meditation Research Center"
+  authors:
+    - bianchi
+  year: 2026
+  url: "https://example.org/meditation"
+
+- id: documento2026
+  type: pdf
+  title: "Documento di esempio"
+  authors:
+    - rossi
+  year: 2026
+  file: "/sources/01_Olivola.pdf"
