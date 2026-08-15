@@ -85,7 +85,7 @@ I temi permettono di collegare contenuti appartenenti a differenti sotto-aree.
 
 I temi non costituiscono automaticamente una gerarchia.
 
-Il vocabolario dei temi è definito separatamente in VOCABULARY.md.
+Il vocabolario dei temi è definito separatamente in VOCABULARY-SPEC.md.
 
 Gli agenti devono utilizzare esclusivamente termini presenti nel vocabolario approvato.
 
@@ -93,11 +93,22 @@ Gli agenti devono utilizzare esclusivamente termini presenti nel vocabolario app
 
 ## 6. Autore
 
-Un autore è una persona o entità responsabile della produzione di un contenuto editoriale o di una fonte.
+Un autore è una persona o entità responsabile della produzione di un contenuto
+editoriale o associata bibliograficamente a una fonte.
+
+Per le fonti, il ruolo specifico della persona è una proprietà della relazione
+con la fonte e non dell'identità generale della persona.
 
 Gli autori sono identificati tramite un identificativo stabile.
 
-Le informazioni dell'autore non devono essere duplicate all'interno degli articoli o delle fonti quando possono essere richiamate dall'entità autore.
+Per gli articoli di StamoTenti l'autore editoriale è normalmente il proprietario
+del progetto, salvo decisione editoriale esplicita diversa.
+
+Il modello deve comunque poter rappresentare uno o più autori quando una
+futura esigenza editoriale lo richieda.
+
+Le informazioni dell'autore non devono essere duplicate all'interno degli
+articoli o delle fonti quando possono essere richiamate dall'entità autore.
 
 Un autore può essere associato a:
 
@@ -199,6 +210,9 @@ La gestione dettagliata dei media è definita in MEDIA-SPEC.md.
 ## 12. Relazioni fondamentali
 
 Le relazioni principali sono:
+
+Le relazioni inverse devono essere derivate automaticamente quando il sistema
+può farlo in modo affidabile.
 
 Articolo → appartiene a → Area editoriale
 
@@ -319,7 +333,12 @@ Questi contenuti derivati non devono essere mantenuti manualmente quando possono
 
 ## 18. Principio di non duplicazione
 
-Una stessa informazione deve essere mantenuta in un solo luogo quando può essere rappresentata come entità riutilizzabile.
+Una stessa informazione deve essere mantenuta in un solo luogo quando può
+essere rappresentata come entità riutilizzabile.
+
+La non duplicazione riguarda soprattutto identità e metadata condivisi.
+Non impedisce copie tecniche quando servono per backup, cache, distribuzione
+o altre esigenze infrastrutturali.
 
 In particolare:
 
@@ -336,6 +355,10 @@ Questo principio riduce errori, incoerenze e costi di manutenzione.
 ## 19. Principio di semplicità
 
 Il modello deve rappresentare soltanto relazioni che abbiano un'utilità editoriale o tecnica reale.
+
+Quando Hugo può derivare una relazione in modo affidabile, la relazione non
+deve essere duplicata manualmente. Questo vale in particolare per tassonomie,
+contenuti correlati e relazioni multilingue.
 
 Non devono essere introdotti:
 
@@ -354,7 +377,17 @@ La complessità può essere introdotta in futuro se la crescita del progetto ne 
 
 ## 20. Regola per gli agenti
 
-Gli agenti devono considerare questo documento come il modello concettuale del progetto.
+Gli agenti devono considerare questo documento come il modello concettuale del
+progetto.
+
+Prima di introdurre una nuova entità o relazione devono preferire, nell'ordine:
+
+1. riuso di un'entità esistente;
+2. relazione derivata automaticamente;
+3. meccanismo nativo di Hugo;
+4. struttura semplice nei dati locali;
+5. proposta di modifica architetturale quando nessuna delle soluzioni
+   precedenti è sufficiente.
 
 Prima di introdurre una nuova entità o relazione devono verificare se:
 

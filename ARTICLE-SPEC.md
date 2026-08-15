@@ -61,6 +61,17 @@ Quando un concetto specialistico è importante, deve essere spiegato anziché se
 
 Non esiste una struttura obbligatoria identica per tutti gli articoli.
 
+La struttura deve essere scelta in funzione dell'argomento e della domanda
+del lettore. Le strutture ricorrenti sono strumenti di orientamento, non
+template editoriali obbligatori.
+
+La struttura deve essere scelta in funzione dell'argomento, della domanda del
+lettore e del livello di approfondimento necessario.
+
+La distinzione tra prima parte accessibile e approfondimento tecnico è un
+principio editoriale, non un obbligo di utilizzare sempre due sezioni
+rigidamente separate.
+
 La struttura deve dipendere dal problema affrontato.
 
 Un articolo può essere organizzato, quando appropriato, attraverso:
@@ -153,6 +164,9 @@ Non tutti gli articoli devono necessariamente raggiungere lo stesso livello di a
 ## 7. Rigorosità scientifica e accademica
 
 Gli articoli devono distinguere chiaramente tra:
+
+La distinzione tra fatto, evidenza, interpretazione e ipotesi deve rimanere
+leggibile anche quando il testo è molto sintetico.
 
 - fatto osservato;
 - risultato di uno studio;
@@ -412,6 +426,10 @@ La classificazione principale e i temi trasversali svolgono funzioni differenti.
 
 L'italiano è la lingua primaria.
 
+Le versioni linguistiche dello stesso articolo devono mantenere la stessa
+identità editoriale e le stesse relazioni fondamentali, pur potendo differire
+nella formulazione linguistica.
+
 La versione inglese rappresenta una traduzione dello stesso contenuto editoriale e non un nuovo articolo indipendente.
 
 La struttura editoriale e le relazioni concettuali devono essere preservate tra le versioni linguistiche, salvo adattamenti necessari alla lingua.
@@ -450,7 +468,11 @@ Hugo utilizza il front matter per descrivere il contenuto, stabilire relazioni e
 
 ## 24. Modifiche agli articoli esistenti
 
-Prima di modificare significativamente un articolo esistente, l'agente deve comprendere almeno:
+Prima di modificare significativamente un articolo esistente, l'agente deve
+comprendere almeno:
+
+Quando la richiesta riguarda una parte circoscritta, l'agente deve evitare di
+analizzare o modificare sistematicamente parti non necessarie.
 
 - il contenuto dell'articolo;
 - la sua classificazione;
@@ -486,6 +508,11 @@ Quando crea un nuovo articolo, l'agente deve:
 
 Prima di considerare concluso un articolo, devono essere verificati almeno:
 
+Il livello di revisione deve essere proporzionato alla complessità,
+all'importanza e al rischio del contenuto.
+
+Non ogni modifica richiede una revisione completa dell'intero articolo.
+
 - accuratezza fattuale;
 - coerenza logica;
 - qualità delle fonti;
@@ -507,6 +534,22 @@ Eventuali errori di build devono essere risolti prima di considerare completata 
 ## 27. Libertà dell'agente
 
 L'agente è libero di scegliere:
+
+La libertà di forma non autorizza però modifiche alla classificazione, al
+vocabolario, alle fonti o ad altre regole che appartengono a specifiche
+superiori.
+
+Questa libertà riguarda soprattutto struttura, prosa e strategia editoriale
+all'interno dei vincoli approvati.
+
+Non comprende la facoltà di modificare autonomamente:
+
+- classificazione editoriale principale;
+- vocabolario controllato;
+- autore editoriale;
+- principi fondativi;
+- diritti delle fonti;
+- autorizzazioni di pubblicazione.
 
 - ordine delle sezioni;
 - lunghezza;

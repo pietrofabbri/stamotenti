@@ -39,7 +39,14 @@ La disponibilità di una traduzione inglese può avvenire successivamente.
 
 ## 4. Articolo e traduzioni
 
-Una traduzione rappresenta lo stesso contenuto editoriale in una lingua differente.
+Una traduzione rappresenta lo stesso contenuto editoriale in una lingua
+differente.
+
+Le versioni devono essere collegate come traduzioni dello stesso contenuto,
+non come copie editoriali indipendenti.
+
+La relazione concettuale deve rimanere stabile anche quando titolo, slug,
+metadata o formulazioni cambiano per esigenze linguistiche.
 
 La traduzione:
 
@@ -229,6 +236,12 @@ Le stringhe dell'interfaccia non devono essere duplicate manualmente nei templat
 
 Gli URL devono essere progettati tenendo conto della lingua del contenuto.
 
+Quando esistono versioni linguistiche distinte è preferibile che ciascuna
+versione disponga di un URL riconoscibile e stabile.
+
+La localizzazione dello slug può differire tra le lingue senza rompere il
+collegamento tra traduzioni.
+
 La soluzione deve utilizzare i meccanismi nativi di Hugo e mantenere URL stabili quando possibile.
 
 La traduzione del contenuto non deve richiedere una struttura URL arbitraria o mantenuta manualmente.
@@ -268,7 +281,14 @@ Quando la traduzione viene successivamente prodotta, deve essere collegata al co
 
 ## 18. Aggiornamento delle traduzioni
 
-Quando l'originale viene modificato, la relativa traduzione può diventare non aggiornata.
+Quando l'originale viene modificato, la relativa traduzione può diventare non
+aggiornata.
+
+Il sistema deve poter riconoscere quando una traduzione è potenzialmente
+obsoleta, senza richiedere la rigenerazione automatica completa quando la
+modifica dell'originale non interessa la traduzione.
+
+Gli override manuali devono essere preservati.
 
 Gli agenti devono poter rilevare questo stato e proporre o effettuare l'aggiornamento secondo le regole del workflow degli agenti.
 
@@ -323,7 +343,14 @@ Quando necessario, il termine originale può essere mantenuto insieme alla tradu
 
 ## 22. Traduzione automatica e intervento umano
 
-Il proprietario del progetto non deve approvare individualmente ogni traduzione.
+Il proprietario del progetto non deve approvare individualmente ogni
+traduzione ordinaria.
+
+L'intervento umano rimane possibile in qualsiasi momento.
+
+Le traduzioni che presentano ambiguità sostanziali, problemi terminologici
+rilevanti o conseguenze editoriali significative possono essere segnalate per
+revisione mirata.
 
 L'intervento umano rimane possibile in qualsiasi momento.
 

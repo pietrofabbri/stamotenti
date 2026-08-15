@@ -27,7 +27,7 @@
   url: "https://example.org/meditation"
 
 - id: documento2026
-  type: pdf
+  type: report
   title: "Documento di esempio"
   authors:
     - rossi

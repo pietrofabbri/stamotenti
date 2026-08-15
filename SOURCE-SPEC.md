@@ -63,31 +63,43 @@ La modifica dell'identificativo di una fonte può rompere i riferimenti presenti
 
 ## 4. Tipi di fonte
 
-Il sistema deve supportare almeno le seguenti categorie:
+Il vocabolario canonico dei tipi di fonte comprende almeno:
 
 - paper;
+- review;
+- meta-analysis;
 - book;
-- book-chapter;
+- chapter;
 - thesis;
 - report;
 - web;
 - dataset;
-- conference;
-- other.
+- conference.
 
 La categoria deve descrivere il tipo reale della risorsa.
 
-Gli agenti non devono scegliere una categoria soltanto in base alla forma dell'URL.
+La distinzione tra paper, review e meta-analysis deve essere utilizzata
+quando la natura della pubblicazione la rende significativa.
 
-Quando una risorsa non rientra chiaramente nelle categorie esistenti, l'agente deve segnalarlo invece di creare autonomamente una nuova categoria.
+Un capitolo di libro utilizza il tipo `chapter`.
 
-L'insieme definitivo dei tipi può essere esteso con una decisione editoriale.
+Il tipo non deve essere scelto soltanto in base alla forma dell'URL o al
+formato del file.
+
+Quando una risorsa non rientra chiaramente nei tipi approvati, l'agente
+deve segnalarlo invece di inventare autonomamente una nuova categoria.
+
+L'insieme dei tipi può essere esteso successivamente attraverso una
+decisione editoriale.
 
 ---
 
 ## 5. Informazioni fondamentali
 
 Ogni fonte deve contenere almeno:
+
+Il record deve contenere soltanto informazioni effettivamente note o
+verificate. I campi opzionali non devono essere riempiti artificialmente.
 
 - id;
 - type;
@@ -151,6 +163,11 @@ L'assenza di un dato è preferibile a un dato inventato.
 ## 7. DOI
 
 Quando una fonte possiede un DOI verificabile, il DOI deve essere conservato.
+
+Quando possibile, il DOI può essere verificato tramite metadata bibliografici
+autorevoli, come quelli forniti da Crossref. La presenza di un DOI non elimina
+la necessità di verificare che titolo, autori e altra identificazione
+corrispondano alla fonte effettivamente utilizzata. :contentReference[oaicite:0]{index=0}
 
 Il DOI deve essere trattato come identificativo bibliografico della fonte e non come semplice URL.
 
@@ -381,7 +398,12 @@ Le informazioni relative a pertinenza e qualità devono quindi rimanere concettu
 
 ## 17. Fonti candidate
 
-Una fonte individuata automaticamente non diventa automaticamente una fonte editoriale approvata.
+Una fonte individuata automaticamente non diventa automaticamente una fonte
+editoriale approvata.
+
+La distinzione tra fonte candidata e fonte approvata serve a evitare che una
+ricerca automatica introduca silenziosamente nuovi riferimenti nel corpus
+editoriale stabile.
 
 Il sistema può prevedere un'area di fonti candidate nella quale inserire risorse ancora sottoposte a verifica.
 
@@ -400,7 +422,15 @@ Finché non viene approvata, una fonte candidata non deve essere considerata par
 
 ## 18. Approvazione umana
 
-L'approvazione finale delle nuove fonti appartiene al proprietario del progetto, salvo delega esplicita.
+L'approvazione finale delle nuove fonti appartiene al proprietario del
+progetto, salvo delega esplicita.
+
+L'approvazione può tuttavia essere resa automatica per categorie di fonti o
+situazioni già esplicitamente autorizzate dal workflow, purché ciò non riduca
+i requisiti di verifica, correttezza bibliografica o diritti.
+
+In assenza di tale autorizzazione, una fonte candidata deve rimanere distinta
+dalla fonte approvata.
 
 Gli agenti possono preparare una scheda completa e proporre una fonte.
 
@@ -636,7 +666,8 @@ Non devono essere aggiunte fonti soltanto per aumentare artificialmente il numer
 
 ## 31. Gerarchia delle evidenze
 
-Quando appropriato, gli articoli devono preferire fonti che permettano di ricostruire direttamente l'evidenza.
+Quando appropriato, gli articoli devono preferire fonti che permettano di
+ricostruire direttamente l'evidenza.
 
 In generale, quando pertinenti:
 
@@ -650,6 +681,9 @@ In generale, quando pertinenti:
 Questa non è una graduatoria assoluta.
 
 La fonte appropriata dipende sempre dalla domanda e dall'affermazione.
+
+La gerarchia delle evidenze deve quindi essere interpretata come criterio di
+scelta, non come una classifica rigida delle fonti.
 
 ---
 
@@ -697,7 +731,12 @@ Quando possibile, la selezione deve privilegiare:
 - review e meta-analisi quando utili alla sintesi;
 - dataset pertinenti.
 
-La scheda bibliografica deve contenere informazioni sufficienti a effettuare una prima selezione senza dover leggere ogni fonte integralmente.
+La scheda bibliografica deve contenere informazioni sufficienti a
+effettuare una prima selezione senza dover leggere ogni fonte integralmente.
+
+Quando è disponibile una classificazione preliminare affidabile, l'agente
+dovrebbe partire da fonti pertinenti e approvate invece di rileggere l'intero
+corpus.
 
 ---
 

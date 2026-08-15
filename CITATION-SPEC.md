@@ -418,7 +418,11 @@ Una fonte autorevole ma non pertinente non deve essere utilizzata soltanto per a
 
 ## 20. Citazione nel testo
 
-Una citazione deve permettere al lettore di comprendere che una determinata affermazione, dato, interpretazione o passaggio è collegato a una fonte.
+Una citazione deve permettere al lettore di comprendere che una determinata
+affermazione, dato, interpretazione o passaggio è collegato a una fonte.
+
+La forma interna della citazione deve rimanere indipendente dalla forma
+grafica con cui viene visualizzata nel sito.
 
 Il formato visuale può essere:
 
@@ -581,6 +585,10 @@ Una fonte può inoltre essere citata più volte nello stesso articolo.
 
 Un articolo può mostrare una bibliografia finale.
 
+La bibliografia dovrebbe essere derivata dalle fonti effettivamente citate o
+utilizzate secondo il modello editoriale scelto, evitando copie manuali
+indipendenti dei metadata.
+
 Quando possibile la bibliografia deve essere generata automaticamente dalle fonti effettivamente utilizzate.
 
 Non devono essere mantenute manualmente copie delle stesse informazioni bibliografiche nel testo e nella bibliografia.
@@ -648,6 +656,16 @@ Non deve essere introdotto un grafo bibliografico complesso senza una necessità
 ## 34. Provenienza dei metadata
 
 Quando possibile, i metadata bibliografici devono essere verificabili.
+
+L'agente dovrebbe distinguere tra:
+
+- metadata della fonte;
+- dati verificati direttamente;
+- dati importati da sistemi autorevoli;
+- dati ancora da verificare.
+
+Una maggiore quantità di metadata non è preferibile a metadata meno numerosi
+ma affidabili.
 
 L'agente dovrebbe poter distinguere tra:
 
@@ -781,7 +799,12 @@ Gli agenti devono assistere il lavoro editoriale senza creare dipendenza dal sis
 
 ## 41. Implementazione
 
-La rappresentazione tecnica delle citazioni deve essere scelta dopo aver definito il modello editoriale.
+La rappresentazione tecnica delle citazioni deve essere scelta dopo aver
+definito il modello editoriale.
+
+Quando il modello può essere rappresentato con Markdown, front matter, dati
+locali e un semplice shortcode o render hook, queste soluzioni devono essere
+preferite a un sistema bibliografico esterno più complesso.
 
 Quando possibile devono essere preferiti:
 

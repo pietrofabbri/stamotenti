@@ -50,6 +50,9 @@ L'accesso tecnico non costituisce autorizzazione alla pubblicazione.
 
 Ogni media deve avere uno stato di distribuzione.
 
+Lo stato descrive la destinazione operativa della risorsa, ma non sostituisce
+la valutazione dei diritti e delle autorizzazioni.
+
 Gli stati principali sono:
 
 - `public`
@@ -80,6 +83,17 @@ Il media non deve essere pubblicato finché diritti, provenienza o condizioni di
 ## 4. Permessi di utilizzo
 
 Lo stato di distribuzione non sostituisce la descrizione dei permessi.
+
+I permessi devono essere considerati separatamente per:
+
+- lettura;
+- ricerca;
+- citazione;
+- pubblicazione;
+- redistribuzione.
+
+Quando una condizione non è verificata, il sistema non deve inferirla in senso
+favorevole soltanto dallo stato `public`.
 
 Quando necessario, un media può avere permessi espliciti:
 
@@ -231,7 +245,11 @@ La soluzione tecnica specifica sarà definita nella relativa architettura di dis
 
 ## 10. Accesso degli agenti
 
-Gli agenti autorizzati devono poter leggere e scrivere sia nello storage pubblico sia nello storage privato quando necessario al loro lavoro.
+Gli agenti autorizzati devono poter leggere e scrivere sia nello storage
+pubblico sia nello storage privato quando necessario al loro lavoro.
+
+L'accesso deve essere assegnato in funzione dell'azione richiesta e non
+semplicemente in funzione del ruolo nominale dell'agente.
 
 L'accesso tecnico non equivale però all'autorizzazione editoriale.
 
@@ -518,6 +536,16 @@ Il sistema di approvazione potrà essere implementato nella futura applicazione 
 
 Un agente può pubblicare o rendere accessibile un media soltanto quando:
 
+La verifica deve considerare separatamente:
+
+- classificazione;
+- diritti;
+- destinazione;
+- autorizzazione;
+- eventuale approvazione;
+- corretto storage;
+- destinatario quando la distribuzione è controllata.
+
 1. il media è stato classificato;
 2. i diritti sono compatibili con l'azione;
 3. lo stato di distribuzione lo consente;
@@ -547,6 +575,12 @@ Lo storage e i metadata devono fornire una seconda forma di protezione contro cl
 ## 24. Non duplicazione
 
 Lo stesso media non deve essere duplicato inutilmente.
+
+Una copia tecnica per backup, distribuzione, archivio o sicurezza non crea una
+nuova identità editoriale della risorsa.
+
+Il catalogo deve continuare a riferirsi a una singola identità del media anche
+quando esistono più rappresentazioni o copie autorizzate.
 
 Quando una risorsa è già disponibile in uno storage appropriato, il sistema dovrebbe preferire:
 
@@ -620,6 +654,12 @@ La pubblicazione deve rispettare le regole generali della presente specifica.
 ## 28. Principio di semplicità
 
 La gestione dei media deve rimanere proporzionata alla scala del progetto.
+
+L'architettura deve poter crescere senza obbligare il progetto a introdurre
+prematuramente un Digital Asset Management complesso.
+
+La catalogazione e la gestione dei diritti devono quindi rimanere separate
+dalla scelta futura dello storage.
 
 Non devono essere introdotti prematuramente:
 
