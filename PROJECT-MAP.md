@@ -11,9 +11,22 @@ pertinente e infine soltanto le SPEC necessarie al task.
 
 1. TO-BE.md
 2. PROJECT-MAP.md
-3. SPEC specifiche del dominio
-4. documenti tecnici
-5. codice
+3. SUMMARY/*.md
+4. SPEC specifiche del dominio
+5. documenti tecnici
+6. codice
+
+I SUMMARY sono documenti di orientamento e sintesi.
+Non introducono nuove regole e non prevalgono sulle SPEC.
+
+## Summary
+
+- SUMMARY/00-CONSTITUTION-SUMMARY.md
+- SUMMARY/01-CONTENT-SUMMARY.md
+- SUMMARY/02-AGENTS-WORKFLOW-SUMMARY.md
+- SUMMARY/03-SOURCES-MEDIA-SUMMARY.md
+- SUMMARY/04-PUBLICATION-RISK-SUMMARY.md
+- SUMMARY/05-QUALITY-OPERATIONS-SUMMARY.md
 
 ## Documenti fondativi
 
@@ -46,6 +59,13 @@ pertinente e infine soltanto le SPEC necessarie al task.
 - VOCABULARY-SPEC.md
 - WORKFLOW-SPEC.md
 - AGENT-ROLES-SPEC.md
+
+## Mappa delle dipendenze
+
+- DEPENDENCY-MAP.md
+
+La mappa delle dipendenze è uno strumento di orientamento e manutenzione.
+Non introduce nuove regole e non modifica la gerarchia delle specifiche.
 
 ## Documento di approvazione
 
