@@ -22,7 +22,7 @@ Questa regola **non rimuove parole** (articoli, preposizioni, congiunzioni) per 
 
 ## Regola di derivazione dell'ID tecnico
 
-ID indipendente dal titolo (richiesto da CONTENT-MODEL §14), basato sulla posizione strutturale in TO-BE.md §3 (non sul testo del titolo, che potrebbe cambiare):
+ID indipendente dal titolo (richiesto da CONTENT-MODEL §15), basato sulla posizione strutturale in TO-BE.md §3 (non sul testo del titolo, che potrebbe cambiare):
 
 - Macroarea: `MA-<n>` dove `<n>` è 1, 2, 3 nell'ordine di TO-BE.md §3.1–3.3.
 - Sotto-area: `SA-<macroarea>-<n>` dove `<macroarea>` è il numero della macroarea genitrice e `<n>` è la posizione della sotto-area al suo interno (1–3).

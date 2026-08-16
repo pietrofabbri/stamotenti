@@ -27,7 +27,7 @@ Nessun altro campo è parte del contratto approvato in questa decisione.
 
 ## Contesto
 
-Non esisteva un contratto front matter formale per Article. ARTICLE-SPEC.md §23 delega il contratto a "modello del progetto" mai scritto; CONTENT-MODEL.md §15 conferma che "la struttura definitiva dei campi del front matter sarà definita nelle specifiche appropriate". I tre content file reali (`_index.md`, `content.md`, `biblioteca/meditazione.md`) usavano i campi in modo incoerente tra loro, e l'archetipo (`archetypes/default.md`) non copriva tutti i casi osservati.
+Non esisteva un contratto front matter formale per Article. ARTICLE-SPEC.md §23 delega il contratto a "modello del progetto" mai scritto; CONTENT-MODEL.md §16 conferma che "la struttura definitiva dei campi del front matter sarà definita nelle specifiche appropriate". I tre content file reali (`_index.md`, `content.md`, `biblioteca/meditazione.md`) usavano i campi in modo incoerente tra loro, e l'archetipo (`archetypes/default.md`) non copriva tutti i casi osservati.
 
 ## SPEC coinvolte
 
