@@ -6,6 +6,8 @@ defaultContentLanguageInSubdir = false
 
 [taxonomies]
 tag = 'tags'
+author = 'authors'
+source = 'sources'
 
 [languages]
 

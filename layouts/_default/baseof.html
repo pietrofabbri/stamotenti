@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Language.Lang }}">
 <head>
-    {{ partial "debug.html" . }}
+    {{ if hugo.IsServer }}{{ partial "debug.html" . }}{{ end }}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

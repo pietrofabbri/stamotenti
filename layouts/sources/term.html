@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+<section>
+
+    {{ $termID := .Data.Term }}
+    {{ $source := false }}
+
+    {{ range hugo.Data.sources }}
+        {{ if eq .id $termID }}
+            {{ $source = . }}
+        {{ end }}
+    {{ end }}
+
+    <h1>{{ with $source }}{{ .title }}{{ else }}{{ $.Title }}{{ end }}</h1>
+
+    {{ with $source }}
+        <p>{{ .type }}{{ with .year }} — {{ . }}{{ end }}</p>
+
+        {{ with .doi }}
+            <p>DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a></p>
+        {{ end }}
+
+        {{ with .url }}
+            <p><a href="{{ . }}">{{ . }}</a></p>
+        {{ end }}
+
+        {{ with .file }}
+            <p><a href="{{ . }}">File</a></p>
+        {{ end }}
+    {{ end }}
+
+    {{ if .Pages }}
+        <h2>Articoli che citano questa fonte</h2>
+        <ul>
+            {{ range .Pages }}
+                <li>
+                    <a href="{{ .RelPermalink }}">
+                        {{ .Title }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+</section>
+
+{{ end }}

@@ -63,7 +63,7 @@
                             <em>{{ .title }}</em>.
                             <a href="{{ .url }}">Pagina web</a>
 
-                        {{ else if eq .type "pdf" }}
+                        {{ else if or (eq .type "pdf") (eq .type "report") }}
 
                             {{ range $i, $authorID := .authors }}
                                 {{- if $i }}, {{ end -}}
@@ -76,7 +76,11 @@
 
                             ({{ .year }}).
                             <em>{{ .title }}</em>.
-                            <a href="{{ .file }}">PDF</a>
+                            {{ if eq .type "report" }}
+                                <a href="{{ .file }}">Report</a>
+                            {{ else }}
+                                <a href="{{ .file }}">PDF</a>
+                            {{ end }}
 
                         {{ end }}
 

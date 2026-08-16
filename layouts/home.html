@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ .Title }}</title>
-</head>
-<body>
+{{ define "main" }}
+
+<section>
+
+    <h1>{{ .Title }}</h1>
+
     {{ .Content }}
-</body>
-</html>
+
+</section>
+
+{{ end }}

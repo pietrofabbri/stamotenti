@@ -284,7 +284,117 @@ else:
     error("hugo.toml", "mancante")
 
 # ---------------------------------------------------------------------
-# 12. Final report
+# 12. Cross-reference integrity (authors/sources referenced by content)
+# ---------------------------------------------------------------------
+
+print("\n[12] CROSS-REFERENCE INTEGRITY")
+
+
+def extract_data_ids(data_file):
+    """Extract top-level `id: <value>` entries from a flat data/*.yaml list."""
+    if not data_file.exists():
+        return set()
+    text = data_file.read_text()
+    return set(re.findall(r'(?m)^-\s+id:\s*"?([\w.-]+)"?\s*$', text))
+
+
+def extract_front_matter(md_file):
+    text = md_file.read_text()
+    m = re.match(r"(?s)^---\n(.*?)\n---\n", text)
+    return m.group(1) if m else ""
+
+
+def extract_list_refs(front_matter, key):
+    """Extract id values listed under `key:` in a simple flat front matter block."""
+    refs = []
+    in_key = False
+    for line in front_matter.splitlines():
+        if re.match(rf"^{re.escape(key)}:\s*$", line):
+            in_key = True
+            continue
+        if in_key:
+            item = re.match(r"^\s+-\s+(\S+)\s*$", line)
+            if item:
+                refs.append(item.group(1))
+                continue
+            if line.strip() == "":
+                continue
+            in_key = False
+    return refs
+
+
+author_ids = extract_data_ids(ROOT / "data/authors.yaml")
+source_ids = extract_data_ids(ROOT / "data/sources.yaml")
+
+referenced_authors = set()
+referenced_sources = set()
+broken_refs = 0
+
+for p in content_files:
+    front_matter = extract_front_matter(p)
+
+    for ref in extract_list_refs(front_matter, "authors"):
+        referenced_authors.add(ref)
+        if ref not in author_ids:
+            error(
+                f"{p.relative_to(ROOT)}",
+                f"autore referenziato non trovato in data/authors.yaml: {ref}",
+            )
+            broken_refs += 1
+
+    for ref in extract_list_refs(front_matter, "sources"):
+        referenced_sources.add(ref)
+        if ref not in source_ids:
+            error(
+                f"{p.relative_to(ROOT)}",
+                f"fonte referenziata non trovata in data/sources.yaml: {ref}",
+            )
+            broken_refs += 1
+
+if broken_refs == 0:
+    ok(
+        "Cross-reference integrity",
+        "tutti gli id di autori/fonti referenziati nei contenuti esistono",
+    )
+
+unused_authors = sorted(author_ids - referenced_authors)
+unused_sources = sorted(source_ids - referenced_sources)
+
+if unused_authors:
+    warn("Autori non referenziati da alcun contenuto", ", ".join(unused_authors))
+
+if unused_sources:
+    warn("Fonti non referenziate da alcun contenuto", ", ".join(unused_sources))
+
+# ---------------------------------------------------------------------
+# 13. Static assets: large files
+# ---------------------------------------------------------------------
+
+print("\n[13] STATIC ASSETS")
+
+LARGE_FILE_THRESHOLD_BYTES = 500 * 1024  # informativo, non bloccante
+
+static_dir = ROOT / "static"
+large_files = []
+
+if static_dir.exists():
+    for p in sorted(static_dir.rglob("*")):
+        if p.is_file() and p.stat().st_size > LARGE_FILE_THRESHOLD_BYTES:
+            large_files.append(p)
+
+if large_files:
+    for p in large_files:
+        size_kb = p.stat().st_size / 1024
+        warn(
+            f"{p.relative_to(ROOT)}",
+            f"{size_kb:.0f} KB — verificare classificazione (licenza/visibilità) "
+            "secondo MEDIA-SPEC.md/BACKUP-SPEC.md",
+        )
+else:
+    ok("Static assets", "nessun file di grandi dimensioni rilevato")
+
+# ---------------------------------------------------------------------
+# 14. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)

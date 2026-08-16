@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<section>
+
+    {{ $termID := .Data.Term }}
+    {{ $author := false }}
+
+    {{ range hugo.Data.authors }}
+        {{ if eq .id $termID }}
+            {{ $author = . }}
+        {{ end }}
+    {{ end }}
+
+    <h1>{{ with $author }}{{ .name }}{{ else }}{{ $.Title }}{{ end }}</h1>
+
+    {{ with $author }}
+        {{ with .full_name }}<p>{{ . }}</p>{{ end }}
+        {{ with .affiliation }}<p>{{ . }}</p>{{ end }}
+        {{ with .orcid }}<p>ORCID: {{ . }}</p>{{ end }}
+    {{ end }}
+
+    {{ if .Pages }}
+        <h2>Articoli</h2>
+        <ul>
+            {{ range .Pages }}
+                <li>
+                    <a href="{{ .RelPermalink }}">
+                        {{ .Title }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+</section>
+
+{{ end }}
