@@ -289,7 +289,7 @@ Zenodo costituisce una possibile infrastruttura preferenziale per:
 - materiali prodotti dal progetto;
 - altri oggetti digitali che richiedano conservazione e identificazione persistente.
 
-Zenodo assegna DOI ai record pubblicati e supporta il versionamento dei materiali. Questo lo rende particolarmente adatto alla conservazione di dataset e altri oggetti di ricerca. 
+Zenodo assegna DOI ai record pubblicati e supporta il versionamento dei materiali. Questo lo rende particolarmente adatto alla conservazione di dataset e altri oggetti di ricerca.
 
 L'utilizzo di Zenodo non deve però diventare una dipendenza necessaria per il funzionamento del sito.
 

@@ -67,6 +67,21 @@ Non introducono nuove regole e non prevalgono sulle SPEC.
 La mappa delle dipendenze è uno strumento di orientamento e manutenzione.
 Non introduce nuove regole e non modifica la gerarchia delle specifiche.
 
+## Documenti tecnici
+
+La documentazione tecnica descrive l'implementazione corrente senza
+sostituire le SPEC.
+
+- TECHNICAL/HUGO-ARCHITECTURE.md
+- TECHNICAL/CONTENT-IMPLEMENTATION.md
+- TECHNICAL/DATA-IMPLEMENTATION.md
+- TECHNICAL/TEMPLATE-AND-RENDERING.md
+- TECHNICAL/DEPLOYMENT.md
+
+## Design
+
+- DESIGN-SPEC.md
+
 ## Documento di approvazione
 
 APPROVAL-SPEC.md è una dipendenza concettuale richiamata da più SPEC
