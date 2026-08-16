@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(git log)",
+      "Bash(hugo version)",
+      "Bash(hugo build)",
+      "Bash(python3 scripts/repository-doctor.py)"
+    ],
+    "deny": [
+      "Bash(git push)",
+      "Bash(git reset --hard)",
+      "Bash(git clean)",
+      "Bash(rm -rf)",
+      "Bash(curl)",
+      "Bash(wget)"
+    ]
+  }
+}
