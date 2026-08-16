@@ -25,11 +25,13 @@ Il sistema comprende principalmente:
 - articolo;
 - autore;
 - fonte;
+- citazione;
 - tema;
 - area editoriale;
 - lingua;
 - traduzione;
-- media.
+- media;
+- dataset.
 
 Non tutte queste entità devono necessariamente diventare pagine autonome del sito.
 
@@ -207,7 +209,24 @@ La gestione dettagliata dei media è definita in MEDIA-SPEC.md.
 
 ---
 
-## 12. Relazioni fondamentali
+## 12. Dataset
+
+Un dataset è un'entità informativa distinta dal file che lo rappresenta e dalla fonte bibliografica che eventualmente lo descrive.
+
+Un dataset:
+
+- possiede un identificativo stabile;
+- può essere associato a una o più fonti che lo descrivono;
+- può essere associato a uno o più media che lo distribuiscono come file;
+- può essere utilizzato da uno o più articoli.
+
+La gestione dettagliata dei dataset è definita in DATASET-SPEC.md.
+
+Un dataset non deve essere confuso né con la fonte che lo descrive né con il file che lo distribuisce.
+
+---
+
+## 13. Relazioni fondamentali
 
 Le relazioni principali sono:
 
@@ -228,6 +247,8 @@ Articolo → ha → Traduzioni
 
 Articolo → utilizza → Media
 
+Articolo → utilizza → Dataset
+
 Articolo → si collega a → altri articoli
 
 Le relazioni inverse devono essere ottenute automaticamente quando possibile.
@@ -236,7 +257,7 @@ Per esempio, se un articolo utilizza una fonte, il sistema dovrebbe poter indivi
 
 ---
 
-## 13. Relazioni tra articoli
+## 14. Relazioni tra articoli
 
 Gli articoli possono essere collegati attraverso:
 
@@ -255,7 +276,7 @@ Non deve essere introdotto un sistema complesso di grafi semantici senza una suc
 
 ---
 
-## 14. Identificativi
+## 15. Identificativi
 
 Le entità riutilizzabili devono possedere identificativi stabili.
 
@@ -275,7 +296,7 @@ Le regole specifiche per ciascuna entità possono essere definite nelle relative
 
 ---
 
-## 15. Metadata e contenuto
+## 16. Metadata e contenuto
 
 Il contenuto editoriale e i metadata devono rimanere concettualmente distinti.
 
@@ -302,7 +323,7 @@ Non devono essere introdotti nel testo dati che il sistema può rappresentare co
 
 ---
 
-## 16. Tassonomie
+## 17. Tassonomie
 
 Le tassonomie native di Hugo possono essere utilizzate per rappresentare classificazioni editoriali e temi quando risultano appropriate.
 
@@ -314,7 +335,7 @@ Una tassonomia tecnica non modifica la struttura editoriale definita da TO-BE.md
 
 ---
 
-## 17. Contenuti derivati
+## 18. Contenuti derivati
 
 Il sistema può generare automaticamente pagine o liste derivate dalle relazioni tra contenuti.
 
@@ -331,7 +352,7 @@ Questi contenuti derivati non devono essere mantenuti manualmente quando possono
 
 ---
 
-## 18. Principio di non duplicazione
+## 19. Principio di non duplicazione
 
 Una stessa informazione deve essere mantenuta in un solo luogo quando può
 essere rappresentata come entità riutilizzabile.
@@ -352,7 +373,7 @@ Questo principio riduce errori, incoerenze e costi di manutenzione.
 
 ---
 
-## 19. Principio di semplicità
+## 20. Principio di semplicità
 
 Il modello deve rappresentare soltanto relazioni che abbiano un'utilità editoriale o tecnica reale.
 
@@ -375,7 +396,7 @@ La complessità può essere introdotta in futuro se la crescita del progetto ne 
 
 ---
 
-## 20. Regola per gli agenti
+## 21. Regola per gli agenti
 
 Gli agenti devono considerare questo documento come il modello concettuale del
 progetto.
@@ -401,7 +422,7 @@ Se la risposta all'ultima domanda è sì, l'agente deve fermarsi e proporre la m
 
 ---
 
-## 21. Gerarchia delle specifiche
+## 22. Gerarchia delle specifiche
 
 In caso di conflitto:
 

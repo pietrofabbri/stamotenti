@@ -113,6 +113,7 @@ Le regole effettive restano definite dai documenti fondativi e dalle SPEC.
 - ARTICLE-SPEC.md
 - AUTHOR-SPEC.md
 - CITATION-SPEC.md
+- DATASET-SPEC.md
 - MEDIA-SPEC.md
 - MULTILINGUAL-SPEC.md
 - SOURCE-SPEC.md

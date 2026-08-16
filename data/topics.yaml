@@ -1,0 +1,27 @@
+# data/topics.yaml — vocabolario controllato dei temi (Topic)
+#
+# Fonte normativa: VOCABULARY-SPEC.md §6, §10.
+# Decisione tecnica: DECISIONS/DR-04-topic-controlled-vocabulary.md.
+#
+# Questo file è un contenitore. Non contiene alcun tema reale.
+# Nessun tema deve essere aggiunto senza un processo editoriale di
+# approvazione separato (VOCABULARY-SPEC.md §11, §19-21).
+#
+# Schema approvato per ogni voce:
+#   id:          identificativo stabile, indipendente dal titolo
+#   label_it:    forma canonica in italiano
+#   label_en:    forma canonica in inglese
+#   description: descrizione del concetto
+#   status:      uno tra: proposto | approvato | deprecato | ritirato
+#                (unici valori ammessi, definiti da VOCABULARY-SPEC.md §10)
+#   notes:       note editoriali (opzionale)
+#
+# Esempio di struttura (commentato, NON un tema reale):
+#   - id: esempio-placeholder
+#     label_it: "Esempio (placeholder)"
+#     label_en: "Example (placeholder)"
+#     description: "Voce di esempio per documentare lo schema, non un tema reale."
+#     status: proposto
+#     notes: ""
+
+[]
