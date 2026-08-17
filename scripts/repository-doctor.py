@@ -170,7 +170,17 @@ else:
 
 print("\n[7] MARKDOWN HYGIENE")
 
-md_files = sorted(ROOT.rglob("*.md"))
+# node_modules/ (introdotto per A4, scripts/accessibility-check.mjs) contiene
+# i README dei pacchetti npm di terze parti: markdown che non controlliamo e
+# non dobbiamo validare con le nostre regole di igiene. Stessa logica per
+# .git/ (per sicurezza, anche se .md non ci compare tipicamente).
+EXCLUDED_DIRS = {"node_modules", ".git"}
+
+md_files = sorted(
+    p
+    for p in ROOT.rglob("*.md")
+    if not EXCLUDED_DIRS & set(p.relative_to(ROOT).parts)
+)
 
 for p in md_files:
     text = p.read_text()
