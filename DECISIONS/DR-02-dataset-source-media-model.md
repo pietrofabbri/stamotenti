@@ -85,12 +85,10 @@ Alta: un file dati locale in più è facilmente rimuovibile/ristrutturabile senz
 
 ## Note di implementazione
 
-**Non implementato.** Lo schema minimo sopra è presentato come richiesto; `data/datasets.yaml` **non viene creato in questa tranche**. Restano da autorizzare separatamente, quando si deciderà di procedere:
-- creazione effettiva del file con lo schema sopra (o una sua revisione);
-- il formato esatto dei riferimenti incrociati verso Source/Media (id semplice confermato in questa decisione; struttura interna da dettagliare all'implementazione);
-- eventuale esposizione pubblica (taxonomy/template Hugo) di Dataset;
-- risoluzione del punto aperto su visibilità/permessi (sopra).
+**Implementato il 2026-08-16**: `data/datasets.yaml` creato, con lo schema minimo sopra documentato in commento YAML e **zero voci reali**. Nessuna voce di esempio inventata (solo un esempio commentato, non attivo). Il punto aperto su visibilità/permessi è stato risolto separatamente da `DECISIONS/DR-05-dataset-visibility-proposal.md` (Approvata): nessun campo di visibilità su Dataset, ereditata da Media tramite `media_id` quando presente — lo schema scritto nel file riflette questa scelta (nessun campo `visibility`/`status` di accesso). Non è stata fatta alcuna modifica a `hugo.toml`, `layouts/` o `archetypes/`: nessuna esposizione pubblica/taxonomy di Dataset, resta fuori scope come già stabilito da questa decisione.
+
+Resta da autorizzare separatamente, quando si deciderà di procedere: il formato esatto dei riferimenti incrociati verso Source/Media in uso pratico (id semplice confermato; struttura interna già presente nello schema come `source_id`/`media_id`); eventuale esposizione pubblica (taxonomy/template Hugo) di Dataset; eventuale validazione automatica in `scripts/repository-doctor.py` (non presente oggi, per coerenza con "zero dataset reali").
 
 ## Condizioni di rivalutazione
 
-Da rivalutare quando esisterà un dataset reale da catalogare, per verificare che lo schema proposto copra i casi reali, e quando si deciderà di creare effettivamente `data/datasets.yaml`. La proposta di allineamento di CONTENT-MODEL.md è stata implementata (Dataset ora in §2 e §12) — punto risolto, non più da rivalutare.
+Da rivalutare quando esisterà il primo dataset reale da catalogare, per verificare che lo schema scritto in `data/datasets.yaml` copra il caso reale. La proposta di allineamento di CONTENT-MODEL.md è stata implementata (Dataset ora in §2 e §12) — punto risolto, non più da rivalutare. Il punto aperto su visibilità/permessi è stato risolto da DR-05 — non più da rivalutare come punto aperto, resta solo come condizione di rivalutazione ordinaria (vedi DR-05, "Condizioni di rivalutazione").

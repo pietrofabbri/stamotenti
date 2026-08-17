@@ -1,0 +1,54 @@
+# data/datasets.yaml — dataset come entità informativa distinta da Source e Media
+#
+# Fonte normativa: DATASET-SPEC.md.
+# Decisioni tecniche: DECISIONS/DR-02-dataset-source-media-model.md (modello
+# concettuale: Dataset separato da Source/Media, riferimenti tramite ID
+# semplici) e DECISIONS/DR-05-dataset-visibility-proposal.md (nessun campo
+# di visibilità proprio: quando presente, ereditata dal Media collegato
+# tramite media_id, mai duplicata qui).
+#
+# Questo file è un contenitore. Non contiene alcun dataset reale.
+#
+# Schema per ogni voce:
+#   id:               obbligatorio — identificativo stabile (DATASET-SPEC §3)
+#
+# Opzionali (DATASET-SPEC li introduce sempre con "quando disponibile"/
+# "eventuale" — §4, §5-6, §7, §8, §13, §17, §37):
+#   title:             per usabilità/citazione (proposta pragmatica, non
+#                       letteralmente "deve" in DATASET-SPEC §17)
+#   producer:          produttore/ente/autore (§4) — usare uno tra
+#   organization:       producer / organization / author secondo il caso
+#   author:
+#   repository:        (§4)
+#   url:                (§4)
+#   external_id:        identificativo esterno (§4)
+#   publication_date:   (§4)
+#   acquisition_date:   (§4, §6)
+#   version:            (§4, §5)
+#   doi:                (§4, §37 — distinto dall'eventuale DOI della fonte
+#                        bibliografica che descrive il dataset)
+#   license:            (§4, §8)
+#   methodology:        (§13)
+#   hash:               integrità (§7)
+#   source_id:          riferimento opzionale a data/sources.yaml (§32,
+#                       non duplicazione — Source resta il riferimento
+#                       bibliografico)
+#   media_id:           riferimento opzionale al file/distribuzione (§33 —
+#                       Media resta disciplinato da MEDIA-SPEC.md; nessun
+#                       campo di visibilità qui, vedi DR-05)
+#
+# Nessun campo di visibilità/accesso è incluso in questo schema: se e
+# quando un dataset avrà un media_id, la sua visibilità sarà sempre letta
+# dal Media collegato, mai duplicata su questa entità (DR-05).
+#
+# Esempio di struttura (commentato, NON un dataset reale):
+#   - id: esempio-placeholder
+#     title: "Esempio (placeholder)"
+#     repository: "https://example.org/repository"
+#     version: "1.0"
+#     doi: "10.0000/esempio"
+#     license: "CC-BY-4.0"
+#     source_id: esempio2024
+#     media_id: ""
+
+[]
