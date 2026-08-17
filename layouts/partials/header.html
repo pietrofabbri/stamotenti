@@ -1,5 +1,6 @@
 <header class="wrapper">
-    <nav>
+    <nav aria-label="{{ i18n "site_nav_label" }}">
         <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
     </nav>
+    {{ partial "language-switcher.html" . }}
 </header>

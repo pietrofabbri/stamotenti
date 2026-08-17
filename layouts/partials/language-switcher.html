@@ -1,0 +1,23 @@
+<nav aria-label="{{ i18n "language_switch_label" }}">
+    <ul>
+        {{ if .IsTranslated }}
+            {{ range .Translations }}
+                <li>
+                    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">
+                        {{ .Language.Label }}
+                    </a>
+                </li>
+            {{ end }}
+        {{ else }}
+            {{ range hugo.Sites }}
+                {{ if ne .Language.Lang $.Language.Lang }}
+                    <li>
+                        <a href="{{ .Home.RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">
+                            {{ .Language.Label }}
+                        </a>
+                    </li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ul>
+</nav>
