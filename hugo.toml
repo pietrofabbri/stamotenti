@@ -8,6 +8,8 @@ defaultContentLanguageInSubdir = false
 tag = 'tags'
 author = 'authors'
 source = 'sources'
+sottoarea = 'sotto_area'
+tema = 'temi'
 
 [languages]
 

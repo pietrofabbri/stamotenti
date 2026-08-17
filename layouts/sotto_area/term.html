@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<section>
+
+    {{ $termID := .Data.Term }}
+    {{ $areas := index hugo.Data "editorial-areas" }}
+    {{ $sottoarea := false }}
+
+    {{ range $areas.sottoaree }}
+        {{ if eq .id $termID }}
+            {{ $sottoarea = . }}
+        {{ end }}
+    {{ end }}
+
+    <h1>{{ with $sottoarea }}{{ .title }}{{ else }}{{ $.Title }}{{ end }}</h1>
+
+    {{ with $sottoarea }}
+        {{ $macroareaID := .macroarea }}
+        {{ range $areas.macroaree }}
+            {{ if eq .id $macroareaID }}
+                <p>{{ .title }}</p>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ if .Pages }}
+        <h2>Articoli</h2>
+        <ul>
+            {{ range .Pages }}
+                <li>
+                    <a href="{{ .RelPermalink }}">
+                        {{ .Title }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+</section>
+
+{{ end }}
