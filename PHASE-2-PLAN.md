@@ -23,7 +23,7 @@
 | 9 | **S2** | JSON-LD `Article`/`Person` per pagine articolo, solo da dati realmente presenti (no invenzione) | ✅ Fatto | `5c2bdd0` |
 | 10 | **S3** | `hreflang` nel `<head>`, solo quando esiste realmente una traduzione | ✅ Fatto | `5ec53c7` |
 | 11 | **M3** | Localizzazione etichette taxonomy visibili quando il sito è in inglese | ⚠️ Parziale — **bloccata su `sotto_area`, richiede una tua decisione** | `5d6d996` |
-| 12 | **S4** | Verifica sitemap/robots.txt di default Hugo | ⏸️ Non iniziata |  |
+| 12 | **S4** | Verifica sitemap/robots.txt di default Hugo | ✅ Fatto (sitemap già conforme; aggiunto `robots.txt` esplicito) | `b52f697` |
 | 13 | **M4** | `translationKey` applicato a un contenuto reale/fixture — dipende dal Content Fixture System | ⏸️ Non iniziata (bloccata da #16) |  |
 | 14 | **D4** | Font definitivo — decisione del proprietario (system-stack vs self-hosted vs CDN), non presa | ⏸️ Non iniziata (decisione aperta) |  |
 | 15 | **A3** | Struttura `alt`-text obbligatorio (shortcode/partial `figure.html`) — dipende da un Media reale | ⏸️ Non iniziata (bloccata da #17) |  |
@@ -45,10 +45,11 @@
 8. Quali pagine tradurre per prime nel fixture (M4/Fixture).
 9. ~~Schema JSON-LD esatto per Article/Person~~ — risolta (S2, `5c2bdd0`): solo headline/description/url/inLanguage/author.name, nessuna data.
 10. **Se includere date tecniche nel JSON-LD** — non risolta: nessun contenuto reale ha un campo `date` editorialmente deliberato oggi; S2 ha deliberatamente omesso `datePublished`/`dateModified` in attesa di questa decisione.
-11. Quando attivare `robots.txt` custom (S4).
+11. ~~Quando attivare `robots.txt` custom~~ — risolta (S4, `b52f697`): attivato subito, additivo e a basso rischio (Allow: /, punta al sitemap), non collegato ai blocchi/restrizioni per fixture ancora inesistenti (fuori scope di S4).
 12. Dove vivono le fixture nel sito e se escluderle dall'indicizzazione (Fixture).
 13. Come rappresentare un Topic-fixture senza violare "zero temi reali" di DR-04 (Fixture).
-14. **[NUOVA] Etichetta inglese per macroaree/sotto-aree** (M3, blocco trovato in questo turno): `data/editorial-areas.yaml` ha solo `title` in italiano (verbatim da TO-BE.md §3, per decisione DR-03), nessun campo inglese. Per localizzare `sotto_area/term.html` quando il sito è in inglese servirebbe un `title_en` per ciascuna delle 9 sotto-aree (e 3 macroaree) — che equivale a tradurre in inglese la classificazione editoriale definita in TO-BE.md, cosa che nessun agente può decidere autonomamente. Finché non è risolta, `sotto_area/term.html` mostra il titolo italiano anche sulle pagine in inglese (comportamento invariato, non un peggioramento — semplicemente non ancora localizzato).
+14. **Etichetta inglese per macroaree/sotto-aree** (M3, blocco trovato in una tranche precedente): `data/editorial-areas.yaml` ha solo `title` in italiano (verbatim da TO-BE.md §3, per decisione DR-03), nessun campo inglese. Per localizzare `sotto_area/term.html` quando il sito è in inglese servirebbe un `title_en` per ciascuna delle 9 sotto-aree (e 3 macroaree) — che equivale a tradurre in inglese la classificazione editoriale definita in TO-BE.md, cosa che nessun agente può decidere autonomamente. Finché non è risolta, `sotto_area/term.html` mostra il titolo italiano anche sulle pagine in inglese (comportamento invariato, non un peggioramento — semplicemente non ancora localizzato).
+15. **[NUOVA] Pagine di tassonomia vuote incluse nella sitemap** (S4, trovata in questo turno): `/sotto_area/` e `/temi/` (entrambe con zero termini reali oggi) compaiono già nella sitemap generata di default da Hugo, in tensione con SEO-SPEC §32 ("una pagina di tassonomia non deve essere indicizzata automaticamente soltanto perché Hugo la genera... pagina vuota"). Escluderle richiederebbe un template sitemap custom o un `cascade` con `sitemap.disable` mirato per `kind` — nessuna delle due verificata, entrambe più complesse del "basso rischio" richiesto per S4. Non implementato, solo segnalato. Si risolverà probabilmente da sé quando `sotto_area`/`temi` avranno termini reali (Content Fixture System / produzione editoriale), ma se resta vuoto a lungo prima di allora vale la pena riconsiderarlo.
 14. Se costruire l'infrastruttura Media come parte del fixture system o come tranche/decisione a sé (Media/Fixture).
 
 ---
