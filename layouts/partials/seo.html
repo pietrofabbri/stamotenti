@@ -14,3 +14,16 @@
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:url" content="{{ $canonical }}">
+
+{{/* SEO S1 (Fase 2): solo WebSite, dati certi da hugo.toml. Niente
+     Organization/Person/Article qui: SEO-SPEC.md vieta di inventare dati
+     per completezza — arriveranno in S2 con un'entità reale. */}}
+<script type="application/ld+json">
+{{- (dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "name" .Site.Title
+    "url" .Site.BaseURL
+    "inLanguage" .Language.Lang
+) | jsonify | safeJS -}}
+</script>
