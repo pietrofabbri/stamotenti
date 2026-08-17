@@ -1,0 +1,39 @@
+{{- /* A3 (Fase 2, ACCESSIBILITY-SPEC.md §20/§22): shortcode per inserire
+     immagini nel contenuto con testo alternativo obbligatorio, non un
+     attributo opzionale dimenticabile. Verificato in isolamento
+     (scratchpad) prima di applicarlo qui: sia il caso con `alt` presente
+     (deve funzionare) sia quello con `alt` assente o vuoto (deve far
+     fallire la build in modo chiaro, non produrre un <img> silenziosamente
+     privo di alternativa testuale).
+
+     Parametri:
+       src     obbligatorio — percorso dell'immagine
+       alt     obbligatorio — testo alternativo (ACCESSIBILITY-SPEC §22:
+               deve descrivere lo scopo dell'immagine nel contesto)
+       caption opzionale — se presente, usa <figure>/<figcaption>
+
+     Questo shortcode è per immagini che trasmettono informazione
+     (ACCESSIBILITY-SPEC §20). Le immagini puramente decorative (§21) non
+     sono nel suo scope: qui `alt` vuoto è trattato come un errore, non
+     come il pattern standard `alt=""` per il decorativo. */ -}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $caption := .Get "caption" -}}
+
+{{- if not $src -}}
+    {{- errorf "shortcode figure: parametro 'src' mancante o vuoto (%s)" .Position -}}
+{{- end -}}
+
+{{- if not $alt -}}
+    {{- errorf "shortcode figure: parametro 'alt' mancante o vuoto — il testo alternativo è obbligatorio (ACCESSIBILITY-SPEC.md §20, §22) (%s)" .Position -}}
+{{- end -}}
+
+{{- if $caption -}}
+<figure>
+<img src="{{ $src }}" alt="{{ $alt }}">
+<figcaption>{{ $caption }}</figcaption>
+</figure>
+{{- else -}}
+<img src="{{ $src }}" alt="{{ $alt }}">
+{{- end -}}
