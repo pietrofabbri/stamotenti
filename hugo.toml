@@ -3,6 +3,7 @@ title = 'StamoTenti'
 
 defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
 
 [taxonomies]
 tag = 'tags'
