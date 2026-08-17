@@ -12,13 +12,19 @@
         {{ end }}
     {{ end }}
 
-    <h1>{{ with $sottoarea }}{{ .title }}{{ else }}{{ $.Title }}{{ end }}</h1>
+    <h1>
+        {{ with $sottoarea }}
+            {{ if eq $.Language.Lang "en" }}{{ .title_en }}{{ else }}{{ .title }}{{ end }}
+        {{ else }}
+            {{ $.Title }}
+        {{ end }}
+    </h1>
 
     {{ with $sottoarea }}
         {{ $macroareaID := .macroarea }}
         {{ range $areas.macroaree }}
             {{ if eq .id $macroareaID }}
-                <p>{{ .title }}</p>
+                <p>{{ if eq $.Language.Lang "en" }}{{ .title_en }}{{ else }}{{ .title }}{{ end }}</p>
             {{ end }}
         {{ end }}
     {{ end }}
