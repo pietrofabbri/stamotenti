@@ -444,7 +444,63 @@ if provenance_warnings == 0:
     )
 
 # ---------------------------------------------------------------------
-# 15. Final report
+# 15. sotto_area / temi cross-reference (DR-06)
+# ---------------------------------------------------------------------
+
+print("\n[15] SOTTO_AREA / TEMI VALIDATION")
+
+
+def extract_data_ids_under_key(data_file, key):
+    """Extract `id:` values nested under a specific top-level YAML key,
+    e.g. `sottoaree:` in data/editorial-areas.yaml."""
+    if not data_file.exists():
+        return set()
+    text = data_file.read_text()
+    m = re.search(rf"(?ms)^{re.escape(key)}:\s*\n(.*?)(?=^\S|\Z)", text)
+    if not m:
+        return set()
+    block = m.group(1)
+    return set(re.findall(r'(?m)^\s*-\s+id:\s*"?([\w.-]+)"?\s*$', block))
+
+
+def extract_scalar_field(front_matter, key):
+    """Extract a single scalar value for `key:` in a flat front matter block."""
+    m = re.search(rf'(?m)^{re.escape(key)}:\s*"?([\w.-]+)"?\s*$', front_matter)
+    return m.group(1) if m else None
+
+
+sottoarea_ids = extract_data_ids_under_key(ROOT / "data/editorial-areas.yaml", "sottoaree")
+topic_ids = extract_data_ids(ROOT / "data/topics.yaml")
+
+classification_errors = 0
+
+for p in content_files:
+    front_matter = extract_front_matter(p)
+
+    sotto_area_value = extract_scalar_field(front_matter, "sotto_area")
+    if sotto_area_value and sotto_area_value not in sottoarea_ids:
+        error(
+            f"{p.relative_to(ROOT)}",
+            f"sotto_area referenziata non trovata in data/editorial-areas.yaml: {sotto_area_value}",
+        )
+        classification_errors += 1
+
+    for tema in extract_list_refs(front_matter, "temi"):
+        if tema not in topic_ids:
+            error(
+                f"{p.relative_to(ROOT)}",
+                f"tema referenziato non trovato in data/topics.yaml: {tema}",
+            )
+            classification_errors += 1
+
+if classification_errors == 0:
+    ok(
+        "sotto_area / temi",
+        "nessun riferimento rotto (nessun contenuto reale usa ancora questi campi)",
+    )
+
+# ---------------------------------------------------------------------
+# 16. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)
