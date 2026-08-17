@@ -20,10 +20,16 @@ Il front matter contract di Article, per questa fase, è definito come segue:
 | `sources` | opzionale |
 | `draft` | opzionale |
 | `date` | opzionale |
+| `sotto_area` | opzionale (in questa fase — aggiunto tramite estensione, vedi sotto) |
+| `temi` | opzionale (aggiunto tramite estensione, vedi sotto) |
 
-Nessun altro campo è parte del contratto approvato in questa decisione.
+`sotto_area` e `temi` sono stati aggiunti al contratto tramite l'estensione approvata in `DECISIONS/DR-06-frontmatter-classification-linking-proposal.md`, che ne motiva nomi, cardinalità e relazione con `data/editorial-areas.yaml`/`data/topics.yaml`. Nessun altro campo è parte del contratto approvato in questa decisione.
 
-**Esplicitamente esclusi** (dipendono da decisioni non ancora prese o da lavoro non ancora autorizzato): `topics`/`temi`, `macroarea`, `sotto-area`, uno stato di lifecycle editoriale, `translationKey` o equivalente multilingua. Questi campi potranno essere aggiunti solo tramite una nuova decisione dedicata, quando le rispettive infrastrutture (DR-03, DR-04, lifecycle, multilingua) saranno a loro volta approvate e implementate.
+**Esplicitamente esclusi** (dipendono da decisioni non ancora prese o da lavoro non ancora autorizzato): uno stato di lifecycle editoriale, `translationKey` o equivalente multilingua. Questi campi potranno essere aggiunti solo tramite una nuova decisione dedicata, quando le rispettive infrastrutture (lifecycle, multilingua) saranno a loro volta approvate e implementate.
+
+## Estensione — 2026-08-16
+
+Aggiunti `sotto_area` e `temi` alla tabella campi sopra, rimossi dall'elenco degli esclusi. Autorizzata dal proprietario del progetto, originata da `DECISIONS/DR-06-frontmatter-classification-linking-proposal.md` (Approvata). Il resto di questo documento (contesto, alternative, conseguenze originarie) resta storico e invariato rispetto all'approvazione iniziale del 2026-08-16.
 
 ## Contesto
 
