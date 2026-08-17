@@ -19,3 +19,7 @@ Referenzia un autore di fixture, una fonte di fixture con relativa citazione {{<
 ## Collegamento a Media
 
 DR-01 (anche esteso da DR-06) non prevede un campo diretto Article → Media nel front matter (domanda aperta, vedi `PHASE-2-PLAN.md`). Questo articolo referenzia quindi `fixture-media` (`data/media.yaml`) solo indirettamente: `fixture-media` ha un campo opzionale `source_id: fixture-fonte` (schema approvato in `DECISIONS/DR-07-media-infrastructure-proposal.md`), e questo articolo referenzia `fixture-fonte` tramite il proprio campo `sources`. La catena Article → Source → Media è quindi dimostrata; un collegamento diretto Article → Media resta non dimostrato, perché non esiste ancora un campo approvato per farlo.
+
+Lo shortcode `figure` (A3, `layouts/shortcodes/figure.html`) referenzia lo stesso `fixture-media` solo concettualmente, tramite un `src` esplicitamente marcato come placeholder — nessun file reale è coinvolto, coerente con `fixture-media` stessa (nessun `storage_location`/`url` in `data/media.yaml`):
+
+{{< figure src="https://example.org/fixture-media-placeholder.svg" alt="Immagine di fixture (dato tecnico, non un file reale) — placeholder concettuale per la voce fixture-media in data/media.yaml" caption="Didascalia di fixture, a scopo dimostrativo." >}}
