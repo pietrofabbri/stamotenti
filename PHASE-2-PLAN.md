@@ -25,7 +25,7 @@
 | 11 | **M3** | Localizzazione etichette taxonomy visibili quando il sito è in inglese | ✅ Fatto | `5d6d996`, `592040c`, `b46022a` |
 | 12 | **S4** | Verifica sitemap/robots.txt di default Hugo | ✅ Fatto (sitemap già conforme; aggiunto `robots.txt` esplicito) | `b52f697` |
 | 13 | **M4** | `translationKey` applicato a un contenuto reale/fixture — dipende dal Content Fixture System | ✅ Fatto, **con un meccanismo diverso da quello descritto in questa riga**: `content/fixtures/articolo-fixture.md`+`.en.md` sono collegati come traduzioni tramite l'accoppiamento nativo Hugo per nome file (stesso basename, suffisso `.en`), **non** tramite un campo `translationKey` — quel campo resta esplicitamente escluso dal contratto approvato (`DECISIONS/DR-01`, "Esplicitamente esclusi"). L'entità Translation è dimostrata end-to-end (`.IsTranslated`/`.Translations`/hreflang/language-switcher, tutti verificati sulla fixture) senza introdurre un campo non approvato | `74e6860` |
-| 14 | **D4** | Font definitivo — decisione del proprietario (system-stack vs self-hosted vs CDN), non presa | ⏸️ Non iniziata (decisione aperta) |  |
+| 14 | **D4** | Font definitivo — decisione del proprietario (system-stack vs self-hosted vs CDN) | ✅ **Confermato (2026-08-18)**: mantenere lo stack di sistema attuale come definitivo per ora. Il font sarà riconsiderato quando si affronterà come presentare i primi contenuti reali (fase futura, non ancora iniziata). **Vincolo esplicito già dato dal proprietario per quella futura decisione**: qualsiasi font futuro deve supportare caratteri di più lingue/script | — |
 | 15 | **A3** | Struttura `alt`-text obbligatorio (shortcode/partial `figure.html`) — dipende da un Media reale | ✅ Fatto, **senza dipendere da un Media reale**: `layouts/shortcodes/figure.html` (`{{< figure src="..." alt="..." caption="..." >}}`) fa fallire la build (`errorf`, verificato in isolamento) se `alt` è assente o vuoto; `<figure>`/`<figcaption>` quando c'è una didascalia, altrimenti solo `<img>`. Dimostrato in `content/fixtures/articolo-fixture.md`+`.en.md`, collegato concettualmente a `fixture-media` tramite un `src` placeholder esplicito (nessun file reale) | `9189430`, `3ed3053` |
 | 16 | **A4** | Strumento di test accessibilità automatico — decisione del proprietario su quale/se integrarlo | ⏸️ Non iniziata (decisione aperta) |  |
 | 17 | **Media** | Infrastruttura Media minima (`data/media.yaml`, nessuna taxonomy) — gap ereditato dalla Fase 1 | ✅ Fatto — DR-07 Approvata (Alternativa A), `data/media.yaml` creato (zero voci reali), `repository-doctor.py` [16] MEDIA VALIDATION aggiunto | `53b5ab0`, `505e904` |
@@ -35,7 +35,7 @@
 
 ## Domande aperte non ancora risolte dal proprietario
 
-1. Font definitivo (D4).
+1. ~~Font definitivo~~ — confermato (D4, 2026-08-18): stack di sistema attuale confermato come definitivo per ora, da riconsiderare in una futura fase quando si affronterà la presentazione dei primi contenuti reali; vincolo già dato per quella decisione futura: supporto a caratteri di più lingue/script.
 2. Palette colori/spacing/breakpoint definitivi (oggi solo placeholder, D2).
 3. Supporto formule/notazione scientifica reale — dentro o fuori scope.
 4. Wordmark/identità visiva oltre al testo.
