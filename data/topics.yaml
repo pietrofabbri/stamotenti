@@ -23,5 +23,15 @@
 #     description: "Voce di esempio per documentare lo schema, non un tema reale."
 #     status: proposto
 #     notes: ""
+#
+# Eccezione esplicitamente autorizzata (DECISIONS/DR-08-content-fixture-system-
+# proposal.md, Alternativa B, approvata come deroga puntuale a "zero temi
+# reali" sopra): una sola voce tecnica, per dimostrare end-to-end il
+# meccanismo Topic. Non un tema del vocabolario editoriale.
 
-[]
+- id: fixture-tema-tecnico
+  label_it: "Tema di esempio (fixture tecnica, non un tema editoriale)"
+  label_en: "Example topic (technical fixture, not an editorial topic)"
+  description: "Voce tecnica introdotta per dimostrare il meccanismo Topic (taxonomy Hugo + data/topics.yaml) nel Content Fixture System. Non è un tema reale del vocabolario editoriale."
+  status: proposto
+  notes: "Vedi DECISIONS/DR-08-content-fixture-system-proposal.md, Alternativa B (approvata come eccezione esplicita a DR-04 'zero temi reali'). Usata solo da content/fixtures/."

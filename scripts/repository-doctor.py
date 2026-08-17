@@ -473,19 +473,31 @@ sottoarea_ids = extract_data_ids_under_key(ROOT / "data/editorial-areas.yaml", "
 topic_ids = extract_data_ids(ROOT / "data/topics.yaml")
 
 classification_errors = 0
+classification_uses_real = 0
+classification_uses_fixture = 0
 
 for p in content_files:
     front_matter = extract_front_matter(p)
+    is_fixture = "content/fixtures/" in str(p.relative_to(ROOT))
 
     sotto_area_value = extract_scalar_field(front_matter, "sotto_area")
-    if sotto_area_value and sotto_area_value not in sottoarea_ids:
-        error(
-            f"{p.relative_to(ROOT)}",
-            f"sotto_area referenziata non trovata in data/editorial-areas.yaml: {sotto_area_value}",
-        )
-        classification_errors += 1
+    if sotto_area_value:
+        if is_fixture:
+            classification_uses_fixture += 1
+        else:
+            classification_uses_real += 1
+        if sotto_area_value not in sottoarea_ids:
+            error(
+                f"{p.relative_to(ROOT)}",
+                f"sotto_area referenziata non trovata in data/editorial-areas.yaml: {sotto_area_value}",
+            )
+            classification_errors += 1
 
     for tema in extract_list_refs(front_matter, "temi"):
+        if is_fixture:
+            classification_uses_fixture += 1
+        else:
+            classification_uses_real += 1
         if tema not in topic_ids:
             error(
                 f"{p.relative_to(ROOT)}",
@@ -494,10 +506,24 @@ for p in content_files:
             classification_errors += 1
 
 if classification_errors == 0:
-    ok(
-        "sotto_area / temi",
-        "nessun riferimento rotto (nessun contenuto reale usa ancora questi campi)",
-    )
+    if classification_uses_real == 0 and classification_uses_fixture == 0:
+        ok(
+            "sotto_area / temi",
+            "nessun riferimento rotto (nessun contenuto usa ancora questi campi)",
+        )
+    elif classification_uses_real == 0:
+        ok(
+            "sotto_area / temi",
+            f"nessun riferimento rotto ({classification_uses_fixture} riferimenti, "
+            "tutti da content/fixtures/ — nessun contenuto editoriale reale usa "
+            "ancora questi campi)",
+        )
+    else:
+        ok(
+            "sotto_area / temi",
+            f"nessun riferimento rotto ({classification_uses_real} da contenuto "
+            f"reale, {classification_uses_fixture} da content/fixtures/)",
+        )
 
 # ---------------------------------------------------------------------
 # 16. Media validation (visibility values, visibility/permission conflicts)

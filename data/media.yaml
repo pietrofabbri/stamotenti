@@ -63,5 +63,22 @@
 #     can_cite: true
 #     can_publish: false
 #     can_redistribute: false
+#
+# Voce di fixture tecnica (DECISIONS/DR-08-content-fixture-system-proposal.md).
+# Non un file reale: nessun `storage_location`/`url` verso un file fisico,
+# coerente con lo schema (catalogo separato dal file, §25) e con la lezione
+# di MEMORY/MEM-2026-08-16-01 (mai allegare un file reale a un dato di
+# fixture). Collegata a `fixture-fonte` tramite `source_id`: questo è oggi
+# l'unico modo approvato per legare Media a un Article, indirettamente
+# tramite Source — vedi PHASE-2-PLAN.md, domanda aperta #17.
 
-[]
+- id: fixture-media
+  type: pdf
+  visibility: private
+  title: "Media di Fixture (dato tecnico, non un file reale)"
+  source_id: fixture-fonte
+  can_read: true
+  can_research: true
+  can_cite: true
+  can_publish: false
+  can_redistribute: false

@@ -32,3 +32,14 @@
   authors:
     - rossi
   year: 2026
+
+# Voce di fixture tecnica (DECISIONS/DR-08-content-fixture-system-proposal.md).
+# Non una fonte reale, nessun file allegato. Usata solo da content/fixtures/,
+# mai da contenuto editoriale reale.
+- id: fixture-fonte
+  type: web
+  title: "Fonte di Fixture (dato tecnico, non una fonte reale)"
+  authors:
+    - fixture-autore
+  year: 2026
+  url: "https://example.org/fixture-fonte"
