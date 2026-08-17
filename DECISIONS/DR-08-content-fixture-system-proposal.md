@@ -1,6 +1,8 @@
 # DR-08 — Content Fixture System
 
-**Stato**: Proposta — NON approvata
+**Stato**: Approvata (decisione presa; implementazione rimandata a un prompt separato)
+**Data approvazione**: 2026-08-17
+**Approvato da**: proprietario del progetto (Pietro Fabbri)
 **Fase**: 2 — Complete Site Shell
 **Origine**: roadmap Fase 2, area "Content fixture system"; risolve le domande aperte #12 e #13 di `PHASE-2-PLAN.md`
 
@@ -88,11 +90,15 @@ Alta: sezione `content/` interamente nuova, rimovibile con una singola cancellaz
 
 Percorso `content/fixtures/` con cascade `sitemap.disable` + `noindex` condizionale (domanda #12); Alternativa B per il Topic-fixture (domanda #13), con naming e `notes` che ne dichiarino esplicitamente la natura tecnica, approvata con lo stesso livello di autorità di DR-04. Entità fixture (autore, fonte) dedicate e distinte da quelle reali, per non mescolare dimostrazione tecnica e contenuto editoriale reale nelle pagine pubbliche già esistenti.
 
-## Decisione che deve prendere l'utente
+## Decisione presa
 
-1. Approvare (o modificare) il percorso `content/fixtures/` e il meccanismo di esclusione proposto (cascade + noindex).
-2. Approvare (o rifiutare) l'Alternativa B per il Topic-fixture — è l'unico punto di questa proposta che tocca direttamente un vincolo già approvato (DR-04) e richiede quindi un'autorizzazione esplicita e specifica, non implicita nell'approvazione generale di DR-08.
-3. Confermare se le entità fixture (autore/fonte) devono essere dedicate (raccomandato) o possono riusare `rossi`/`bianchi`/fonti esistenti.
-4. Decidere se procedere con la fixture Media solo dopo l'approvazione di DR-07, o preparare quella parte in parallelo come proposta soltanto.
+Approvata come proposto, su tutti e quattro i punti:
 
-Nessuna fixture, nessun `content/fixtures/`, nessuna voce in `data/topics.yaml` creata da questa proposta.
+1. **Percorso e meccanismo (#12)**: approvato `content/fixtures/` con cascade `sitemap.disable` + `noindex` condizionale in `seo.html`, come proposto.
+2. **Topic-fixture (#13)**: **Alternativa B approvata esplicitamente** — l'eccezione dichiarata a `data/topics.yaml` "zero temi reali" (DR-04) è autorizzata, con lo stesso livello di autorità con cui DR-04 stessa è stata approvata. La voce tecnica (`fixture-tema-tecnico` o id equivalente, `status: proposto`, `notes` che ne dichiara la natura non editoriale) potrà essere creata quando si implementerà il Content Fixture System.
+3. **Entità fixture**: confermate **dedicate** — non riuso di `rossi`, `bianchi`, `esempio2024`, `libro2020` o altre entità reali esistenti.
+4. **Sequenza Media/Fixture**: DR-07 approvata insieme a questa decisione (stesso commit di approvazione); l'implementazione della fixture resta rimandata a un prompt separato e potrà quindi collegarsi a un `data/media.yaml` già esistente.
+
+## Note di implementazione
+
+**Non implementato in questa decisione.** Nessun `content/fixtures/`, nessuna voce in `data/topics.yaml`, nessuna modifica a `seo.html` per il `noindex` condizionale: la decisione è presa, l'implementazione avverrà in un prompt separato, come richiesto esplicitamente dal proprietario. Il meccanismo cascade/`sitemap.disable` resta da verificare empiricamente in fixture isolata prima di essere applicato, come già segnalato in questa proposta.

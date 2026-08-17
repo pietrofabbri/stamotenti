@@ -1,6 +1,8 @@
 # DR-07 — Infrastruttura Media minima
 
-**Stato**: Proposta — NON approvata
+**Stato**: Approvata
+**Data approvazione**: 2026-08-17
+**Approvato da**: proprietario del progetto (Pietro Fabbri)
 **Fase**: 2 — Complete Site Shell
 **Origine**: gap ereditato dalla Fase 1 (area 6 della roadmap, mai colmata) + prerequisito del Content Fixture System (DR-08)
 
@@ -87,10 +89,12 @@ Alta: file dati locale in più, nessuna modifica a struttura URL o a contenuti r
 
 **Alternativa A** (solo lookup dati, nessuna taxonomy) con lo schema sopra. Priorità CONTENT-MODEL §20 e principio di semplicità MEDIA-SPEC §28 convergono sulla stessa conclusione: costruire solo ciò che è necessario ora (un catalogo con visibilità reale, per sbloccare DR-05) senza anticipare un'esposizione pubblica che nessuna SPEC richiede esplicitamente oggi.
 
-## Decisione che deve prendere l'utente
+## Decisione presa
 
-1. Approvare lo schema proposto (o modificarlo).
-2. Scegliere tra Alternativa A e B (raccomandata: A).
-3. Decidere se e quando affrontare la domanda aperta sul collegamento diretto Article↔Media (nuova estensione di DR-01, fuori scope qui).
+**Approvata l'Alternativa A**: `data/media.yaml` come solo lookup dati, **nessuna taxonomy Hugo** per Media. Lo schema proposto sopra (obbligatori `id`/`type`/`visibility`; opzionali come elencato; `can_*` come asse separato dalla visibilità, mai inferito favorevolmente) è approvato così com'è.
 
-Nessuna implementazione (né `data/media.yaml` né modifiche a `hugo.toml`) procede finché questa proposta non è approvata esplicitamente.
+La domanda aperta sul collegamento diretto Article↔Media (nessun campo `media` in DR-01) **resta non risolta**, come previsto — da affrontare quando il Content Fixture System (DR-08) dimostrerà collegamenti reali, non in questa decisione.
+
+## Note di implementazione
+
+**Implementato il 2026-08-17**: `data/media.yaml` creato con lo schema sopra documentato in commento YAML, zero voci reali (stesso trattamento già dato a `data/datasets.yaml`). Nessuna taxonomy aggiunta a `hugo.toml`, nessuna modifica a `layouts/`, coerente con l'Alternativa A.
