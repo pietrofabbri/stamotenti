@@ -15,9 +15,7 @@
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:url" content="{{ $canonical }}">
 
-{{/* SEO S1 (Fase 2): solo WebSite, dati certi da hugo.toml. Niente
-     Organization/Person/Article qui: SEO-SPEC.md vieta di inventare dati
-     per completezza — arriveranno in S2 con un'entità reale. */}}
+{{/* SEO S1 (Fase 2): solo WebSite, dati certi da hugo.toml. */}}
 <script type="application/ld+json">
 {{- (dict
     "@context" "https://schema.org"
@@ -27,3 +25,36 @@
     "inLanguage" .Language.Lang
 ) | jsonify | safeJS -}}
 </script>
+
+{{/* SEO S2 (Fase 2): Article/Person solo per pagine che sono realmente
+     un articolo con almeno un autore identificato (SEO-SPEC §17). Solo
+     campi certi: titolo/descrizione/URL/lingua dal front matter, nome
+     autore da data/authors.yaml (campi vuoti come full_name/orcid
+     omessi, mai inventati). Nessuna data (datePublished/dateModified)
+     inclusa: SEO-SPEC §14/§58 la permetterebbe come metadato tecnico,
+     ma nessun contenuto reale ha oggi un campo `date` editorialmente
+     deliberato (solo il mtime implicito di Hugo, non usato qui) —
+     domanda aperta, non risolta in questa tranche (vedi PHASE-2-PLAN.md). */}}
+{{- if and .IsPage .Params.authors -}}
+{{- $authors := slice -}}
+{{- range .Params.authors -}}
+    {{- $authorID := . -}}
+    {{- range hugo.Data.authors -}}
+        {{- if eq .id $authorID -}}
+            {{- $authors = $authors | append (dict "@type" "Person" "name" .name) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+<script type="application/ld+json">
+{{- (dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" .Title
+    "description" $description
+    "url" $canonical
+    "inLanguage" .Language.Lang
+    "author" $authors
+    "isPartOf" (dict "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL)
+) | jsonify | safeJS -}}
+</script>
+{{- end -}}
