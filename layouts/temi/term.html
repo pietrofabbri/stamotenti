@@ -11,7 +11,13 @@
         {{ end }}
     {{ end }}
 
-    <h1>{{ with $topic }}{{ .label_it }}{{ else }}{{ $.Title }}{{ end }}</h1>
+    <h1>
+        {{ with $topic }}
+            {{ if eq $.Language.Lang "en" }}{{ .label_en }}{{ else }}{{ .label_it }}{{ end }}
+        {{ else }}
+            {{ $.Title }}
+        {{ end }}
+    </h1>
 
     {{ if .Pages }}
         <h2>{{ i18n "articles_heading" }}</h2>
