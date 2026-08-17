@@ -14,7 +14,7 @@
     <h1>{{ with $topic }}{{ .label_it }}{{ else }}{{ $.Title }}{{ end }}</h1>
 
     {{ if .Pages }}
-        <h2>Articoli</h2>
+        <h2>{{ i18n "articles_heading" }}</h2>
         <ul>
             {{ range .Pages }}
                 <li>

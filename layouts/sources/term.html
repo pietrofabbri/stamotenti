@@ -30,7 +30,7 @@
     {{ end }}
 
     {{ if .Pages }}
-        <h2>Articoli che citano questa fonte</h2>
+        <h2>{{ i18n "articles_citing_source_heading" }}</h2>
         <ul>
             {{ range .Pages }}
                 <li>

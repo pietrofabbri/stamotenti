@@ -1,5 +1,5 @@
 {{ with .Params.sources }}
-    <h2>Fonti</h2>
+    <h2>{{ i18n "sources_heading" }}</h2>
 
     <ul>
         {{ range . }}
@@ -61,7 +61,7 @@
 
                             ({{ .year }}).
                             <em>{{ .title }}</em>.
-                            <a href="{{ .url }}">Pagina web</a>
+                            <a href="{{ .url }}">{{ i18n "web_page_label" }}</a>
 
                         {{ else if or (eq .type "pdf") (eq .type "report") }}
 
@@ -77,7 +77,7 @@
                             ({{ .year }}).
                             <em>{{ .title }}</em>.
                             {{ if eq .type "report" }}
-                                <a href="{{ .file }}">Report</a>
+                                <a href="{{ .file }}">{{ i18n "report_label" }}</a>
                             {{ else }}
                                 <a href="{{ .file }}">PDF</a>
                             {{ end }}

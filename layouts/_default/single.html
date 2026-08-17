@@ -10,7 +10,7 @@
 
     {{ with .Params.tags }}
         <p>
-            Tag:
+            {{ i18n "tag_label" }}
             {{ range . }}
                 <a href="{{ (printf "/tags/%s/" .) | relLangURL }}">
                     {{ . }}

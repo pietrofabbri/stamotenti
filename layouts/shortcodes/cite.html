@@ -31,7 +31,7 @@
     {{- end -}}
 
     {{- if not $found -}}
-        <strong>[FONTE NON TROVATA: {{ $sourceID }}]</strong>
+        <strong>[{{ i18n "source_not_found" }}: {{ $sourceID }}]</strong>
     {{- end -}}
 
 {{- end -}}
