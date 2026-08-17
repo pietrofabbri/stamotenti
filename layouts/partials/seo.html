@@ -1,6 +1,16 @@
 {{- $description := .Description | default .Site.Params.description -}}
 {{- $canonical := .Permalink -}}
 
+{{/* DR-08 (Content Fixture System): pagine sotto content/fixtures/ sono
+     tecniche, non contenuto editoriale reale, ed escluse dall'indicizzazione.
+     Verificato empiricamente (fixture isolata) che .Section vale "fixtures"
+     sia per la pagina di sezione sia per le pagine singole discendenti, in
+     entrambe le lingue. Complementare al cascade sitemap.disable impostato
+     in content/fixtures/_index.md e _index.en.md (SEO-SPEC §29-30). */}}
+{{- if eq .Section "fixtures" }}
+<meta name="robots" content="noindex">
+{{- end }}
+
 <meta name="description" content="{{ $description }}">
 <link rel="canonical" href="{{ $canonical }}">
 
