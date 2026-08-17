@@ -15,6 +15,20 @@
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:url" content="{{ $canonical }}">
 
+{{/* S3 (Fase 2): hreflang solo quando esiste realmente una traduzione
+     (SEO-SPEC §8: "quando esistono versioni linguistiche dello stesso
+     contenuto"). Deliberatamente diverso dal fallback del selettore
+     lingua (M2, partial language-switcher.html): qui un fallback alla
+     home dell'altra lingua sarebbe semanticamente scorretto (dichiarerebbe
+     due contenuti non equivalenti come alternative linguistiche dello
+     stesso contenuto). Reciproco e con self-reference, come richiesto. */}}
+{{- if .IsTranslated }}
+    {{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+    {{- end }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+
 {{/* SEO S1 (Fase 2): solo WebSite, dati certi da hugo.toml. */}}
 <script type="application/ld+json">
 {{- (dict
