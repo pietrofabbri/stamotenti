@@ -1,0 +1,13 @@
+{
+  "name": "stamotenti-dev-tools",
+  "private": true,
+  "type": "module",
+  "description": "Strumenti di sviluppo locali per StamoTenti (non parte del sito Hugo pubblicato). Introdotti per A4 (PHASE-2-PLAN.md): controllo di accessibilità automatico con axe-core, eseguito solo localmente, non in CI.",
+  "scripts": {
+    "a11y": "node scripts/accessibility-check.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "puppeteer": "^25.8.0"
+  }
+}
