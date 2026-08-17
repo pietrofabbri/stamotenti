@@ -394,7 +394,57 @@ else:
     ok("Static assets", "nessun file di grandi dimensioni rilevato")
 
 # ---------------------------------------------------------------------
-# 14. Final report
+# 14. Source file provenance (unverified real file attached to a fixture)
+# ---------------------------------------------------------------------
+
+print("\n[14] SOURCE FILE PROVENANCE")
+
+
+def extract_source_entries(data_file):
+    """Extract id/file/doi/isbn/url from each top-level entry of a flat
+    data/sources.yaml-style list. Best-effort, not a full YAML parser."""
+    if not data_file.exists():
+        return []
+    text = data_file.read_text()
+    blocks = re.split(r"(?m)^-\s+id:", text)[1:]
+    entries = []
+    for block in blocks:
+        m_id = re.match(r'\s*"?([\w.-]+)"?', block)
+        entry = {"id": m_id.group(1) if m_id else "?"}
+        for key in ("file", "doi", "isbn", "url"):
+            m = re.search(rf'(?m)^\s+{key}:\s*"?([^"\n]*?)"?\s*$', block)
+            if m and m.group(1).strip():
+                entry[key] = m.group(1).strip()
+        entries.append(entry)
+    return entries
+
+
+source_entries = extract_source_entries(ROOT / "data/sources.yaml")
+provenance_warnings = 0
+
+for entry in source_entries:
+    file_field = entry.get("file")
+    if not file_field:
+        continue
+    if entry.get("doi") or entry.get("isbn") or entry.get("url"):
+        continue
+    warn(
+        f"{entry['id']}",
+        f"file reale allegato ({file_field}) ma nessun doi/isbn/url — "
+        "possibile fixture sintetica con file reale per errore; "
+        "verificare i diritti di redistribuzione prima di considerarlo "
+        "pubblicabile",
+    )
+    provenance_warnings += 1
+
+if provenance_warnings == 0:
+    ok(
+        "Source file provenance",
+        "nessuna fonte con file allegato priva di doi/isbn/url",
+    )
+
+# ---------------------------------------------------------------------
+# 15. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)
