@@ -20,9 +20,9 @@
 | 6 | *(fuori piano)* | Fix `debug.html`: testo diagnostico leakava come body visibile in `hugo server` — bug trovato durante il lavoro, non era una tranche pianificata | ✅ Fatto | `fffe6c7` |
 | 7 | **S1** | JSON-LD `WebSite` minimo su ogni pagina (solo dati certi da `hugo.toml`), niente Organization/Person/Article | ✅ Fatto | `dcff039` |
 | 8 | **M2** | Stringhe di interfaccia via `i18n/it.toml`+`i18n/en.toml` (9 stringhe di chrome) + partial selettore lingua (`.IsTranslated`/`.Translations`, fallback a home altra lingua) | ✅ Fatto | `69a2f06`, `0f4bd26` |
-| 9 | **S2** | JSON-LD `Article`/`Person` per pagine articolo, solo da dati realmente presenti (no invenzione) | ⏳ In corso in questo turno |  |
-| 10 | **S3** | `hreflang` nel `<head>` (dipende da M1/M2) | ⏳ In corso in questo turno |  |
-| 11 | **M3** | Localizzazione etichette taxonomy visibili (`sotto_area`/`temi`/`authors`/`sources`) quando il sito è in inglese | ⏳ In corso in questo turno |  |
+| 9 | **S2** | JSON-LD `Article`/`Person` per pagine articolo, solo da dati realmente presenti (no invenzione) | ✅ Fatto | `5c2bdd0` |
+| 10 | **S3** | `hreflang` nel `<head>`, solo quando esiste realmente una traduzione | ✅ Fatto | `5ec53c7` |
+| 11 | **M3** | Localizzazione etichette taxonomy visibili quando il sito è in inglese | ⚠️ Parziale — **bloccata su `sotto_area`, richiede una tua decisione** | `5d6d996` |
 | 12 | **S4** | Verifica sitemap/robots.txt di default Hugo | ⏸️ Non iniziata |  |
 | 13 | **M4** | `translationKey` applicato a un contenuto reale/fixture — dipende dal Content Fixture System | ⏸️ Non iniziata (bloccata da #16) |  |
 | 14 | **D4** | Font definitivo — decisione del proprietario (system-stack vs self-hosted vs CDN), non presa | ⏸️ Non iniziata (decisione aperta) |  |
@@ -43,11 +43,12 @@
 6. Se serve una dichiarazione pubblica di accessibilità già in Fase 2.
 7. ~~Schema URL EN~~ — risolta (M1).
 8. Quali pagine tradurre per prime nel fixture (M4/Fixture).
-9. Schema JSON-LD esatto per Article/Person (S2 — affrontata in questo turno).
-10. Se includere date tecniche nel JSON-LD pur non mostrandole al lettore (S2 — affrontata in questo turno).
+9. ~~Schema JSON-LD esatto per Article/Person~~ — risolta (S2, `5c2bdd0`): solo headline/description/url/inLanguage/author.name, nessuna data.
+10. **Se includere date tecniche nel JSON-LD** — non risolta: nessun contenuto reale ha un campo `date` editorialmente deliberato oggi; S2 ha deliberatamente omesso `datePublished`/`dateModified` in attesa di questa decisione.
 11. Quando attivare `robots.txt` custom (S4).
 12. Dove vivono le fixture nel sito e se escluderle dall'indicizzazione (Fixture).
 13. Come rappresentare un Topic-fixture senza violare "zero temi reali" di DR-04 (Fixture).
+14. **[NUOVA] Etichetta inglese per macroaree/sotto-aree** (M3, blocco trovato in questo turno): `data/editorial-areas.yaml` ha solo `title` in italiano (verbatim da TO-BE.md §3, per decisione DR-03), nessun campo inglese. Per localizzare `sotto_area/term.html` quando il sito è in inglese servirebbe un `title_en` per ciascuna delle 9 sotto-aree (e 3 macroaree) — che equivale a tradurre in inglese la classificazione editoriale definita in TO-BE.md, cosa che nessun agente può decidere autonomamente. Finché non è risolta, `sotto_area/term.html` mostra il titolo italiano anche sulle pagine in inglese (comportamento invariato, non un peggioramento — semplicemente non ancora localizzato).
 14. Se costruire l'infrastruttura Media come parte del fixture system o come tranche/decisione a sé (Media/Fixture).
 
 ---
