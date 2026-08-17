@@ -1,0 +1,20 @@
+/*
+  main.css — fondamenta (Fase 2, tranche D1)
+  Solo reset minimo. Nessuna decisione di design (colori, font, spacing)
+  in questo file: quella arriva in D2 (token) come CSS custom properties
+  dichiaratamente provvisorie. Vedi DESIGN-SPEC.md.
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}

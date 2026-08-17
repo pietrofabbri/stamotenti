@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{ with resources.Get "css/main.css" }}
+        {{ $css := . | resources.Minify | resources.Fingerprint }}
+        <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+    {{ end }}
+
     {{ partial "seo.html" . }}
 
     {{ block "head" . }}{{ end }}
