@@ -28,8 +28,8 @@
 | 14 | **D4** | Font definitivo — decisione del proprietario (system-stack vs self-hosted vs CDN), non presa | ⏸️ Non iniziata (decisione aperta) |  |
 | 15 | **A3** | Struttura `alt`-text obbligatorio (shortcode/partial `figure.html`) — dipende da un Media reale | ⏸️ Non iniziata (bloccata da #17) |  |
 | 16 | **A4** | Strumento di test accessibilità automatico — decisione del proprietario su quale/se integrarlo | ⏸️ Non iniziata (decisione aperta) |  |
-| 17 | **Media** | Infrastruttura Media minima (`data/media.yaml` + eventuale taxonomy) — gap ereditato dalla Fase 1, mai colmato, prerequisito nascosto del Content Fixture System | ⏸️ Non iniziata |  |
-| 18 | **Fixture** | Content Fixture System — dimostra le 9 entità (Article/Author/Source/Citation/Topic/Macroarea/Sotto-area/Media/Translation) — dipende da tutte le altre aree | ⏸️ Non iniziata (per ultimo) |  |
+| 17 | **Media** | Infrastruttura Media minima (`data/media.yaml`, nessuna taxonomy) — gap ereditato dalla Fase 1 | 📝 **Proposta scritta, in attesa di approvazione** — `DECISIONS/DR-07-media-infrastructure-proposal.md` | — |
+| 18 | **Fixture** | Content Fixture System — dimostra le 9 entità (Article/Author/Source/Citation/Topic/Macroarea/Sotto-area/Media/Translation) — dipende da tutte le altre aree, incluso l'esito di #17 | 📝 **Proposta scritta, in attesa di approvazione** — `DECISIONS/DR-08-content-fixture-system-proposal.md` | — |
 
 ---
 
@@ -46,11 +46,11 @@
 9. ~~Schema JSON-LD esatto per Article/Person~~ — risolta (S2, `5c2bdd0`): solo headline/description/url/inLanguage/author.name, nessuna data.
 10. **Se includere date tecniche nel JSON-LD** — non risolta: nessun contenuto reale ha un campo `date` editorialmente deliberato oggi; S2 ha deliberatamente omesso `datePublished`/`dateModified` in attesa di questa decisione.
 11. ~~Quando attivare `robots.txt` custom~~ — risolta (S4, `b52f697`): attivato subito, additivo e a basso rischio (Allow: /, punta al sitemap), non collegato ai blocchi/restrizioni per fixture ancora inesistenti (fuori scope di S4).
-12. Dove vivono le fixture nel sito e se escluderle dall'indicizzazione (Fixture).
-13. Come rappresentare un Topic-fixture senza violare "zero temi reali" di DR-04 (Fixture).
+12. **Dove vivono le fixture / esclusione da indicizzazione** — risposta proposta in `DECISIONS/DR-08-content-fixture-system-proposal.md` (`content/fixtures/` + cascade `sitemap.disable` + `noindex` condizionale in `seo.html`): **proposta scritta, in attesa della tua approvazione**, non ancora implementata.
+13. **Topic-fixture senza violare "zero temi reali"** — risposta proposta in `DECISIONS/DR-08-content-fixture-system-proposal.md` (Alternativa B: una voce esplicitamente marcata come tecnica in `data/topics.yaml`, con naming/`notes` che ne dichiarano la natura, da approvare con lo stesso livello di autorità di DR-04): **proposta scritta, in attesa della tua approvazione** — è il punto della proposta che tocca più da vicino un vincolo già approvato (DR-04) e richiede quindi un'autorizzazione esplicita e specifica.
 14. ~~Etichetta inglese per macroaree/sotto-aree~~ — risolta (M3, `592040c`+`b46022a`): 12 traduzioni approvate esplicitamente dal proprietario in sessione (2026-08-17), aggiunte come `title_en` in `data/editorial-areas.yaml`; `sotto_area/term.html` ora localizza sia la sotto-area sia la macroarea genitrice.
 15. **[NUOVA] Pagine di tassonomia vuote incluse nella sitemap** (S4, trovata in questo turno): `/sotto_area/` e `/temi/` (entrambe con zero termini reali oggi) compaiono già nella sitemap generata di default da Hugo, in tensione con SEO-SPEC §32 ("una pagina di tassonomia non deve essere indicizzata automaticamente soltanto perché Hugo la genera... pagina vuota"). Escluderle richiederebbe un template sitemap custom o un `cascade` con `sitemap.disable` mirato per `kind` — nessuna delle due verificata, entrambe più complesse del "basso rischio" richiesto per S4. Non implementato, solo segnalato. Si risolverà probabilmente da sé quando `sotto_area`/`temi` avranno termini reali (Content Fixture System / produzione editoriale), ma se resta vuoto a lungo prima di allora vale la pena riconsiderarlo.
-14. Se costruire l'infrastruttura Media come parte del fixture system o come tranche/decisione a sé (Media/Fixture).
+16. ~~Se costruire l'infrastruttura Media come parte del fixture system o come tranche/decisione a sé~~ — risolta di fatto: sono due proposte separate, `DR-07` (Media) e `DR-08` (Fixture), con `DR-08` che dipende dall'esito di `DR-07` ma non lo include. *(Nota: questa voce era numerata erroneamente "14." nella versione precedente del piano, in conflitto con la domanda #14 già esistente — corretto qui in #16.)*
 
 ---
 
