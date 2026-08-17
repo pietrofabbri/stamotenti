@@ -1,0 +1,67 @@
+# data/media.yaml — catalogo dei media (file/distribuzione)
+#
+# Fonte normativa: MEDIA-SPEC.md.
+# Decisione tecnica: DECISIONS/DR-07-media-infrastructure-proposal.md
+# (Approvata, Alternativa A: solo lookup dati, nessuna taxonomy Hugo).
+# Collegato da: DECISIONS/DR-02 (Dataset.media_id referenzia l'id di una
+# voce qui) e DECISIONS/DR-05 (Dataset eredita `visibility` da qui,
+# tramite media_id, mai duplicata sul Dataset).
+#
+# Questo file è un contenitore. Non contiene alcun media reale.
+#
+# Schema per ogni voce:
+#
+# Obbligatori:
+#   id:          identificativo stabile (MEDIA-SPEC §24-25, indipendente
+#                dal percorso fisico del file)
+#   type:        es. immagine, fotografia, diagramma, pdf, epub, audio,
+#                video, dataset, altro (MEDIA-SPEC §1, lista non chiusa)
+#   visibility:  obbligatorio senza condizioni (MEDIA-SPEC §3: "ogni
+#                media deve avere uno stato di distribuzione") — uno tra:
+#                public | private | controlled | pending_review
+#                (valori esatti e soli ammessi, MEDIA-SPEC §3)
+#
+# Opzionali (MEDIA-SPEC §17 — "non tutti i campi sono obbligatori per
+# ogni tipo di media"):
+#   title:            titolo descrittivo
+#   creator:          autore o creatore (§17)
+#   date:             data del media
+#   language:         lingua, quando pertinente
+#   provenance:       provenienza
+#   license:          licenza (mai inventata dall'agente, §12)
+#   doi:               identificativo esterno, quando esiste
+#   url:              URL originale
+#   checksum:         per verifica integrità (§7, mutuato da DATASET-SPEC)
+#   size:             dimensione del file
+#   format:           formato tecnico
+#   storage_location: posizione nello storage (il catalogo resta
+#                     concettualmente separato dal file, §25)
+#   source_id:        riferimento opzionale a data/sources.yaml (§5,
+#                     "fonte e media" — la fonte e il file non sono la
+#                     stessa entità)
+#   topics:           riferimento opzionale a data/topics.yaml (§18,
+#                     "quando applicabile")
+#   notes:            note editoriali
+#
+# Permessi — asse SEPARATO dalla visibilità (MEDIA-SPEC §4), booleani,
+# opzionali ("quando necessario"). Se assenti, NON vanno dedotti in
+# senso favorevole dalla sola `visibility: public` (MEDIA-SPEC §2/§4):
+#   can_read:          bool
+#   can_research:      bool
+#   can_cite:          bool
+#   can_publish:       bool
+#   can_redistribute:  bool
+#
+# Esempio di struttura (commentato, NON un media reale):
+#   - id: esempio-placeholder
+#     type: pdf
+#     visibility: private
+#     title: "Esempio (placeholder)"
+#     source_id: esempio2024
+#     can_read: true
+#     can_research: true
+#     can_cite: true
+#     can_publish: false
+#     can_redistribute: false
+
+[]

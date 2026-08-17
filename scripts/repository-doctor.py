@@ -500,7 +500,78 @@ if classification_errors == 0:
     )
 
 # ---------------------------------------------------------------------
-# 16. Final report
+# 16. Media validation (visibility values, visibility/permission conflicts)
+# ---------------------------------------------------------------------
+
+print("\n[16] MEDIA VALIDATION")
+
+
+def extract_media_entries(data_file):
+    """Extract id/visibility/can_publish/can_redistribute from each
+    top-level entry in data/media.yaml."""
+    if not data_file.exists():
+        return []
+    text = data_file.read_text()
+    blocks = re.split(r"(?m)^-\s+id:", text)[1:]
+    entries = []
+    for block in blocks:
+        m_id = re.match(r'\s*"?([\w.-]+)"?', block)
+        entry = {"id": m_id.group(1) if m_id else "?"}
+        m_vis = re.search(r'(?m)^\s+visibility:\s*"?([\w.-]+)"?\s*$', block)
+        if m_vis:
+            entry["visibility"] = m_vis.group(1)
+        for key in ("can_publish", "can_redistribute"):
+            m = re.search(rf"(?m)^\s+{key}:\s*(true|false)\s*$", block)
+            if m:
+                entry[key] = m.group(1) == "true"
+        entries.append(entry)
+    return entries
+
+
+VALID_VISIBILITY = {"public", "private", "controlled", "pending_review"}
+
+media_entries = extract_media_entries(ROOT / "data/media.yaml")
+media_errors = 0
+
+for entry in media_entries:
+    vis = entry.get("visibility")
+
+    if vis is not None and vis not in VALID_VISIBILITY:
+        error(
+            f"data/media.yaml: {entry['id']}",
+            f"visibility non valida: '{vis}' — ammessi solo "
+            f"{', '.join(sorted(VALID_VISIBILITY))} (MEDIA-SPEC §3)",
+        )
+        media_errors += 1
+
+    if vis == "private":
+        for key in ("can_publish", "can_redistribute"):
+            if entry.get(key) is True:
+                error(
+                    f"data/media.yaml: {entry['id']}",
+                    f"visibility 'private' incompatibile con {key}: true "
+                    '(MEDIA-SPEC §3: "non deve essere pubblicato o redistribuito")',
+                )
+                media_errors += 1
+
+    if vis == "pending_review" and entry.get("can_publish") is True:
+        error(
+            f"data/media.yaml: {entry['id']}",
+            "visibility 'pending_review' incompatibile con can_publish: true "
+            '(MEDIA-SPEC §3: "non deve essere pubblicato finché... non sono '
+            'stati verificati")',
+        )
+        media_errors += 1
+
+if media_errors == 0:
+    ok(
+        "Media validation",
+        "nessuna voce con visibility non valida o permessi incompatibili "
+        "(nessun media reale oggi)",
+    )
+
+# ---------------------------------------------------------------------
+# 17. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)
