@@ -111,3 +111,27 @@ select:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+
+/*
+  Layout responsive (Fase 2, tranche D3 — DESIGN-SPEC.md "spacing
+  coerente", "responsive"). Applicato a header/main/footer (baseof.html,
+  header.html, footer.html) e alle superfici di contenuto (list.html,
+  single.html, taxonomy.html) tramite due sole classi condivise, senza
+  alcuna modifica alla logica dei template Go.
+*/
+
+.wrapper {
+    max-width: 65ch;
+    margin-inline: auto;
+    padding-inline: var(--space-3);
+}
+
+.flow > * + * {
+    margin-top: var(--space-4);
+}
+
+@media (max-width: 30em) {
+    .wrapper {
+        padding-inline: var(--space-2);
+    }
+}
