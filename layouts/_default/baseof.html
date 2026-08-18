@@ -3,6 +3,22 @@
 <head>
     {{ if hugo.IsServer }}{{ partial "debug.html" . }}{{ end }}
     <meta charset="UTF-8">
+    {{/* A4 audit (2026-08-18, PHASE-2-PLAN.md domanda #19): baseof.html non
+         emetteva mai un <title>, violazione axe-core document-title su ogni
+         pagina del sito. SEO-SPEC.md non prescrive un formato specifico
+         (lunghezza, "Pagina — Sito" vs altro): nessun vincolo da rispettare
+         oltre a evitare un titolo duplicato/vuoto. Verificato in isolamento
+         che in homepage .Title coincide esattamente con .Site.Title
+         ("StamoTenti" == "StamoTenti", non vuoto) — senza questo controllo
+         il tag sarebbe "StamoTenti — StamoTenti". Il controllo su stringa
+         vuota resta come difesa, anche se nessun contenuto reale ha oggi un
+         title vuoto (obbligatorio per DR-01). */}}
+    {{- $pageTitle := .Title -}}
+    {{- if or (eq $pageTitle "") (eq $pageTitle .Site.Title) -}}
+    <title>{{ .Site.Title }}</title>
+    {{- else -}}
+    <title>{{ $pageTitle }} — {{ .Site.Title }}</title>
+    {{- end }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{ with resources.Get "css/main.css" }}
