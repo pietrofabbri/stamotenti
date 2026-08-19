@@ -57,6 +57,18 @@
 
 ---
 
+## Gate 2 — primo audit (2026-08-18) e correzioni approvate (2026-08-19)
+
+Primo audit sistematico dei criteri di Gate 2, letti verbatim dal roadmap. Trovati 3 gap reali, non noti prima, oltre ai rischi già accettati (#17, #18, #10). Il proprietario ha approvato la correzione di tutti e 3 prima di procedere a un secondo audit/chiusura formale.
+
+1. **`description` vuota su `/` e `content.md`** — `hugo.toml` non aveva mai un `[params].description` di fallback, e questi due contenuti reali non avevano un campo `description` proprio: `<meta name=description>` e `og:description` erano letteralmente vuoti sulla homepage. **Corretto**: aggiunto `description` fedele al testo già presente in ciascuna pagina (nessun claim nuovo). Verificato non più vuoto sul build reale | `a55f3be`
+2. **Fixture nel feed RSS** — `cascade.sitemap.disable` (DR-08) non copre l'output RSS di Hugo: l'articolo fixture compariva sia nel proprio feed di sezione (`/fixtures/index.xml`, contenuto completo) sia nel feed RSS principale del sito (`/index.xml`), in tensione diretta con la regola del roadmap "le fixture devono essere separate". **Corretto**: `cascade.outputs: [html]` (nessun feed RSS per la sezione) + `cascade.build.list: local` (l'articolo resta visibile nell'elenco locale della sezione, ma non nelle collezioni globali come l'RSS della home). Necessario ripetere lo stesso blocco cascade in `_index.en.md`, stesso motivo già noto dal fix della sitemap (il cascade non si propaga automaticamente tra lingue). Verificato: `/index.xml` ed `/en/index.xml` non contengono più l'articolo fixture; `/fixtures/index.xml` non esiste più; l'elenco locale di `/fixtures/` resta invariato | `c059392`
+3. **`<h1>` duplicato sugli articoli** — `single.html` rende `<h1>{{ .Title }}</h1>`, e il corpo Markdown di `content/biblioteca/meditazione.md` (unico contenuto reale) e dell'articolo fixture (IT+EN) ripeteva il titolo come `# Titolo`, producendo due `<h1>` identici per pagina. **Corretto**: rimossa la riga di intestazione ridondante dai 3 file — nessuna perdita di informazione, il titolo resta reso correttamente dal template. Convenzione documentata in `TECHNICAL/CONTENT-IMPLEMENTATION.md` ("Corpo del contenuto") e come commento in `archetypes/default.md`. **`content/biblioteca/meditazione.md` è stato modificato** — eccezione esplicitamente autorizzata in questo prompt alla regola "contenuti reali invariati", cambiamento puramente strutturale (rimozione di una riga di intestazione duplicata), non editoriale. Verificato: un solo `<h1>` per pagina sui 3 file; `npm run a11y` rieseguito, 0 violazioni, nessuna regressione | `a6d8ff7`
+
+Non ripetuto l'intero audit Gate 2 in questo turno, su richiesta esplicita — un secondo audit completo è previsto in un prompt separato per confermare la chiusura.
+
+---
+
 ## Gate 2 (promemoria da CLAUDE-CODE-DEVELOPMENT-ROADMAP.md)
 
 La Fase 2 è completata quando esiste un contenitore editoriale completo nel quale sia possibile aggiungere un nuovo articolo senza ripensare l'architettura. Risultato atteso: "READY FOR CONTENT", non "READY FOR AUTONOMOUS PUBLISHING". Richiede approvazione umana esplicita — non viene dichiarata raggiunta automaticamente da questo documento.
