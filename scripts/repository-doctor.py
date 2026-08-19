@@ -607,7 +607,49 @@ if media_errors == 0:
     )
 
 # ---------------------------------------------------------------------
-# 17. Final report
+# 17. Redundant H1 in body (duplicates the <h1> already rendered from
+#     front matter `title` by single.html/list.html) — TECHNICAL/
+#     CONTENT-IMPLEMENTATION.md, "Corpo del contenuto". Found on 6 files
+#     during the Gate 2 audit (2026-08-18/19); axe-core does not have a
+#     default rule for duplicate H1s, so this must be an explicit check,
+#     not something relying on being remembered manually.
+# ---------------------------------------------------------------------
+
+print("\n[17] REDUNDANT H1 IN BODY")
+
+H1_LINE_RE = re.compile(r"^#\s+\S")
+
+redundant_h1_errors = 0
+
+for p in content_files:
+    text = p.read_text()
+    fm_match = re.match(r"(?s)^---\n.*?\n---\n", text)
+    body = text[fm_match.end():] if fm_match else text
+
+    for line in body.splitlines():
+        stripped = line.strip()
+        if stripped == "":
+            continue
+        if H1_LINE_RE.match(stripped):
+            error(
+                f"{p.relative_to(ROOT)}",
+                f"il corpo inizia con un'intestazione H1 Markdown ('{stripped[:60]}') "
+                "che duplica il <h1> già reso dal template a partire da `title` "
+                "(TECHNICAL/CONTENT-IMPLEMENTATION.md, 'Corpo del contenuto') — "
+                "rimuovere la riga, o farla iniziare da ## (H2) in giù",
+            )
+            redundant_h1_errors += 1
+        break  # controlla solo la prima riga non vuota del corpo
+
+if redundant_h1_errors == 0:
+    ok(
+        "Redundant H1 in body",
+        f"nessun file in content/ inizia il corpo con un'intestazione H1 "
+        f"duplicata ({len(content_files)} file controllati)",
+    )
+
+# ---------------------------------------------------------------------
+# 18. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)

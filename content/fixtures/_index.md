@@ -10,8 +10,6 @@ cascade:
     list: local
 ---
 
-# Fixture tecniche
-
 Questa sezione contiene contenuti tecnici di dimostrazione, non contenuto editoriale reale.
 
 Sono usati per verificare che il modello dei contenuti (Article, Author, Source, Citation, Topic, Macroarea, Sotto-area, Media, Translation) funzioni end-to-end, come richiesto da `CLAUDE-CODE-DEVELOPMENT-ROADMAP.md` (Fase 2, "Content fixture system").

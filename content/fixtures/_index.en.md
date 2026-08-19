@@ -10,8 +10,6 @@ cascade:
     list: local
 ---
 
-# Technical fixtures
-
 This section contains technical demonstration content, not real editorial content.
 
 It is used to verify that the content model (Article, Author, Source, Citation, Topic, Macroarea, Sotto-area, Media, Translation) works end-to-end, as required by `CLAUDE-CODE-DEVELOPMENT-ROADMAP.md` (Phase 2, "Content fixture system").
