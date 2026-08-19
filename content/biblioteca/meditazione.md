@@ -11,8 +11,6 @@ sources:
   - libro2020
 ---
 
-# Meditazione
-
 La meditazione comprende un insieme eterogeneo di pratiche che possono essere studiate da prospettive differenti.
 
 Un primo modo di avvicinarsi al tema consiste nell'osservare il ruolo dell'attenzione {{< cite "esempio2024" >}}.

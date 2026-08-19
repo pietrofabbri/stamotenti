@@ -10,8 +10,6 @@ temi:
   - fixture-tema-tecnico
 ---
 
-# Fixture Article
-
 This article is technical demonstration content (see `DECISIONS/DR-08-content-fixture-system-proposal.md`), not real editorial content. It demonstrates, with dedicated non-real data, how the content model entities work.
 
 It references a fixture author, a fixture source with its citation {{< cite "fixture-fonte" >}}, a real sotto-area (`SA-1-1`, a reference to a value already approved in `DECISIONS/DR-03-macroarea-sottoarea-model.md`, not a newly invented classification) and a technical fixture topic (`fixture-tema-tecnico`, an exception explicitly authorized by DR-08 to DR-04's "zero real topics").

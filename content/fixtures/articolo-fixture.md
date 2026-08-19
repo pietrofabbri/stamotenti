@@ -10,8 +10,6 @@ temi:
   - fixture-tema-tecnico
 ---
 
-# Articolo di Fixture
-
 Questo articolo è un contenuto tecnico di dimostrazione (vedi `DECISIONS/DR-08-content-fixture-system-proposal.md`), non un contenuto editoriale reale. Dimostra, con dati dedicati e non reali, il funzionamento delle entità del modello dei contenuti.
 
 Referenzia un autore di fixture, una fonte di fixture con relativa citazione {{< cite "fixture-fonte" >}}, una sotto-area reale (`SA-1-1`, riferimento a un valore già approvato in `DECISIONS/DR-03-macroarea-sottoarea-model.md`, non una nuova classificazione inventata) e un tema tecnico di fixture (`fixture-tema-tecnico`, eccezione esplicitamente autorizzata da DR-08 a "zero temi reali" di DR-04).

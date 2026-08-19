@@ -28,6 +28,24 @@ Il contenuto corrente utilizza campi come:
 
 I campi effettivamente utilizzati possono evolvere con il modello editoriale.
 
+## Corpo del contenuto
+
+Il titolo di una pagina è responsabilità del front matter (`title`) e del
+template (`layouts/_default/single.html`/`list.html` rendono
+`<h1>{{ .Title }}</h1>`).
+
+Il corpo Markdown di un articolo **non deve ripetere il titolo come
+intestazione di primo livello** (`# Titolo`): produrrebbe un secondo
+`<h1>` identico sulla stessa pagina, in tensione con ACCESSIBILITY-SPEC.md
+§9 ("ogni pagina significativa deve avere una gerarchia di titoli
+coerente"). Il corpo deve iniziare direttamente dal testo o, se servono
+sotto-sezioni, da `##` (H2) in giù.
+
+Trovato e corretto il 2026-08-19 (audit Gate 2) sull'unico contenuto
+reale esistente (`content/biblioteca/meditazione.md`) e sulla fixture
+(`content/fixtures/articolo-fixture.md`/`.en.md`), che ripetevano
+entrambi il titolo come `#` nel corpo.
+
 ## Relazione con il modello
 
 CONTENT-MODEL.md e ARTICLE-SPEC.md definiscono il modello concettuale.
