@@ -1,5 +1,6 @@
 ---
 title: "StamoTenti"
+description: "Una biblioteca dedicata alla meditazione."
 ---
 
 # StamoTenti
