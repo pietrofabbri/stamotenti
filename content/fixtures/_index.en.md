@@ -4,6 +4,10 @@ description: "Technical demonstration content (DECISIONS/DR-08). Not real editor
 cascade:
   sitemap:
     disable: true
+  outputs:
+    - html
+  build:
+    list: local
 ---
 
 # Technical fixtures
@@ -17,3 +21,5 @@ See `DECISIONS/DR-08-content-fixture-system-proposal.md` for the decision that a
 These pages are excluded from the sitemap (`sitemap.disable` cascade) and marked `noindex` (`layouts/partials/seo.html`).
 
 Note: this section index (`content/fixtures/_index.en.md`) restates the same `cascade` block as the Italian one. This is required, not redundant — verified empirically in an isolated fixture site before touching this repository: without a language-specific `_index.en.md` carrying its own `cascade`, Hugo does not propagate the Italian section's cascade to this language's page tree, and the English fixture pages would still appear in `en/sitemap.xml`.
+
+**Update (2026-08-19, Gate 2 audit)**: the same applies to `cascade.outputs`/`cascade.build.list`, added below to keep the fixture article out of RSS feeds (`sitemap.disable` alone does not affect Hugo's RSS output) — verified this needs restating here too, not just on the Italian `_index.md`, for the same cross-language-cascade reason.
