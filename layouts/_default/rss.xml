@@ -1,0 +1,53 @@
+{{- /* Template RSS custom (Fase 2, Gate 2 audit, 2026-08-19).
+
+     Sostituisce il template RSS embedded di Hugo per un solo motivo:
+     RSS 2.0 rende <pubDate> opzionale per item, ma il template di
+     default di Hugo lo emette sempre, usando la data zero-value
+     ("Mon, 01 Jan 0001 00:00:00 +0000") quando una pagina non ha un
+     campo `date` — un valore palesemente non valido, trovato nel feed
+     reale su content/biblioteca/meditazione.md (che non ha `date`).
+
+     Non è stata assegnata una data editoriale a meditazione.md per
+     risolvere questo: sarebbe una decisione editoriale, collegata alla
+     domanda #10 di PHASE-2-PLAN.md (se/come includere date), già
+     deliberatamente rimandata — non una decisione tecnica di questo
+     fix.
+
+     Il resto della struttura replica esattamente l'output del template
+     di default di Hugo (verificato per confronto diretto in una fixture
+     isolata, prima di questo file): stesso ordine campi channel/item,
+     stesso formato titolo/description, stesso <lastBuildDate> (da
+     `.Lastmod`, non `.Site.LastChange` — quel campo non esiste su
+     `page.Site` in questa versione di Hugo), stesso escaping (`|
+     safeHTML` sulle date per evitare che `+0000` diventi `&#43;0000`,
+     come succede senza — verificato). L'unica differenza voluta è
+     l'omissione di <pubDate> quando `.Date.IsZero`. */ -}}
+{{- $pages := .Pages -}}
+{{- if .IsHome -}}{{ $pages = .Site.RegularPages }}{{- end -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
+    <generator>Hugo</generator>
+    <language>{{ site.Language.LanguageCode }}</language>
+    {{- with .Lastmod }}
+    <lastBuildDate>{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      {{- if not .Date.IsZero }}
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- end }}
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Content | html }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>
