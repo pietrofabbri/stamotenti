@@ -5,6 +5,17 @@ defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 
+# Fallback usato da layouts/partials/seo.html (`.Description | default
+# .Site.Params.description`) per ogni pagina priva di un proprio campo
+# `description` in front matter — senza questo, <meta name="description">
+# e og:description restano vuoti (trovato nell'audit Gate 2, 2026-08-18).
+# Testo fedele a TO-BE.md §1 ("StamoTenti è una biblioteca editoriale
+# digitale dedicata alla meditazione..."), volutamente generico: deve
+# restare vero per qualunque pagina che non abbia una description propria,
+# non un claim specifico che una singola pagina potrebbe smentire.
+[params]
+description = "StamoTenti è una biblioteca editoriale digitale dedicata alla meditazione, alla consapevolezza e all'attenzione."
+
 [taxonomies]
 tag = 'tags'
 author = 'authors'
