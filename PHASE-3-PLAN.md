@@ -31,3 +31,17 @@ Quale sotto-area, quale argomento, quale titolo per il primo articolo; il vocabo
 - **#18** (`PHASE-2-PLAN.md`): le pagine di termine taxonomy delle entità fixture e `/sotto_area/sa-1-1/` restano indicizzabili — quest'ultima potrebbe risolversi da sé quando arriverà un primo articolo reale classificato in una sotto-area (non necessariamente `SA-1-1`), come già previsto nella decisione che ha accettato quel rischio.
 - **#10** (`PHASE-2-PLAN.md`): la decisione se includere date tecniche nel JSON-LD è rimasta aperta proprio in attesa di un contenuto reale con una data editoriale deliberata — il primo articolo di questa fase è verosimilmente il momento naturale in cui questa domanda tornerà rilevante.
 - **#17** (`PHASE-2-PLAN.md`): il collegamento diretto Article→Media resta indiretto — rilevante solo se il primo articolo reale userà un Media.
+
+---
+
+## Fase 4 — "Automazione editoriale parziale"
+
+### Innesco
+
+Dopo che **2-3 articoli reali** (prodotti nella Fase 3) hanno validato il processo manualmente — cioè dopo che si è visto ripetutamente, non solo una volta, cosa funziona.
+
+### Obiettivo
+
+Codificare il processo osservato in Fase 3, **mantenendo human-approval su ogni pubblicazione**. Non è automazione editoriale completa: è l'irrigidimento in un workflow ripetibile di ciò che la Fase 3 avrà dimostrato funzionare, con l'approvazione umana che resta un passaggio obbligato per ogni singolo contenuto pubblicato, non un controllo a campione o successivo.
+
+Nessun dettaglio ulteriore concordato oltre questo — la forma esatta della codifica (SPEC dedicata? workflow? checklist?) dipenderà da cosa la Fase 3 avrà effettivamente mostrato funzionare, e verrà decisa a quel punto.
