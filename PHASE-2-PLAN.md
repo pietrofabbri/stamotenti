@@ -77,8 +77,30 @@ Il secondo audit ha cercato deliberatamente oltre i 3 punti già noti, e ri-veri
 
 `npm run a11y` rieseguito dopo tutti e 3 i fix: 28/28 pagine reali e 4/4 fixture OK, 0 violazioni, nessuna regressione.
 
+## Gate 2 — terzo audit (2026-08-19): conferma dei 4 fix, una deprecazione minore trovata e corretta
+
+Terzo audit: ri-verificati esaustivamente (non a campione) tutti e 4 i problemi dei due giri precedenti — reggevano tutti. Ricerca allargata su categorie non ancora controllate esplicitamente in questa sessione (link interni, meta tag duplicati/malformati, JSON-LD, HTML non bilanciato, comportamento senza JavaScript, `lang`/hreflang, 404, cross-contaminazione fixture↔reale): tutto pulito, incluso un controllo una tantum su 127 link interni (0 rotti — non sostituisce un link-checker permanente, che resta assente).
+
+Trovato un problema minore nuovo: `layouts/_default/rss.xml` (introdotto nel fix del `pubDate`) usava `.Language.LanguageCode`, deprecata da Hugo v0.158.0. **Corretto**: sostituita con `.Language.Locale`, stesso valore emesso (`it-IT`/`en-US`), WARN sparito dal log di build | `eb50adb`
+
+Proposta la chiusura formale di Gate 2 al termine di questo terzo audit.
+
+---
+
+## Gate 2 — CHIUSO (2026-08-19)
+
+Il proprietario del progetto ha approvato esplicitamente la chiusura del Gate 2 in risposta diretta alla proposta fatta al termine del terzo audit.
+
+**Criterio letterale del Gate 2** (verbatim dal roadmap): "La Fase 2 è completata quando esiste un contenitore editoriale completo nel quale sia possibile aggiungere un nuovo articolo senza ripensare l'architettura." Risultato: "READY FOR CONTENT", non "READY FOR AUTONOMOUS PUBLISHING". Soddisfatto — confermato da tre audit indipendenti, l'ultimo dei quali non ha trovato altro che una deprecazione minore, già corretta.
+
+**Rischi residui, esplicitamente accettati** (non bloccanti per la chiusura, non richiesti dal Gate 2 letterale): #17 (collegamento diretto Article→Media, indiretto), #18 (pagine di termine taxonomy delle entità fixture indicizzabili), #10 (date in JSON-LD, decisione editoriale rimandata), assenza di un link-checker permanente (gap di processo, non di stato attuale), assenza di favicon (osservazione minore).
+
+Registrato come `MEMORY/MEM-2026-08-19-01-gate2-approved-phase2-closed.md`, stesso trattamento già dato alla chiusura del Gate 1 (`MEMORY/MEM-2026-08-16-02-gate1-approved-phase2-start.md`).
+
+**Nota sulla fase successiva**: `CLAUDE-CODE-DEVELOPMENT-ROADMAP.md` dichiara esplicitamente di coprire solo le Fasi 0-2 e chiude con "Da questo punto inizia la roadmap dei contenuti e dell'automazione editoriale" — una roadmap futura, non ancora scritta in questo repository. La chiusura di Gate 2 non avvia automaticamente una "Fase 3": nessuna fase successiva è oggi definita da alcun documento del repository.
+
 ---
 
 ## Gate 2 (promemoria da CLAUDE-CODE-DEVELOPMENT-ROADMAP.md)
 
-La Fase 2 è completata quando esiste un contenitore editoriale completo nel quale sia possibile aggiungere un nuovo articolo senza ripensare l'architettura. Risultato atteso: "READY FOR CONTENT", non "READY FOR AUTONOMOUS PUBLISHING". Richiede approvazione umana esplicita — non viene dichiarata raggiunta automaticamente da questo documento.
+La Fase 2 è completata quando esiste un contenitore editoriale completo nel quale sia possibile aggiungere un nuovo articolo senza ripensare l'architettura. Risultato atteso: "READY FOR CONTENT", non "READY FOR AUTONOMOUS PUBLISHING". Richiede approvazione umana esplicita — **soddisfatto e chiuso il 2026-08-19** (vedi sezione "Gate 2 — CHIUSO" sopra).
