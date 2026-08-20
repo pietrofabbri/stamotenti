@@ -45,3 +45,15 @@ Dopo che **2-3 articoli reali** (prodotti nella Fase 3) hanno validato il proces
 Codificare il processo osservato in Fase 3, **mantenendo human-approval su ogni pubblicazione**. Non è automazione editoriale completa: è l'irrigidimento in un workflow ripetibile di ciò che la Fase 3 avrà dimostrato funzionare, con l'approvazione umana che resta un passaggio obbligato per ogni singolo contenuto pubblicato, non un controllo a campione o successivo.
 
 Nessun dettaglio ulteriore concordato oltre questo — la forma esatta della codifica (SPEC dedicata? workflow? checklist?) dipenderà da cosa la Fase 3 avrà effettivamente mostrato funzionare, e verrà decisa a quel punto.
+
+---
+
+## Fase 5 — "Gestione totalmente automatizzata"
+
+**Non pianificata ora.** Richiederà SPEC dedicate, non ancora scritte. Nessun altro dettaglio è stato concordato — questa fase è nominata solo per collocare le Fasi 3 e 4 in un orizzonte più ampio, non per essere pianificata in anticipo.
+
+---
+
+## Criterio generale
+
+Le stesse priorità già valide per la Fase 2 restano valide qui (`CLAUDE-CODE-DEVELOPMENT-ROADMAP.md`, "Criterio generale"): massimizzare autonomia, verificabilità, reversibilità, semplicità, tracciabilità; minimizzare richieste di conferma premature, modifiche ai contenuti, duplicazione di logica, infrastruttura superflua, nuove convenzioni non documentate. L'approccio "prima pratica, poi linee guida" della Fase 3 è coerente con questo: non introduce infrastruttura o regole prima che la pratica ne dimostri la necessità.
