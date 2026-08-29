@@ -64,6 +64,10 @@ body {
     --space-4: 1.5rem;
     --space-5: 2rem;
     --space-6: 3rem;
+    /* Aggiunto 2026-08-29 (revisione spaziatura, verifica visiva del
+       proprietario): la scala si fermava a 3rem, non abbastanza per il
+       margine sopra gli h2 richiesto (~4rem). */
+    --space-7: 4rem;
 }
 
 body {
@@ -126,12 +130,86 @@ select:focus-visible {
     padding-inline: var(--space-3);
 }
 
+/* Padding verticale della sezione principale (2026-08-29, revisione
+   spaziatura): prima assente, il contenuto toccava header/footer senza
+   respiro. */
+main.wrapper {
+    padding-block: var(--space-6);
+}
+
 .flow > * + * {
     margin-top: var(--space-4);
+}
+
+/* Ritmo verticale più arioso (2026-08-29, revisione spaziatura — richiesta
+   ripetuta in fase di mockup, approvata dal proprietario): gli h2 (unico
+   livello di sottotitolo oggi in uso nei contenuti reali) segnano una
+   pausa netta prima di una nuova sezione, non solo un piccolo distacco dal
+   paragrafo precedente. Il margin-top più specifico prevale su quello
+   uniforme di `.flow > * + *` sopra; i margini adiacenti si comprimono
+   (collapsing CSS standard) al valore più grande dei due, non si sommano. */
+.flow h2 {
+    margin-top: var(--space-7);
+}
+
+.flow h3 {
+    margin-top: var(--space-6);
+}
+
+.flow p {
+    margin-bottom: var(--space-5);
 }
 
 @media (max-width: 30em) {
     .wrapper {
         padding-inline: var(--space-2);
     }
+}
+
+/*
+  Navigazione header/footer (Fase "shell": menu a 3 voci + footer di
+  fiducia, handoff 2026-08-29). Solo layout — nessun colore nuovo, i link
+  restano nello stile globale `a { color: var(--color-accent) }` già
+  definito sopra (DESIGN-SPEC.md: niente ornamenti gratuiti).
+*/
+
+header.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.site-nav__home {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.site-nav ul,
+.footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
 }
