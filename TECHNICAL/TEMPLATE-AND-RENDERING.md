@@ -25,13 +25,20 @@ tra cui:
 - footer;
 - SEO;
 - bibliografia;
-- debug.
+- debug;
+- analytics (`analytics.html`, aggiunto 2026-08-29 — legge il provider da
+  `data/site.yaml` invece di uno script incollato nei template; emette lo
+  script solo se `analytics.goatcounter_url` non è più il placeholder).
 
 ## Shortcode
 
-È presente uno shortcode per le citazioni in:
+Sono presenti shortcode in `layouts/shortcodes/`:
 
-`layouts/shortcodes/cite.html`
+- `cite.html`, per le citazioni;
+- `sitedata.html` (aggiunto 2026-08-29), lookup generico a percorso
+  puntato su `data/site.yaml` per il contenuto Markdown (es.
+  `{{% sitedata "titolare.email" %}}`), cosi' i valori organizzativi
+  citati nelle pagine (Privacy) non sono ripetuti come testo fisso.
 
 ## Compatibilità con la versione di Hugo
 

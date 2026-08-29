@@ -1,0 +1,22 @@
+{{- /*
+  analytics.html — legge il provider di analytics da data/site.yaml
+  invece di avere uno script incollato nei template (handoff 2026-08-29
+  §7). Cambiare provider in futuro significa modificare data/site.yaml,
+  non cercare lo script in ogni layout.
+
+  Oggi supportato solo GoatCounter (confermato dal proprietario). Se
+  analytics.strumento cambia, questo partial va esteso con un altro
+  ramo — non un nuovo script incollato altrove.
+
+  goatcounter_url resta un placeholder letterale finché non sostituito
+  con l'URL di conteggio reale (data/site.yaml): lo script NON viene
+  emesso finché il placeholder non è stato sostituito, per non spedire
+  in produzione un tag rotto che punta a un URL inesistente.
+*/ -}}
+{{- $analytics := hugo.Data.site.analytics -}}
+{{- if and $analytics (eq $analytics.strumento "GoatCounter") -}}
+    {{- $url := $analytics.goatcounter_url -}}
+    {{- if and $url (ne $url "GOATCOUNTER-URL-DA-INSERIRE") -}}
+<script data-goatcounter="{{ $url }}" async src="//gc.zgo.at/count.js"></script>
+    {{- end -}}
+{{- end -}}

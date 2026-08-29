@@ -9,9 +9,21 @@ Hugo corrente.
 
 Il repository contiene attualmente:
 
-- `content/_index.md`;
-- `content/content.md`;
-- `content/biblioteca/meditazione.md`.
+- `content/_index.md` (home);
+- `content/biblioteca/meditazione.md`;
+- `content/privacy/_index.md`;
+- `content/no-fuochi/_index.md`;
+- `content/il-progetto/_index.md`.
+
+`content/content.md` (placeholder Hugo iniziale del 12 agosto 2026, non
+collegato a nessuna voce di menu) è stato rimosso il 2026-08-29 in
+occasione dell'aggiunta delle pagine di shell sopra.
+
+Le tre nuove pagine (`privacy/`, `no-fuochi/`, `il-progetto/`) esistono
+oggi solo in italiano — nessuna traduzione EN. `header.html`/`footer.html`
+linkano a queste con percorsi assoluti fissi (non `relLangURL`), proprio
+per questo: da una pagina EN, `relLangURL` costruirebbe un percorso
+`/en/...` inesistente. Rivedere quando esisteranno le traduzioni.
 
 ## Front matter
 

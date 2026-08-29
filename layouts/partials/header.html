@@ -1,6 +1,16 @@
 <header class="wrapper">
-    <nav aria-label="{{ i18n "site_nav_label" }}">
-        <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    <nav aria-label="{{ i18n "site_nav_label" }}" class="site-nav">
+        <a href="{{ .Site.Home.RelPermalink }}" class="site-nav__home">{{ .Site.Title }}</a>
+        {{/* Percorsi assoluti fissi, non relLangURL: biblioteca/ e
+             il-progetto/ non hanno ancora una traduzione EN, quindi
+             esistono solo sotto il percorso IT (senza prefisso, IT è
+             defaultContentLanguage con defaultContentLanguageInSubdir
+             false). relLangURL da una pagina EN punterebbe a /en/... che
+             non esiste (404) — rivedere quando le traduzioni esisteranno. */}}
+        <ul>
+            <li><a href="/biblioteca/">{{ i18n "nav_biblioteca" }}</a></li>
+            <li><a href="/il-progetto/">{{ i18n "nav_progetto" }}</a></li>
+        </ul>
     </nav>
     {{ partial "language-switcher.html" . }}
 </header>

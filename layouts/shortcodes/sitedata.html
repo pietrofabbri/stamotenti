@@ -1,0 +1,12 @@
+{{- /*
+  sitedata — legge un valore da data/site.yaml tramite percorso puntato,
+  es. {{% sitedata "titolare.nome" %}}. Un solo shortcode generico invece
+  di uno per campo, cosi' i testi (Privacy, footer) restano leggibili e
+  data/site.yaml resta l'unica fonte da aggiornare (vedi data/site.yaml).
+*/ -}}
+{{- $path := .Get 0 -}}
+{{- $value := hugo.Data.site -}}
+{{- range split $path "." -}}
+    {{- $value = index $value . -}}
+{{- end -}}
+{{- $value -}}

@@ -1,0 +1,32 @@
+# data/site.yaml — dati organizzativi del sito (titolare, hosting,
+# analytics, donazioni), centralizzati per essere richiamati dai template
+# invece di essere ripetuti come testo fisso nelle pagine (Privacy,
+# footer). Un cambio futuro (nuova email, nuovo hosting, nuovo strumento
+# di analytics) si fa qui, in un solo punto.
+#
+# Origine: handoff Cowork → Claude Code, 2026-08-29
+# (~/Sites/stamotenti-editorial/handoff-shell-v7.md §2).
+
+titolare:
+  nome: "Pietro Fabbri"
+  email: "pietrofabbritalia@gmail.com"
+
+hosting:
+  provider: "GitHub Pages"
+
+analytics:
+  strumento: "GoatCounter"
+  tipo: "ospitato"
+  # Valore reale confermato dal proprietario (Cowork, 2026-08-29).
+  goatcounter_url: "https://pietrofabbri.goatcounter.com/count"
+
+kofi:
+  # Valore reale confermato dal proprietario (Cowork, 2026-08-29). Link
+  # semplice, non pulsante/widget fluttuante — decisione di design già
+  # presa (un elemento persistente contraddice "niente fuochi d'artificio").
+  # NON ancora letto da qui: content/no-fuochi/_index.md lo referenzia come
+  # link Markdown fisso (scelta deliberata, vedi commento lì).
+  link: "https://ko-fi.com/stamotenti"
+
+contatti:
+  email: "pietrofabbritalia@gmail.com"

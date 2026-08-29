@@ -21,10 +21,12 @@ repository
 
 ## Produzione
 
-Il provider e il workflow definitivo di deploy non sono ancora fissati in
-questo documento.
+Il provider di hosting è GitHub Pages (deciso dal proprietario, registrato
+in `data/site.yaml` il 2026-08-29 — citato dalla pagina Privacy). Questo
+fissa il **provider**, non ancora il **workflow** di deploy (CI, build
+automatica, rollback): quello resta da definire.
 
-La scelta dovrà essere compatibile con:
+La scelta del workflow dovrà essere compatibile con:
 
 - versionamento Git;
 - build riproducibile;
