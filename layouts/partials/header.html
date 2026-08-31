@@ -1,6 +1,19 @@
 <header class="wrapper">
     <nav aria-label="{{ i18n "site_nav_label" }}" class="site-nav">
-        <a href="{{ .Site.Home.RelPermalink }}" class="site-nav__home">{{ .Site.Title }}</a>
+        {{/* Logo segnaposto (2026-08-29), da sostituire con la versione
+             definitiva quando disponibile: basta sovrascrivere
+             static/img/logo-placeholder.png, o cambiare src qui se il
+             file finale ha un nome diverso — nessun'altra modifica
+             necessaria. Icona + testo affiancati (non l'uno al posto
+             dell'altro): alt="" perché il testo accanto ("StamoTenti")
+             porta già il nome del sito — un alt non vuoto lo farebbe
+             annunciare due volte di fila a chi usa uno screen reader
+             (icona puramente decorativa in presenza di testo,
+             ACCESSIBILITY-SPEC.md §21). */}}
+        <a href="{{ .Site.Home.RelPermalink }}" class="site-nav__home">
+            <img src="/img/logo-placeholder.png" alt="" width="45" height="48" class="site-logo">
+            {{ .Site.Title }}
+        </a>
         {{/* Percorsi assoluti fissi, non relLangURL: biblioteca/ e
              il-progetto/ non hanno ancora una traduzione EN, quindi
              esistono solo sotto il percorso IT (senza prefisso, IT è

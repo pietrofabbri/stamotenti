@@ -202,9 +202,23 @@ header.wrapper {
     flex-wrap: wrap;
 }
 
+/* Icona + testo affiancati (2026-08-29, corretto dopo la prima versione
+   che aveva sostituito il testo con l'icona invece di affiancarli). */
 .site-nav__home {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-weight: 600;
     color: var(--color-text);
+}
+
+/* Logo segnaposto — dimensione ragionevole accanto al testo, non le
+   dimensioni native del file (768x824). `display: block` evita lo spazio
+   bianco sotto l'immagine tipico degli elementi inline. */
+.site-logo {
+    display: block;
+    height: 1.75rem;
+    width: auto;
 }
 
 .site-nav ul,
