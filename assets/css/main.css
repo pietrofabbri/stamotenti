@@ -68,6 +68,11 @@ body {
        proprietario): la scala si fermava a 3rem, non abbastanza per il
        margine sopra gli h2 richiesto (~4rem). */
     --space-7: 4rem;
+    /* Aggiunto 2026-08-29 (seconda revisione, stesso giorno): dopo aver
+       ridotto il gap sotto l'header, il resto della spaziatura verticale
+       doveva aumentare ulteriormente rispetto a --space-7 — la scala si
+       fermava di nuovo troppo presto. */
+    --space-8: 6rem;
 }
 
 body {
@@ -131,33 +136,41 @@ select:focus-visible {
 }
 
 /* Padding verticale della sezione principale (2026-08-29, revisione
-   spaziatura): prima assente, il contenuto toccava header/footer senza
-   respiro. */
+   spaziatura, due giri). Top e bottom separati (non più padding-block
+   unico): l'header ha un suo padding-bottom sopra il border, quindi lo
+   stesso valore anche come padding-top di main.wrapper sommava i due e
+   lasciava un vuoto eccessivo prima del titolo — segnalato dal
+   proprietario dopo verifica visiva, e ridotto una seconda volta
+   (--space-4 era ancora troppo). Il fondo pagina non aveva lo stesso
+   problema (il footer non ha un padding-top analogo da sommare): quello
+   invece va nella direzione opposta, aumentato con tutto il resto. */
 main.wrapper {
-    padding-block: var(--space-6);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-7);
 }
 
 .flow > * + * {
     margin-top: var(--space-4);
 }
 
-/* Ritmo verticale più arioso (2026-08-29, revisione spaziatura — richiesta
-   ripetuta in fase di mockup, approvata dal proprietario): gli h2 (unico
+/* Ritmo verticale più arioso (2026-08-29, revisione spaziatura in due giri
+   — richiesta ripetuta in fase di mockup, approvata dal proprietario, poi
+   aumentata ancora dopo verifica visiva del sito reale). Gli h2 (unico
    livello di sottotitolo oggi in uso nei contenuti reali) segnano una
    pausa netta prima di una nuova sezione, non solo un piccolo distacco dal
    paragrafo precedente. Il margin-top più specifico prevale su quello
    uniforme di `.flow > * + *` sopra; i margini adiacenti si comprimono
    (collapsing CSS standard) al valore più grande dei due, non si sommano. */
 .flow h2 {
-    margin-top: var(--space-7);
+    margin-top: var(--space-8);
 }
 
 .flow h3 {
-    margin-top: var(--space-6);
+    margin-top: var(--space-7);
 }
 
 .flow p {
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
 }
 
 @media (max-width: 30em) {
@@ -210,6 +223,8 @@ footer.wrapper {
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-3);
-    padding-block: var(--space-6);
+    /* Aumentato da --space-6 (2026-08-29, seconda revisione): va nella
+       direzione opposta al gap sotto l'header, non ridotto. */
+    padding-block: var(--space-7);
     border-top: 1px solid var(--color-border);
 }
