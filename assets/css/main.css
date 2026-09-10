@@ -231,6 +231,17 @@ header.wrapper {
     padding: 0;
 }
 
+/* Blocco accademico collassabile (layouts/shortcodes/accademico-inizio.html,
+   handoff "revisione-articolo1" §6a, 2026-09-10): l'etichetta nel
+   <summary> deve risaltare rispetto al corpo del testo, non leggersi come
+   un paragrafo qualunque — è l'unico indizio visivo che lì sotto c'è altro
+   contenuto. */
+details.accademico summary {
+    font-weight: 700;
+    font-size: var(--step-1);
+    cursor: pointer;
+}
+
 footer.wrapper {
     display: flex;
     flex-wrap: wrap;

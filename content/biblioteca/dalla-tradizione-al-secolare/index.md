@@ -181,6 +181,7 @@ Resta necessario un controllo umano delle citazioni alle pagine 38-39 e 111-121 
 
 {{< audio-pratica id="dalla-tradizione-al-secolare-pratica" >}}
 
-Quello che segue non è una pratica strutturata: è più un piccolo ponte verso una pratica più seria, se un giorno ti va di esplorarla. Se ti stai chiedendo se abbia senso fermarsi per così poco, [ne parliamo qui](/il-progetto/pratiche-brevi/).
+Quello che segue non è una pratica strutturata: è più un piccolo ponte verso una pratica più seria, se un giorno ti va di esplorarla.\
+Se ti stai chiedendo se abbia senso fermarsi per così poco, [ne parliamo qui](/il-progetto/pratiche-brevi/).
 
 {{< invito-contatto >}}

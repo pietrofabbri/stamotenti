@@ -104,7 +104,7 @@
   storage_location: "static/audio/dalla-tradizione-al-secolare-pratica.mp3"
   url: "/audio/dalla-tradizione-al-secolare-pratica.mp3"
   format: "audio/mpeg"
-  notes: "Temporaneo in static/ (quindi versionato in git), in attesa di migrazione a Cloudflare R2 al lancio del sito (dominio non ancora acquistato) — vedi stamotenti-editorial/handoff-audio-pratica-2026-09-07.md. Contenuto parlato non ancora verificato parola per parola contro il testo scritto della pratica (nessun tool di trascrizione disponibile lato Cowork): riascoltare prima di considerarlo definitivo."
+  notes: "Temporaneo in static/ (quindi versionato in git), in attesa di migrazione a Cloudflare R2 al lancio del sito (dominio non ancora acquistato) — vedi stamotenti-editorial/handoff-audio-pratica-2026-09-07.md. Voce reale del proprietario, non una lettura di un testo da verificare parola per parola: nessun controllo di corrispondenza testo/audio necessario (chiarito esplicitamente dal proprietario, handoff-revisione-articolo1-2026-09-07.md §6d)."
   can_read: true
   can_research: true
   can_cite: true
