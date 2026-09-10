@@ -1,9 +1,3 @@
-- id: bianchi
-  name: "Bianchi B."
-  full_name: ""
-  orcid: ""
-  affiliation: ""
-
 # Voce di fixture tecnica (DECISIONS/DR-08-content-fixture-system-proposal.md).
 # Non una persona reale. Usata solo da content/fixtures/, mai da contenuto
 # editoriale reale.
