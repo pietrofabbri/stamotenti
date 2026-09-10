@@ -82,3 +82,31 @@
   can_cite: true
   can_publish: false
   can_redistribute: false
+
+# Primo media audio reale del progetto (handoff-audio-pratica-2026-09-07.md).
+# Eccezione dichiarata e temporanea a MEDIA-SPEC §6/§26 ("Git non deve
+# essere utilizzato come biblioteca generale di... audio"), decisa dal
+# proprietario 2026-09-07: il file resta in static/ (quindi in git) finché
+# il sito non ha un dominio proprio; verrà poi migrato a Cloudflare R2
+# (proposta verificata sui prezzi ufficiali, confermata dal proprietario) e
+# questa nota andrà aggiornata di conseguenza. `creator` non riporta il nome
+# reale del proprietario: coerente con la decisione già presa sull'identità
+# editoriale del sito (voce anonima "StamoTenti", vedi data/authors.yaml e
+# content/il-progetto/_index.md, mai il nome reale in contenuto pubblico) —
+# questo file dati è parte del repository Git pubblico del progetto, quindi
+# soggetto alla stessa regola, anche se l'handoff originale suggeriva
+# `creator = il proprietario` in modo letterale.
+- id: dalla-tradizione-al-secolare-pratica
+  type: audio
+  visibility: public
+  title: "Pratica breve — Dalla tradizione al secolare"
+  creator: "StamoTenti"
+  storage_location: "static/audio/dalla-tradizione-al-secolare-pratica.mp3"
+  url: "/audio/dalla-tradizione-al-secolare-pratica.mp3"
+  format: "audio/mpeg"
+  notes: "Temporaneo in static/ (quindi versionato in git), in attesa di migrazione a Cloudflare R2 al lancio del sito (dominio non ancora acquistato) — vedi stamotenti-editorial/handoff-audio-pratica-2026-09-07.md. Contenuto parlato non ancora verificato parola per parola contro il testo scritto della pratica (nessun tool di trascrizione disponibile lato Cowork): riascoltare prima di considerarlo definitivo."
+  can_read: true
+  can_research: true
+  can_cite: true
+  can_publish: true
+  can_redistribute: false

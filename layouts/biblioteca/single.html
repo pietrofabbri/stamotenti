@@ -1,0 +1,24 @@
+{{ define "main" }}
+
+<article class="flow">
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.tags }}
+        <p>
+            {{ i18n "tag_label" }}
+            {{ range . }}
+                <a href="{{ (printf "/tags/%s/" .) | relLangURL }}">
+                    {{ . }}
+                </a>
+            {{ end }}
+        </p>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ partial "bibliography.html" . }}
+
+</article>
+
+{{ end }}

@@ -1,6 +1,21 @@
-{{- range $i, $sourceID := .Params -}}
+{{- /* DR pendente (pincite): ogni parametro posizionale è un source id,
+     opzionalmente seguito da "|<pagina>" per una citazione puntuale
+     (es. "keown1992|111-121"). Sintassi a stringa singola, non un secondo
+     parametro posizionale separato, perché Hugo non permette di mischiare
+     parametri posizionali e nominali nello stesso shortcode, e un secondo
+     posizionale nudo collinderebbe con la sintassi multi-fonte già esistente
+     (es. {{< cite "purser2019" "purser2018" >}}, che unisce due citazioni
+     distinte con "; " — invariata da questa estensione). */ -}}
+{{- range $i, $rawID := .Params -}}
 
     {{- if $i }}; {{ end -}}
+
+    {{- $parts := split $rawID "|" -}}
+    {{- $sourceID := index $parts 0 -}}
+    {{- $page := "" -}}
+    {{- if gt (len $parts) 1 -}}
+        {{- $page = index $parts 1 -}}
+    {{- end -}}
 
     {{- $found := false -}}
 
@@ -24,7 +39,7 @@
             {{- if $i }}{{ end -}}
 
             <a href="#source-{{ .id }}" class="citation">
-                {{ $firstAuthor }}{{ if gt (len $authors) 1 }} et al.{{ end }}, {{ .year }}
+                {{ $firstAuthor }}{{ if gt (len $authors) 1 }} et al.{{ end }}, {{ .year }}{{ with $page }}: {{ . }}{{ end }}
             </a>
 
         {{- end -}}

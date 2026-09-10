@@ -1,0 +1,28 @@
+{{- /* Apertura del blocco accademico collassabile (handoff
+     "revisione-articolo1", 2026-09-07, punto 2b): usato in coppia con
+     accademico-fine.html per avvolgere la parte accademica di un articolo
+     (Abstract...Limiti) dentro un <details> nativo, senza JS.
+
+     Non è un unico shortcode a coppia aperta/chiusa con .Inner: verificato
+     empiricamente (fixture isolata, 2026-09-08) che qualunque contenuto
+     passato come .Inner di un altro shortcode, quando ri-renderizzato con
+     .Page.RenderString per ottenere titoli/paragrafi Markdown, perde l'HTML
+     dei propri shortcode annidati (es. la citazione) — Goldmark lo
+     tratta come HTML "unsafe" in quel passaggio secondario, anche se questo
+     sito non lo è per il contenuto di primo livello. Con .Inner non
+     ri-renderizzato, succede l'opposto: gli shortcode annidati funzionano
+     ma i titoli Markdown restano testo letterale ("## Abstract"), non
+     diventano <h2>.
+
+     Questa coppia di shortcode "marcatore" evita il problema alla radice:
+     il testo Abstract...Limiti resta contenuto di primo livello della
+     pagina (mai catturato come .Inner di nessuno shortcode), quindi Hugo
+     lo processa esattamente come il resto dell'articolo — titoli
+     Markdown e citazioni annidate funzionano entrambi, perché nessuno dei
+     due passa da un secondo render Goldmark. I due marcatori si limitano a
+     emettere i tag di apertura/chiusura di <details>, che — essendo
+     l'output diretto di uno shortcode a delimitatori angolari senza
+     .Inner, esattamente come cite.html/figure.html — rientra nel
+     meccanismo di sostituzione "sicura" invece che nel parsing Markdown. */ -}}
+<details class="accademico">
+<summary>{{ i18n "academic_section_label" }}</summary>

@@ -1,0 +1,34 @@
+{{- /* Player audio riusabile per le pratiche di fine articolo (handoff
+     "revisione-articolo1" punto 2c + "audio-pratica" del 2026-09-07).
+     Parametrizzato su un id di data/media.yaml (stesso pattern già usato
+     da cite.html per data/sources.yaml), non su un path fisico hardcoded,
+     cosi' i prossimi articoli lo richiamano con un id diverso senza
+     duplicare markup.
+
+     Parametro:
+       id  obbligatorio — id della voce in data/media.yaml (type: audio) */ -}}
+{{- $mediaID := .Get "id" -}}
+
+{{- if not $mediaID -}}
+    {{- errorf "shortcode audio-pratica: parametro 'id' mancante o vuoto (%s)" .Position -}}
+{{- end -}}
+
+{{- $media := false -}}
+{{- range hugo.Data.media -}}
+    {{- if eq .id $mediaID -}}
+        {{- $media = . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if not $media -}}
+<strong>[{{ i18n "media_not_found" }}: {{ $mediaID }}]</strong>
+{{- else -}}
+<figure class="audio-player">
+    <figcaption>{{ with $media.title }}{{ . }}{{ else }}{{ i18n "audio_practice_label" }}{{ end }}</figcaption>
+    <audio controls preload="none">
+        <source src="{{ $media.url }}" type="{{ with $media.format }}{{ . }}{{ else }}audio/mpeg{{ end }}">
+        {{ i18n "audio_unsupported" }}
+        <a href="{{ $media.url }}">{{ i18n "audio_download_label" }}</a>
+    </audio>
+</figure>
+{{- end -}}

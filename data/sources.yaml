@@ -1,23 +1,3 @@
-- id: esempio2024
-  type: paper
-  title: "Titolo dello studio di esempio"
-  authors:
-    - rossi
-    - bianchi
-  year: 2024
-  journal: "Journal of Meditation Research"
-  doi: "10.1234/example"
-  url: "https://example.org"
-
-- id: libro2020
-  type: book
-  title: "Meditazione e attenzione"
-  authors:
-    - rossi
-  year: 2020
-  publisher: "Editore di esempio"
-  isbn: "978-00-000000-0"
-
 - id: sito2026
   type: web
   title: "Meditation Research Center"
@@ -25,13 +5,6 @@
     - bianchi
   year: 2026
   url: "https://example.org/meditation"
-
-- id: documento2026
-  type: report
-  title: "Documento di esempio"
-  authors:
-    - rossi
-  year: 2026
 
 # Voce di fixture tecnica (DECISIONS/DR-08-content-fixture-system-proposal.md).
 # Non una fonte reale, nessun file allegato. Usata solo da content/fixtures/,
@@ -43,3 +16,208 @@
     - fixture-autore
   year: 2026
   url: "https://example.org/fixture-fonte"
+
+# Fonti reali della bibliografia del primo articolo scientifico ("Dalla
+# tradizione al secolare..."), verificate in stamotenti-editorial/
+# scientific_editorial_pipeline/ e, per le correzioni segnalate sotto, in
+# questa sessione (ricerca web diretta, non delegata).
+
+- id: arat-hemming2025
+  type: paper
+  title: "Secular, religious or spiritual? A sociological portrait of UK mindfulness teachers"
+  authors: [arat, hemming]
+  year: 2025
+  journal: "Religion"
+  volume: "55"
+  issue: "1"
+  pages: "89–111"
+  doi: "10.1080/0048721X.2024.2388534"
+  # Correzione rispetto all'handoff originale (verificata in questa
+  # sessione): la rivista non è "Journal of Contemporary Religion" ma
+  # "Religion" (Routledge/Taylor & Francis, ISSN 0048-721X, coerente col
+  # prefisso del DOI) — confermato sia dalla pagina tandfonline.com/doi/full
+  # del DOI stesso sia da un secondo riscontro indipendente. Il DOI e il
+  # titolo dell'handoff erano corretti; solo il nome della rivista era
+  # sbagliato.
+
+- id: cetana-sutta
+  type: web
+  title: "Cetana Sutta (Aṅguttara Nikāya 11.2)"
+  authors: [thanissaro-bhikkhu]
+  year: 2010
+  url: "https://www.accesstoinsight.org/"
+  # Fonte primaria canonica, trad. Thanissaro Bhikkhu, Access to Insight, BCBS Edition, 2010.
+
+- id: gethin2011
+  type: paper
+  title: "On some definitions of mindfulness"
+  authors: [gethin]
+  year: 2011
+  journal: "Contemporary Buddhism"
+  doi: "10.1080/14639947.2011.564843"
+
+- id: giuliano2018
+  type: paper
+  title: "Secularization of Mindfulness: Downfalls and Successes of Cross-Cultural Transmission"
+  authors: [giuliano]
+  year: 2018
+  journal: "UCLA Journal of Religion"
+  # volume 2 (rivista annuale, non ha DOI reperito). full_name dell'autrice
+  # (Roxann Delman Giuliano) verificato in questa sessione — non confermato
+  # nell'handoff originale.
+
+- id: harvey2000
+  type: book
+  title: "An Introduction to Buddhist Ethics: Foundations, Values and Issues"
+  authors: [harvey]
+  year: 2000
+  publisher: "Cambridge University Press"
+  isbn: "978-0-521-55394-0"
+
+- id: kabatzinn2011
+  type: paper
+  title: "Some Reflections on the Origins of MBSR, Skillful Means, and the Trouble with Maps"
+  authors: [kabat-zinn]
+  year: 2011
+  journal: "Contemporary Buddhism"
+  doi: "10.1080/14639947.2011.564844"
+
+- id: kabatzinn2017
+  type: paper
+  title: "Too Early to Tell: The Potential Impact and Challenges, Ethical and Otherwise, Inherent in the Mainstreaming of Dharma in an Increasingly Dystopian World"
+  authors: [kabat-zinn]
+  year: 2017
+  journal: "Mindfulness"
+  doi: "10.1007/s12671-017-0758-2"
+
+- id: kachan2017
+  type: paper
+  title: "Prevalence of Mindfulness Practices in the US Workforce: National Health Interview Survey"
+  authors: [kachan, olano, tannenbaum, annane, mehta, arheart, fleming, yang, mcclure, lee]
+  year: 2017
+  journal: "Preventing Chronic Disease"
+  doi: "10.5888/pcd14.160034"
+  # Citata come "Kachan et al." nel testo (in-text, prosa/pincite). Elenco
+  # coautori completo verificato in questa sessione (CDC/PMC, PubMed
+  # 28055821) — non confermato nell'handoff originale, che riportava solo
+  # il primo autore.
+
+- id: keown1992
+  type: book
+  title: "The Nature of Buddhist Ethics"
+  authors: [keown]
+  year: 1992
+  publisher: "Macmillan / St. Martin's Press"
+  isbn: "978-0-312-07905-5"
+
+- id: mcmahan2008
+  type: book
+  title: "The Making of Buddhist Modernism"
+  authors: [mcmahan]
+  year: 2008
+  publisher: "Oxford University Press"
+  isbn: "978-0-19-518327-6"
+
+- id: mbsr-collaborative-history
+  type: web
+  title: "History of MBSR"
+  authors: [mbsr-collaborative]
+  url: "https://mbsrcollaborative.com/history-of-mbsr"
+  access_date: "2026-09-07"
+  # Pagina non datata sul sito sorgente (organizzativa, non un articolo):
+  # `year` omesso deliberatamente invece di inventato, per SOURCE-SPEC.md
+  # §5 ("i campi opzionali non devono essere riempiti artificialmente");
+  # `access_date` aggiunto in sostituzione (campo esplicitamente ammesso
+  # dalla stessa sezione della SPEC). URL reale verificato in questa
+  # sessione (l'handoff originale la lasciava vuota). Nota tecnica: sia
+  # cite.html sia bibliography.html emettono comunque "{{ .year }}" senza
+  # condizionare sulla sua presenza — per questa voce il render includerà
+  # una parentesi/virgola vuota finché non si decide se estendere i
+  # template per gestire fonti non datate. Segnalato nel report, non
+  # corretto qui.
+
+- id: nisbet2019
+  type: paper
+  title: "Mindfulness Inc."
+  authors: [nisbet]
+  year: 2019
+  journal: "Issues in Science and Technology"
+  # vol. 36(1). full_name dell'autore (Matthew C. Nisbet) verificato in
+  # questa sessione — non confermato nell'handoff originale. Titolo
+  # invariato rispetto all'handoff/pipeline (già verificato lì il
+  # 2026-08-30): il pezzo appare nella rubrica ricorrente "Sciences,
+  # Publics, Politics" della rivista, e alcuni cataloghi citano rubrica e
+  # titolo insieme ("Sciences, Publics, Politics: Mindfulness Inc.") — non
+  # trattato come correzione, entrambe le forme sono in uso per la stessa
+  # fonte.
+
+- id: purser2018
+  type: paper
+  title: "Critical perspectives on corporate mindfulness"
+  authors: [purser]
+  year: 2018
+  journal: "Journal of Management, Spirituality & Religion"
+  doi: "10.1080/14766086.2018.1438038"
+
+- id: purser2019
+  type: book
+  title: "McMindfulness: How Mindfulness Became the New Spirituality of Capitalism"
+  authors: [purser]
+  year: 2019
+  publisher: "Repeater"
+  isbn: "978-1-912248-31-5"
+
+- id: sonadanda-sutta
+  type: web
+  title: "Sonadanda Sutta (Dīgha-Nikāya 4)"
+  authors: [sujato]
+  year: 2018
+  url: "https://suttacentral.net/"
+  # Fonte primaria canonica, trad. Bhikkhu Sujato, SuttaCentral. Anno della
+  # specifica traduzione non riverificato in questa sessione (non tra i 3
+  # punti segnalati come dubbi dall'handoff) — se rilevante, da confermare
+  # separatamente.
+
+- id: stanley2015
+  type: book
+  title: "Sīla and Sati: An Exploration of Ethics and Mindfulness in Pāli Buddhism and Their Implications for Secular Mindfulness-Based Applications"
+  authors: [stanley]
+  year: 2015
+  publisher: "in: Shonin, E., Van Gordon, W., Singh, N. N. (a cura di). Buddhist Foundations of Mindfulness. Springer, 2015."
+  doi: "10.1007/978-3-319-18591-0_6"
+  # Titolo del volume contenitore confermato in questa sessione (non
+  # confermato nell'handoff originale). Nota tecnica: è un capitolo con
+  # DOI, non un libro con ISBN — type: book usato per mancanza di un tipo
+  # "capitolo di libro" nello schema (SOURCE-SPEC.md ammette l'estensione
+  # dei tipi solo tramite decisione editoriale, non fatta qui); il DOI è
+  # comunque registrato come dato ma layouts/partials/bibliography.html non
+  # lo rende per type "book" (solo per paper/review/meta-analysis) — gap
+  # segnalato nel report, non corretto qui.
+
+- id: walsh2018
+  type: paper
+  title: "Mindfulness under neoliberal governmentality: critiquing the operation of biopower in corporate mindfulness and constructing queer alternatives"
+  authors: [walsh]
+  year: 2018
+  journal: "Journal of Management, Spirituality & Religion"
+  doi: "10.1080/14766086.2017.1423239"
+
+- id: wilson2014
+  type: book
+  title: "Mindful America: The Mutual Transformation of Buddhist Meditation and American Culture"
+  authors: [wilson]
+  year: 2014
+  publisher: "Oxford University Press"
+  isbn: "978-0-19-982781-7"
+
+- id: norris2018
+  type: paper
+  title: "Brief mindfulness meditation improves attention in novices: Evidence from ERPs and moderation by neuroticism"
+  authors: [norris, creem, hendler, kober]
+  year: 2018
+  journal: "Frontiers in Human Neuroscience"
+  doi: "10.3389/fnhum.2018.00315"
+  # Citata nella pagina content/il-progetto/pratiche-brevi.md. Nota già
+  # presente nell'handoff, confermata: l'intervento studiato dura 10 minuti,
+  # non 3 — la pagina lo dice esplicitamente, non lo presenta come prova
+  # diretta sull'efficacia di pratiche da 3 minuti.

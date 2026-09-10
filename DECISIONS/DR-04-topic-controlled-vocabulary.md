@@ -71,4 +71,4 @@ Alta: un file vuoto/placeholder non impegna a nessun contenuto specifico ed è f
 
 ## Condizioni di rivalutazione
 
-Da rivalutare quando il primo tema reale verrà proposto tramite processo editoriale, per verificare che lo schema approvato copra il caso reale; da rivalutare in relazione al campo `temi` nel front matter di Article, escluso da DR-01 finché questa decisione non è a sua volta implementata.
+Da rivalutare quando il primo tema reale verrà proposto tramite processo editoriale, per verificare che lo schema approvato copra il caso reale — avvenuto il 2026-09-07, vedi `DECISIONS/DR-09-topic-encyclopedia-entry-schema.md`, che estende lo schema con `voce_enciclopedica`. Il riferimento al campo `temi` nel front matter di Article, presente nel testo originale di questa clausola, era già risolto lo stesso giorno dell'approvazione di questa decisione (2026-08-16) tramite l'estensione di DR-01 originata da DR-06, e non descriveva più correttamente lo stato del progetto dal momento stesso in cui è stato scritto.

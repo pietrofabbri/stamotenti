@@ -1,9 +1,3 @@
-- id: rossi
-  name: "Rossi A."
-  full_name: ""
-  orcid: ""
-  affiliation: ""
-
 - id: bianchi
   name: "Bianchi B."
   full_name: ""
@@ -16,5 +10,225 @@
 - id: fixture-autore
   name: "Autore di Fixture (dato tecnico, non una persona reale)"
   full_name: ""
+  orcid: ""
+  affiliation: ""
+
+# Voce del sito stesso, non di una persona fisica: identità editoriale
+# scelta esplicitamente dal proprietario (2026-09-07) per il primo articolo
+# scientifico pubblicato ("Dalla tradizione al secolare..."), coerente con
+# content/il-progetto/_index.md (scritto in prima persona, senza mai
+# nominare il proprietario). Nessun nome reale del proprietario in questo
+# file o in altro contenuto pubblico.
+- id: stamotenti
+  name: "StamoTenti"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+# Autori reali citati nella bibliografia del primo articolo scientifico
+# ("Dalla tradizione al secolare..."), verificati via ricerca bibliografica
+# (stamotenti-editorial/scientific_editorial_pipeline/) e, per i tre
+# dettagli inizialmente non confermati (Giuliano, Nisbet, elenco completo
+# coautori Kachan et al.), via verifica diretta in questa sessione — vedi
+# report di pubblicazione per le fonti.
+- id: arat
+  name: "Arat A."
+  full_name: "Alp Arat"
+  orcid: ""
+  affiliation: ""
+
+- id: hemming
+  name: "Hemming P."
+  full_name: "Peter J. Hemming"
+  orcid: ""
+  affiliation: ""
+
+- id: gethin
+  name: "Gethin R."
+  full_name: "Rupert Gethin"
+  orcid: ""
+  affiliation: ""
+
+- id: giuliano
+  name: "Giuliano R."
+  full_name: "Roxann Delman Giuliano"
+  orcid: ""
+  affiliation: ""
+
+- id: harvey
+  name: "Harvey P."
+  full_name: "Peter Harvey"
+  orcid: ""
+  affiliation: ""
+
+- id: kabat-zinn
+  name: "Kabat-Zinn J."
+  full_name: "Jon Kabat-Zinn"
+  orcid: ""
+  affiliation: ""
+
+# Coautori di kachan2017 (Kachan et al., 2017): elenco completo verificato
+# via CDC/Preventing Chronic Disease e PubMed (id 28055821), non solo il
+# primo autore citato in prosa nell'articolo come "Kachan et al." — la
+# citazione abbreviata in-text non richiede l'elenco completo, ma la voce
+# bibliografica completa sì (nessun campo di troncamento "et al." esiste in
+# layouts/partials/bibliography.html: elenca sempre tutti gli id in
+# authors).
+- id: kachan
+  name: "Kachan D."
+  full_name: "Diana Kachan"
+  orcid: ""
+  affiliation: ""
+
+- id: olano
+  name: "Olano H."
+  full_name: "Henry Olano"
+  orcid: ""
+  affiliation: ""
+
+- id: tannenbaum
+  name: "Tannenbaum S. L."
+  full_name: "Stacey L. Tannenbaum"
+  orcid: ""
+  affiliation: ""
+
+- id: annane
+  name: "Annane D. W."
+  full_name: "Debra W. Annane"
+  orcid: ""
+  affiliation: ""
+
+- id: mehta
+  name: "Mehta A."
+  full_name: "Ashwin Mehta"
+  orcid: ""
+  affiliation: ""
+
+- id: arheart
+  name: "Arheart K. L."
+  full_name: "Kristopher L. Arheart"
+  orcid: ""
+  affiliation: ""
+
+- id: fleming
+  name: "Fleming L. E."
+  full_name: "Lora E. Fleming"
+  orcid: ""
+  affiliation: ""
+
+- id: yang
+  name: "Yang X."
+  full_name: "Xuan Yang"
+  orcid: ""
+  affiliation: ""
+
+- id: mcclure
+  name: "McClure L. A."
+  full_name: "Laura A. McClure"
+  orcid: ""
+  affiliation: ""
+
+- id: lee
+  name: "Lee D. J."
+  full_name: "David J. Lee"
+  orcid: ""
+  affiliation: ""
+
+- id: keown
+  name: "Keown D."
+  full_name: "Damien Keown"
+  orcid: ""
+  affiliation: ""
+
+- id: mcmahan
+  name: "McMahan D."
+  full_name: "David McMahan"
+  orcid: ""
+  affiliation: ""
+
+- id: nisbet
+  name: "Nisbet M."
+  full_name: "Matthew C. Nisbet"
+  orcid: ""
+  affiliation: ""
+
+- id: purser
+  name: "Purser R."
+  full_name: "Ronald E. Purser"
+  orcid: ""
+  affiliation: ""
+
+- id: stanley
+  name: "Stanley S."
+  full_name: "Steven Stanley"
+  orcid: ""
+  affiliation: ""
+
+- id: walsh
+  name: "Walsh Z."
+  full_name: "Zack Walsh"
+  orcid: ""
+  affiliation: ""
+
+- id: wilson
+  name: "Wilson J."
+  full_name: "Jeff Wilson"
+  orcid: ""
+  affiliation: ""
+
+- id: thanissaro-bhikkhu
+  name: "Thanissaro Bhikkhu"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: sujato
+  name: "Bhikkhu Sujato"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+# Fonte organizzativa, non una persona fisica — verificato in questa sessione
+# che lo schema authors.yaml/il template (cite.html, bibliography.html) non
+# richiedono che un "autore" sia una persona: il campo `name` è una stringa
+# di visualizzazione, usata identicamente per persone e organizzazioni.
+# Nessuna modifica tecnica necessaria.
+- id: mbsr-collaborative
+  name: "MBSR Collaborative"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+# Autori di norris2018, citato nella nuova pagina FAQ "pratiche brevi"
+# (handoff-pratica-breve-faq-2026-09-07.md). Nomi completi verificati in
+# questa sessione (PhilPapers + pagina facoltà Swarthmore) — l'handoff
+# originale aveva trovato solo le iniziali e segnalava i nomi di battesimo
+# come non confermati; qui risultano confermati con ragionevole certezza.
+# "name" con una sola iniziale per norris (primo autore, "et al." nella
+# citazione): il regex di troncamento in cite.html toglie solo un'iniziale
+# finale, non due (stesso bug già trovato e corretto per "nisbet" nel giro
+# precedente) — usare "Norris C. J." avrebbe prodotto "Norris C." invece di
+# "Norris" nella citazione inline.
+- id: norris
+  name: "Norris C."
+  full_name: "Catherine J. Norris"
+  orcid: ""
+  affiliation: ""
+
+- id: creem
+  name: "Creem D."
+  full_name: "Daniel Creem"
+  orcid: ""
+  affiliation: ""
+
+- id: hendler
+  name: "Hendler R."
+  full_name: "Reuben Hendler"
+  orcid: ""
+  affiliation: ""
+
+- id: kober
+  name: "Kober H."
+  full_name: "Hedy Kober"
   orcid: ""
   affiliation: ""

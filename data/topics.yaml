@@ -15,6 +15,15 @@
 #   status:      uno tra: proposto | approvato | deprecato | ritirato
 #                (unici valori ammessi, definiti da VOCABULARY-SPEC.md §10)
 #   notes:       note editoriali (opzionale)
+#   voce_enciclopedica: (opzionale, DECISIONS/DR-09-topic-encyclopedia-entry-
+#                schema.md) sotto-blocco che segnala se il tema ha (o avrà)
+#                una pagina pubblica propria:
+#                  stato: uno tra da_scrivere | bozza | pubblicata | solo_tema
+#                Assente ⇔ solo_tema (nessuna pagina pubblica prevista/
+#                necessaria — VOCABULARY-SPEC.md §17). Nessun campo-percorso:
+#                quando stato è pubblicata, il percorso è derivabile
+#                meccanicamente dall'id via la tassonomia Hugo nativa
+#                (content/temi/<id>/_index.md), non duplicato qui.
 #
 # Esempio di struttura (commentato, NON un tema reale):
 #   - id: esempio-placeholder
@@ -35,3 +44,53 @@
   description: "Voce tecnica introdotta per dimostrare il meccanismo Topic (taxonomy Hugo + data/topics.yaml) nel Content Fixture System. Non è un tema reale del vocabolario editoriale."
   status: proposto
   notes: "Vedi DECISIONS/DR-08-content-fixture-system-proposal.md, Alternativa B (approvata come eccezione esplicita a DR-04 'zero temi reali'). Usata solo da content/fixtures/."
+
+# Primi temi reali del vocabolario (DECISIONS/DR-09-topic-encyclopedia-entry-
+# schema.md, approvata 2026-09-07). Testo delle voci enciclopediche
+# verificato e approvato dal proprietario in
+# stamotenti-editorial/enciclopedia/voci/<id>.md (+ <id>.en.md per l'inglese).
+
+- id: meditazione
+  label_it: "Meditazione"
+  label_en: "Meditation"
+  description: "Categoria ombrello di pratiche mentali diverse tra loro (concentrazione, monitoraggio aperto, e altre) che allenano attenzione e consapevolezza in modo intenzionale, nate in tradizioni diverse (buddhista, induista/yoga, contemplativa cristiana, laica/clinica) con scopi diversi."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/meditazione/. Testo di stamotenti-editorial/enciclopedia/voci/meditazione.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: mindfulness
+  label_it: "Mindfulness"
+  label_en: "Mindfulness"
+  description: "Famiglia specifica di meditazione: notare ciò che accade, dentro e intorno a sé, momento per momento, senza reagire subito. Traduzione inglese del termine pali sati, con una seconda origine storica indipendente in psicologia (Langer, 1989)."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/mindfulness/. Testo di stamotenti-editorial/enciclopedia/voci/mindfulness.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: mbsr
+  label_it: "MBSR (Mindfulness-Based Stress Reduction)"
+  label_en: "MBSR (Mindfulness-Based Stress Reduction)"
+  description: "Programma strutturato di otto settimane, fondato da Jon Kabat-Zinn nel 1979, che insegna tecniche meditative derivate dal buddhismo per la gestione di stress, dolore cronico e malattia in contesto clinico."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/mbsr/. Testo di stamotenti-editorial/enciclopedia/voci/mbsr.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: sila
+  label_it: "Sīla (etica buddhista)"
+  label_en: "Sīla (Buddhist Ethics)"
+  description: "Condotta etica nella tradizione buddhista pali, una delle tre componenti classiche del percorso insieme a samadhi (concentrazione) e paññā (comprensione); descritta dalle fonti canoniche come condizione causale, non come regola accessoria."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/sila/. Testo di stamotenti-editorial/enciclopedia/voci/sila.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (sila.en.md, \"Sīla (Buddhist Ethics)\"): il registro sorgente (registro-candidati.yaml) usa invece \"Buddhist ethics\" minuscolo — discrepanza minore segnalata, non un errore di questo file."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: upaya
+  label_it: "Upāya (mezzi abili)"
+  label_en: "Upāya (Skillful Means)"
+  description: "Concetto buddhista per cui un insegnamento può essere adattato nella forma al contesto e alle capacità di chi lo riceve, restando fedele nella sostanza."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/upaya/. Testo di stamotenti-editorial/enciclopedia/voci/upaya.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (upaya.en.md, \"Upāya (Skillful Means)\"): il registro sorgente (registro-candidati.yaml) usa invece \"skillful means\" minuscolo — discrepanza minore segnalata, non un errore di questo file."
+  voce_enciclopedica:
+    stato: pubblicata
