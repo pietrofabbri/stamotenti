@@ -23,8 +23,12 @@
 {{- if not $media -}}
 <strong>[{{ i18n "media_not_found" }}: {{ $mediaID }}]</strong>
 {{- else -}}
+{{- /* Nessun <figcaption> (handoff "revisione-articolo1" §7d,
+     2026-09-10): il titolo del media sopra il player è stato tolto,
+     ridondante col titolo della sezione che lo precede nell'articolo.
+     $media.title resta in data/media.yaml (metadato del catalogo, non
+     necessariamente destinato al rendering visibile) — non rimosso lì. */ -}}
 <figure class="audio-player">
-    <figcaption>{{ with $media.title }}{{ . }}{{ else }}{{ i18n "audio_practice_label" }}{{ end }}</figcaption>
     <audio controls preload="none">
         <source src="{{ $media.url }}" type="{{ with $media.format }}{{ . }}{{ else }}audio/mpeg{{ end }}">
         {{ i18n "audio_unsupported" }}

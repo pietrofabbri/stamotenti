@@ -1,4 +1,9 @@
 {{ with .Params.sources }}
+    {{/* Separatore visivo prima della bibliografia (handoff
+         "revisione-articolo1" §7e, 2026-09-10): oggi la sezione fonti
+         attaccava senza soluzione di continuità con quello che la
+         precede. Stile in assets/css/main.css (.flow hr). */}}
+    <hr>
     <h2>{{ i18n "sources_heading" }}</h2>
 
     <ul>

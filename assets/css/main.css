@@ -144,8 +144,15 @@ select:focus-visible {
    (--space-4 era ancora troppo). Il fondo pagina non aveva lo stesso
    problema (il footer non ha un padding-top analogo da sommare): quello
    invece va nella direzione opposta, aumentato con tutto il resto. */
+/* Ridotto a 0 (da --space-2, 2026-09-10, handoff "revisione-articolo1"
+   §7a/§7f — quarto giro sullo stesso gap, quindi lasciato un commento
+   esplicito): il gap menu→contenuto restava percepito come troppo largo
+   sommando questo padding-top a quello inferiore di header.wrapper sotto.
+   Tutta la riduzione richiesta è stata spostata lì (header.wrapper
+   padding-bottom), per toccare un solo valore invece di dividerla fra due
+   regole. */
 main.wrapper {
-    padding-top: var(--space-2);
+    padding-top: 0;
     padding-bottom: var(--space-7);
 }
 
@@ -169,8 +176,28 @@ main.wrapper {
     margin-top: var(--space-7);
 }
 
+/* Solo per gli articoli di Biblioteca (classe aggiunta in
+   layouts/biblioteca/single.html, non nel _default condiviso da altri
+   tipi di pagina): il gap tra il titolo e il primo paragrafo va aumentato,
+   non ridotto — l'opposto del gap globale menu→contenuto di §7a. Vince
+   per specificità su `.flow > * + *` (--space-4) senza toccare quella
+   regola generica, quindi senza effetti sulle altre pagine.
+   2026-09-10, handoff "revisione-articolo1" §7b/§7f. */
+.article-biblioteca h1 + p {
+    margin-top: var(--space-6);
+}
+
 .flow p {
     margin-bottom: var(--space-6);
+}
+
+/* Separatore prima della bibliografia (partials/bibliography.html,
+   2026-09-10, handoff "revisione-articolo1" §7e): stile piatto coerente
+   con il border-top già usato altrove (footer.wrapper) invece
+   dell'inset/3D di default del browser per <hr>. */
+.flow hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
 }
 
 @media (max-width: 30em) {
@@ -192,7 +219,16 @@ header.wrapper {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-3);
-    padding-block: var(--space-6);
+    /* padding-top invariato (spazio sopra il logo, mai segnalato come
+       problema); padding-bottom ridotto da --space-6 a --space-4
+       (2026-09-10, handoff "revisione-articolo1" §7a/§7f) — è la parte
+       che, sommata al padding-top di main.wrapper, formava il gap
+       menu→contenuto segnalato ancora troppo largo alla terza revisione
+       consecutiva dello stesso spazio (vedi i commenti del 2026-08-29 su
+       main.wrapper sopra). padding-top/padding-bottom separati invece di
+       un padding-block unico proprio per poter toccare solo il secondo. */
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
 }
 
 .site-nav {
@@ -240,6 +276,17 @@ details.accademico summary {
     font-weight: 700;
     font-size: var(--step-1);
     cursor: pointer;
+}
+
+/* Il salto standard prima di un h2 (.flow h2, --space-8/6rem sopra) è
+   pensato per separare due sezioni piene di testo — dopo un <details>
+   collassato (una riga sola) risulta sproporzionato. Regola più specifica
+   (vince per specificità sul selettore generico .flow h2), quindi non
+   tocca gli altri h2 dell'articolo, inclusi quelli dentro il blocco stesso
+   (Abstract, Introduzione...), che restano collassati e non coinvolti.
+   2026-09-10, handoff "revisione-articolo1" §7c/§7f. */
+.flow details.accademico + h2 {
+    margin-top: var(--space-6);
 }
 
 footer.wrapper {
