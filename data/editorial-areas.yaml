@@ -30,6 +30,13 @@ macroaree:
     title: "Critica, Società & Educazione"
     title_en: "Critique, Society & Education"
 
+  # Aggiunta DECISIONS/DR-10-clinical-psychology-macroarea.md (approvata
+  # 2026-09-10/2026-09-12).
+  - id: MA-4
+    slug: psicologia-clinica
+    title: "Psicologia Clinica"
+    title_en: "Clinical Psychology"
+
 sottoaree:
   - id: SA-1-1
     slug: psicologia-cognitiva-dell-attenzione-e-metacognizione
@@ -84,3 +91,24 @@ sottoaree:
     title: "Critica Culturale, Etica e \"Lato Oscuro\""
     title_en: "Cultural Critique, Ethics and the \"Dark Side\""
     macroarea: MA-3
+
+  # Aggiunte DECISIONS/DR-10-clinical-psychology-macroarea.md (approvata
+  # 2026-09-10/2026-09-12). SA-4-3 è dichiaratamente provvisoria (vedi DR),
+  # non ancora una categoria editoriale definitiva.
+  - id: SA-4-1
+    slug: psicologia-clinica-basata-sullevidenza
+    title: "Psicologia Clinica Basata sull'Evidenza"
+    title_en: "Evidence-Based Clinical Psychology"
+    macroarea: MA-4
+
+  - id: SA-4-2
+    slug: psicologia-della-richiesta-daiuto
+    title: "Psicologia della Richiesta d'Aiuto"
+    title_en: "Psychology of Help-Seeking"
+    macroarea: MA-4
+
+  - id: SA-4-3
+    slug: altri-ambiti-della-psicologia-clinica
+    title: "Altri Ambiti della Psicologia Clinica (PROVVISORIO)"
+    title_en: "Other Areas of Clinical Psychology (PROVVISORIO)"
+    macroarea: MA-4

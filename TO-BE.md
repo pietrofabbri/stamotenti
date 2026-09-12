@@ -209,6 +209,43 @@ Affronta criticamente:
 - responsabilità etiche;
 - rischi di semplificazione o appropriazione.
 
+### 3.4 Psicologia Clinica
+
+**La dimensione clinica**
+
+#### 3.4.1 Psicologia Clinica Basata sull'Evidenza
+
+Studio dell'efficacia e dei limiti metodologici degli interventi psicologici
+di matrice contemplativa in ambito clinico.
+
+Comprende, tra gli altri:
+
+- efficacia clinica;
+- meta-analisi;
+- dimensione dell'effetto;
+- ACT, MBCT, CFT;
+- regolazione professionale (psicologo vs. psicoterapeuta);
+- metodologia della ricerca clinica.
+
+#### 3.4.2 Psicologia della Richiesta d'Aiuto
+
+Studio di come le persone si avvicinano, scelgono e accedono a un percorso
+di supporto psicologico.
+
+Comprende, tra gli altri:
+
+- accesso alla cura;
+- scelta del terapeuta;
+- barriere economiche e culturali;
+- stigma;
+- psicologia del primo contatto.
+
+#### 3.4.3 Altri Ambiti della Psicologia Clinica (PROVVISORIO)
+
+Sezione aperta, senza un elenco vincolante per ora: verrà specializzata su
+un tema più preciso quando ci sarà contenuto reale sufficiente a
+giustificarlo (DECISIONS/DR-10-clinical-psychology-macroarea.md).
+
 La struttura editoriale può evolvere, ma le modifiche alle macroaree e alle
 sotto-aree sono decisioni editoriali esplicite e non possono essere introdotte
 autonomamente dagli agenti.
