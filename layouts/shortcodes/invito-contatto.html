@@ -5,13 +5,31 @@
      lo stesso testo). Pensato per comparire in fondo a OGNI articolo:
      shortcode invece di testo ricopiato a mano articolo per articolo, così
      una correzione futura (es. cambio email, cambio cadenza) si fa in un
-     solo punto. Solo italiano per ora: nessuna versione inglese di questo
-     invito è stata approvata (coerente con la mailing list, non ancora
-     offerta in EN). Interruzioni di riga volute dell'autore (<br>), non
+     solo punto. Interruzioni di riga volute dell'autore (<br>), non
      markup decorativo. Grassetto sull'ultima frase aggiunto nella stessa
      revisione dei 15 grassetti mirati nel corpo dell'articolo (handoff
      §8, 2026-09-10) — stesso criterio (una frase-chiave, non di più), qui
-     applicato a mano perché il file è fuori dalla portata di Cowork. */ -}}
+     applicato a mano perché il file è fuori dalla portata di Cowork.
+
+     Versione EN aggiunta il 2026-09-12 (handoff-allineamento-en-deepl):
+     era rimasta IT-only finché nessun articolo aveva davvero una pagina
+     EN pubblicata; con la prima traduzione reale dell'articolo, uno
+     shortcode IT-only avrebbe mostrato testo italiano in mezzo a una
+     pagina inglese. Tradotta via API DeepL (stesso strumento usato per il
+     resto dell'allineamento, non a mano).
+
+     Accorciata il 2026-09-13 (proprietario, non ha confermato la versione
+     EN del 09-12): la seconda parte del testo IT promette uno scambio con
+     audio registrato ("posso registrare qualcosa..."), un servizio che
+     oggi non esiste in inglese e potrebbe non esistere mai. La versione EN
+     resta quindi ridotta alla sola prima frase (l'invito a scrivere) — IT
+     ed EN divergono in lunghezza di proposito, non per un taglio per
+     errore: il ramo IT non va accorciato allo stesso modo, perché lì
+     l'audio esiste davvero. */ -}}
+{{- if eq .Page.Language.Lang "en" -}}
+<p>If this has left you with a question, an objection, or if you just want to tell me how your practice is going, write to me at pietrofabbritalia@gmail.com—that's my email address.</p>
+{{- else -}}
 <p>Se questo ti ha lasciato una domanda, un'obiezione, o vuoi solo raccontarmi come va la tua pratica, scrivimi: pietrofabbritalia@gmail.com, è la mia mail.<br>
 Da lì, se vuoi, nasce uno scambio più continuativo: ogni 10-15 giorni posso registrare qualcosa che accompagni lo specifico percorso di chi mi scrive.<br>
 Cosa chiedo in cambio? Finché riesco a rispondere a tutti nel tempo libero, <strong>non chiedo nulla in cambio</strong>.</p>
+{{- end -}}

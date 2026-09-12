@@ -37,7 +37,7 @@ Non vendiamo né condividiamo i tuoi dati con terzi per finalità pubblicitarie.
 
 ## Per quanto tempo conserviamo i dati
 
-Conserviamo solo i dati necessari alle finalità descritte sopra, per il tempo strettamente necessario. GoatCounter non conserva IP o identificatori individuali oltre poche ore. I tempi di conservazione dei log tecnici di {{% sitedata "hosting.provider" %}} dipendono dalla loro informativa, non da una nostra scelta.
+Conserviamo solo i dati necessari alle finalità descritte sopra, per il tempo strettamente necessario. {{% sitedata "analytics.strumento" %}} non conserva IP o identificatori individuali oltre poche ore. I tempi di conservazione dei log tecnici di {{% sitedata "hosting.provider" %}} dipendono dalla loro informativa, non da una nostra scelta.
 
 ## I tuoi diritti
 

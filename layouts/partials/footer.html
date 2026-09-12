@@ -1,12 +1,12 @@
 <footer class="wrapper">
     <p>{{ .Site.Title }}</p>
-    {{/* Percorsi assoluti fissi, non relLangURL: no-fuochi/ e privacy/
-         non hanno ancora una traduzione EN — vedi header.html per lo
-         stesso motivo. */}}
+    {{/* relLangURL, non più percorsi assoluti fissi (2026-09-13): stesso
+         bug e stessa correzione di header.html — no-fuochi/ e privacy/
+         hanno una traduzione EN dal 2026-09-12 (commit 6018d44). */}}
     <nav aria-label="{{ i18n "footer_nav_label" }}" class="footer-nav">
         <ul>
-            <li><a href="/no-fuochi/">{{ i18n "footer_fuochi" }}</a></li>
-            <li><a href="/privacy/">{{ i18n "footer_privacy" }}</a></li>
+            <li><a href="{{ "/no-fuochi/" | relLangURL }}">{{ i18n "footer_fuochi" }}</a></li>
+            <li><a href="{{ "/privacy/" | relLangURL }}">{{ i18n "footer_privacy" }}</a></li>
             <li><a href="mailto:{{ hugo.Data.site.contatti.email }}">{{ i18n "footer_contatti" }}</a></li>
         </ul>
     </nav>
