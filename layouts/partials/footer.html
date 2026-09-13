@@ -7,7 +7,14 @@
         <ul>
             <li><a href="{{ "/no-fuochi/" | relLangURL }}">{{ i18n "footer_fuochi" }}</a></li>
             <li><a href="{{ "/privacy/" | relLangURL }}">{{ i18n "footer_privacy" }}</a></li>
-            <li><a href="mailto:{{ hugo.Data.site.contatti.email }}">{{ i18n "footer_contatti" }}</a></li>
+            {{/* Percorso assoluto fisso, non relLangURL (2026-09-13):
+                 /contatti/ non ha ancora una traduzione EN (pagina nuova,
+                 nessun content/contatti/_index.en.md) — relLangURL da una
+                 pagina EN punterebbe a /en/contatti/, che non esiste
+                 (404), esattamente il bug appena corretto sopra per
+                 no-fuochi/privacy. Da correggere con relLangURL quando
+                 (se) la pagina avrà una traduzione. */}}
+            <li><a href="/contatti/">{{ i18n "footer_contatti" }}</a></li>
         </ul>
     </nav>
 </footer>

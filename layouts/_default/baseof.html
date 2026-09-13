@@ -21,6 +21,20 @@
     {{- end }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{/* Favicon segnaposto (2026-09-13, stesso logo già in uso
+         nell'header — static/img/logo-placeholder.png). File in static/,
+         serviti da Hugo a /favicon.ico ecc. senza bisogno di resources.Get
+         (non sono asset da processare, solo file statici). Sostituzione
+         facile quando arriverà la versione definitiva: basta sovrascrivere
+         gli stessi 5 file in static/ con lo stesso nome, nessuna modifica
+         qui. Niente android-chrome-*.png/site.webmanifest per ora
+         (richiederebbero un manifest per avere senso, non necessario in
+         questa fase). */}}
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
     {{ with resources.Get "css/main.css" }}
         {{ $css := . | resources.Minify | resources.Fingerprint }}
         <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

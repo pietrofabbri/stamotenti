@@ -35,4 +35,5 @@ limiti inclusi.
 È gratuito e cresce con calma: non ha nulla da venderti in questa pagina.
 Se vuoi partire subito, la [biblioteca](/biblioteca/) raccoglie gli articoli
 pubblicati finora; se vuoi sapere di più su chi c'è dietro, trovi tutto in
-[il progetto](/il-progetto/).
+[il progetto](/il-progetto/). Non sai da dove cominciare? [Inizia da
+qui](/inizia/).

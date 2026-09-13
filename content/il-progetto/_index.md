@@ -9,6 +9,8 @@ StamoTenti nasce da un'idea semplice: parlare di meditazione sul serio non signi
 
 Cerchiamo di essere onesti su cosa è ormai assodato, cosa è un'interpretazione plausibile e cosa è ancora solo un'ipotesi, invece di raccontare tutto con la stessa sicurezza. Quando citiamo una fonte, il link ti porta dritto a quella fonte, così puoi controllare con i tuoi occhi.
 
+Anche l'uso di strumenti di intelligenza artificiale fa parte di questo processo: leggi [come uso l'IA](/come-uso-lia/) per i dettagli.
+
 ## Chi c'è dietro
 
 Dietro StamoTenti c'è una sola persona. Di formazione sono ingegnere, ma il lavoro che faccio ogni giorno è insegnare, al liceo. La meditazione la pratico ogni giorno, ed è da lì che è nato il bisogno di un posto come questo.
