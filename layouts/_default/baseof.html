@@ -21,6 +21,23 @@
     {{- end }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{/* Interruttore provvisorio (2026-09-21, handoff GitHub Pages senza
+         dominio): finché il sito vive solo sull'URL GitHub Pages
+         provvisorio, impedisce l'indicizzazione su ogni pagina, IT ed EN,
+         inclusi indici e pagine di sistema. GitHub Pages non permette
+         header HTTP personalizzati (hosting statico puro), quindi il meta
+         tag è l'unico meccanismo disponibile qui (robots.txt non basta:
+         blocca la scansione ma non la deindicizzazione di URL già scoperti
+         altrove). Spegnere params.noindex in hugo.toml come primo passo
+         del checklist di lancio, quando arriva il dominio definitivo.
+         Escluso .Section "fixtures": quelle pagine emettono già un proprio
+         <meta name="robots"> permanente in seo.html (DR-08, noindex a
+         prescindere dal lancio) — l'esclusione qui evita un secondo tag
+         duplicato sulla stessa pagina, non toglie protezione. */}}
+    {{ if and .Site.Params.noindex (ne .Section "fixtures") }}
+    <meta name="robots" content="noindex, nofollow">
+    {{ end }}
+
     {{/* Favicon segnaposto (2026-09-13, stesso logo già in uso
          nell'header — static/img/logo-placeholder.png). File in static/,
          serviti da Hugo a /favicon.ico ecc. senza bisogno di resources.Get

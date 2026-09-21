@@ -16,6 +16,15 @@ enableRobotsTXT = true
 [params]
 description = "StamoTenti è una biblioteca editoriale digitale dedicata alla meditazione, alla consapevolezza e all'attenzione."
 
+# Interruttore unico, booleano, nessuna logica per pagina/sezione (handoff
+# GitHub Pages senza dominio, 2026-09-21): true finché il sito vive solo
+# sull'URL GitHub Pages provvisorio, in attesa del dominio definitivo —
+# emette <meta name="robots" content="noindex, nofollow"> su ogni pagina
+# (layouts/_default/baseof.html). Spegnere (false) come primo passo del
+# checklist di lancio, non prima: vedi enciclopedia-progettazione
+# §14/§16 e stamotenti-editorial/seo-geo/procedura-seo-geo.md.
+noindex = true
+
 [taxonomies]
 tag = 'tags'
 author = 'authors'
