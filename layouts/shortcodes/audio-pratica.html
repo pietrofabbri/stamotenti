@@ -23,6 +23,16 @@
 {{- if not $media -}}
 <strong>[{{ i18n "media_not_found" }}: {{ $mediaID }}]</strong>
 {{- else -}}
+{{- /* (index hugo.Sites 0).Home.RelPermalink, non relURL su $media.url
+     letterale (2026-09-21, handoff GitHub Pages interim): stesso bug di
+     header.html/footer.html — relURL su una stringa che inizia per "/"
+     non applica il sottopercorso di baseURL. $media.url in
+     data/media.yaml è un percorso da static/, quindi relativo alla
+     radice del sito (non per-lingua: static/ non è duplicato per
+     lingua) — da qui il sito di lingua di default (index 0), non
+     .Site, che per una pagina EN aggiungerebbe erroneamente /en/. */ -}}
+{{- $mediaBase := (index hugo.Sites 0).Home.RelPermalink -}}
+{{- $mediaURL := printf "%s%s" $mediaBase (strings.TrimPrefix "/" $media.url) -}}
 {{- /* Nessun <figcaption> (handoff "revisione-articolo1" §7d,
      2026-09-10): il titolo del media sopra il player è stato tolto,
      ridondante col titolo della sezione che lo precede nell'articolo.
@@ -30,9 +40,9 @@
      necessariamente destinato al rendering visibile) — non rimosso lì. */ -}}
 <figure class="audio-player">
     <audio controls preload="none">
-        <source src="{{ $media.url }}" type="{{ with $media.format }}{{ . }}{{ else }}audio/mpeg{{ end }}">
+        <source src="{{ $mediaURL }}" type="{{ with $media.format }}{{ . }}{{ else }}audio/mpeg{{ end }}">
         {{ i18n "audio_unsupported" }}
-        <a href="{{ $media.url }}">{{ i18n "audio_download_label" }}</a>
+        <a href="{{ $mediaURL }}">{{ i18n "audio_download_label" }}</a>
     </audio>
 </figure>
 {{- end -}}

@@ -4,11 +4,15 @@
 
     <h1>{{ .Title }}</h1>
 
+    {{/* .Site.Home.RelPermalink, non relLangURL su stringa letterale
+         (2026-09-21, handoff GitHub Pages interim): stesso bug di
+         header.html/footer.html — relLangURL su una stringa letterale
+         ignora il sottopercorso di baseURL. */}}
     {{ with .Params.tags }}
         <p>
             {{ i18n "tag_label" }}
             {{ range . }}
-                <a href="{{ (printf "/tags/%s/" .) | relLangURL }}">
+                <a href="{{ $.Site.Home.RelPermalink }}tags/{{ . }}/">
                     {{ . }}
                 </a>
             {{ end }}

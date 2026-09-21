@@ -19,4 +19,4 @@ StamoTenti grows in my free time, piece by piece, without rushing.
 
 ## Why the Site Is Designed This Way
 
-Even the way the site is built is part of the content it publishes. Read [No Fireworks](/en/no-fuochi/) to understand what we mean.
+Even the way the site is built is part of the content it publishes. Read [No Fireworks](/no-fuochi/) to understand what we mean.

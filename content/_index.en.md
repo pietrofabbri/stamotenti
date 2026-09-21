@@ -33,6 +33,6 @@ just what research, history, and practice truly have to say,
 limitations included.
 
 It’s free and growing at a steady pace: there’s nothing to sell you on this page.
-If you want to get started right away, the [library](/en/biblioteca/) collects the articles
+If you want to get started right away, the [library](/biblioteca/) collects the articles
 published so far; if you want to know more about who’s behind it, you’ll find everything in
-[the project](/en/il-progetto/).
+[the project](/il-progetto/).

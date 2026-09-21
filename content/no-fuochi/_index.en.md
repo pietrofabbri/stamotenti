@@ -15,7 +15,7 @@ Endless scrolling, content that reloads on its own to keep you glued to the scre
 
 Typography designed to be read, not just looked at: consistent font sizes, lines of readable length, and contrast optimized even for those with visual impairments. A minimalist color palette, free of decorative elements that serve no purpose. Navigation stripped down to the essentials—just what you need to find your way around, not a menu designed to make you click more.
 
-Even the visitor statistics we use are designed not to track you: they show which pages are being read, not who you are or what you do elsewhere. Details can be found on the [privacy page](/en/privacy/).
+Even the visitor statistics we use are designed not to track you: they show which pages are being read, not who you are or what you do elsewhere. Details can be found on the [privacy page](/privacy/).
 
 ## Why We Can Afford to Do This
 

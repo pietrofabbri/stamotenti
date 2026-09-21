@@ -9,27 +9,37 @@
              porta già il nome del sito — un alt non vuoto lo farebbe
              annunciare due volte di fila a chi usa uno screen reader
              (icona puramente decorativa in presenza di testo,
-             ACCESSIBILITY-SPEC.md §21). */}}
+             ACCESSIBILITY-SPEC.md §21).
+
+             (index hugo.Sites 0).Home.RelPermalink, non percorso
+             assoluto fisso (2026-09-21, handoff GitHub Pages interim):
+             stesso bug del resto del file — img/ è in static/,
+             condiviso tra le lingue, quindi il sito di lingua di
+             default (non .Site, che per una pagina EN aggiungerebbe
+             /en/). */}}
         <a href="{{ .Site.Home.RelPermalink }}" class="site-nav__home">
-            <img src="/img/logo-placeholder.png" alt="" width="45" height="48" class="site-logo">
+            <img src="{{ (index hugo.Sites 0).Home.RelPermalink }}img/logo-placeholder.png" alt="" width="45" height="48" class="site-logo">
             {{ .Site.Title }}
         </a>
-        {{/* relLangURL, non più percorsi assoluti fissi (2026-09-13):
-             biblioteca/ e il-progetto/ hanno entrambe una traduzione EN da
-             quando è stato eseguito l'allineamento via DeepL (2026-09-12,
-             commit 6018d44) — il trigger "rivedere quando le traduzioni
-             esisteranno" lasciato qui il 2026-08-29 si è verificato. Prima
-             di questa correzione, il menu su una pagina EN puntava sempre
-             a /biblioteca/ e /il-progetto/ (versione IT), mai a
-             /en/biblioteca/ e /en/il-progetto/ — bug scoperto verificando
-             a mano l'HTML generato per un problema segnalato dal
-             proprietario sul titolo dell'articolo EN (rivelatosi non
-             riproducibile: title/h1/meta erano già corretti in build
-             pulita), non il sintomo originale ma un problema reale trovato
-             nello stesso giro di verifica. */}}
+        {{/* .Site.Home.RelPermalink, non relLangURL su stringa letterale
+             (2026-09-21, handoff GitHub Pages interim): relLangURL (come
+             relURL/absURL) su una stringa che inizia per "/" la tratta
+             come percorso assoluto dalla radice del sito, ignorando
+             l'eventuale sottopercorso di baseURL (bug noto di Hugo, si
+             attiva solo con canonifyURLs=true, non impostato qui) — con
+             baseURL sulla radice (produzione) non si notava perché non
+             c'era differenza da correggere, ma con l'override
+             --baseURL a un sottopercorso (fase interim *.github.io/
+             stamotenti/) generava link rotti (/biblioteca/ invece di
+             /stamotenti/biblioteca/, scoperto verificando l'HTML servito
+             sotto quell'override). .Site.Home.RelPermalink è invece
+             calcolato da Hugo come permalink reale di una pagina, quindi
+             sempre corretto rispetto a baseURL — include già anche il
+             prefisso di lingua (biblioteca/ e il-progetto/ hanno
+             entrambe una traduzione EN dal 2026-09-12, commit 6018d44). */}}
         <ul>
-            <li><a href="{{ "/biblioteca/" | relLangURL }}">{{ i18n "nav_biblioteca" }}</a></li>
-            <li><a href="{{ "/il-progetto/" | relLangURL }}">{{ i18n "nav_progetto" }}</a></li>
+            <li><a href="{{ .Site.Home.RelPermalink }}biblioteca/">{{ i18n "nav_biblioteca" }}</a></li>
+            <li><a href="{{ .Site.Home.RelPermalink }}il-progetto/">{{ i18n "nav_progetto" }}</a></li>
         </ul>
     </nav>
     {{ partial "language-switcher.html" . }}

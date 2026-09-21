@@ -46,11 +46,20 @@
          gli stessi 5 file in static/ con lo stesso nome, nessuna modifica
          qui. Niente android-chrome-*.png/site.webmanifest per ora
          (richiederebbero un manifest per avere senso, non necessario in
-         questa fase). */}}
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+         questa fase).
+
+         $staticBase, non percorso assoluto fisso (2026-09-21, handoff
+         GitHub Pages interim): stesso bug di header.html/footer.html —
+         un href/src che inizia per "/" non riceve il sottopercorso di
+         baseURL. File di static/, condivisi tra le lingue (non
+         duplicati per lingua), quindi il sito di lingua di default
+         (index 0), non .Site, che per una pagina EN aggiungerebbe
+         erroneamente /en/. */}}
+    {{ $staticBase := (index hugo.Sites 0).Home.RelPermalink }}
+    <link rel="icon" href="{{ $staticBase }}favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $staticBase }}favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $staticBase }}favicon-16x16.png">
+    <link rel="apple-touch-icon" href="{{ $staticBase }}apple-touch-icon.png">
 
     {{ with resources.Get "css/main.css" }}
         {{ $css := . | resources.Minify | resources.Fingerprint }}

@@ -1,20 +1,30 @@
 <footer class="wrapper">
     <p>{{ .Site.Title }}</p>
-    {{/* relLangURL, non più percorsi assoluti fissi (2026-09-13): stesso
-         bug e stessa correzione di header.html — no-fuochi/ e privacy/
-         hanno una traduzione EN dal 2026-09-12 (commit 6018d44). */}}
+    {{/* .Site.Home.RelPermalink, non relLangURL su stringa letterale
+         (2026-09-21, handoff GitHub Pages interim): stesso bug e stessa
+         correzione di header.html — relLangURL su una stringa letterale
+         ignora il sottopercorso di baseURL, rotto sotto l'override
+         --baseURL della fase interim. no-fuochi/ e privacy/ hanno
+         entrambe una traduzione EN dal 2026-09-12 (commit 6018d44). */}}
     <nav aria-label="{{ i18n "footer_nav_label" }}" class="footer-nav">
         <ul>
-            <li><a href="{{ "/no-fuochi/" | relLangURL }}">{{ i18n "footer_fuochi" }}</a></li>
-            <li><a href="{{ "/privacy/" | relLangURL }}">{{ i18n "footer_privacy" }}</a></li>
-            {{/* Percorso assoluto fisso, non relLangURL (2026-09-13):
-                 /contatti/ non ha ancora una traduzione EN (pagina nuova,
-                 nessun content/contatti/_index.en.md) — relLangURL da una
-                 pagina EN punterebbe a /en/contatti/, che non esiste
-                 (404), esattamente il bug appena corretto sopra per
-                 no-fuochi/privacy. Da correggere con relLangURL quando
-                 (se) la pagina avrà una traduzione. */}}
-            <li><a href="/contatti/">{{ i18n "footer_contatti" }}</a></li>
+            <li><a href="{{ .Site.Home.RelPermalink }}no-fuochi/">{{ i18n "footer_fuochi" }}</a></li>
+            <li><a href="{{ .Site.Home.RelPermalink }}privacy/">{{ i18n "footer_privacy" }}</a></li>
+            {{/* (index hugo.Sites 0), sempre il sito IT/lingua di
+                 default (weight più basso in hugo.toml), non .Site
+                 (2026-09-21): /contatti/ non ha ancora una traduzione EN
+                 (nessun content/contatti/_index.en.md), e resta
+                 deliberatamente lo stesso URL (IT) da entrambe le lingue
+                 — .Site.Home.RelPermalink da una pagina EN includerebbe
+                 /en/, puntando a /en/contatti/ (404). .Sites (con la S
+                 maiuscola, campo su .Site/.Page) è deprecato dalla
+                 v0.156 a favore della funzione globale hugo.Sites, e non
+                 espone comunque un metodo .First — da qui l'indicizzazione
+                 esplicita. Corretto da entrambe le lingue, con
+                 l'eventuale sottopercorso di baseURL incluso. Da passare
+                 a .Site.Home.RelPermalink quando (se) la pagina avrà una
+                 traduzione EN. */}}
+            <li><a href="{{ (index hugo.Sites 0).Home.RelPermalink }}contatti/">{{ i18n "footer_contatti" }}</a></li>
         </ul>
     </nav>
 </footer>

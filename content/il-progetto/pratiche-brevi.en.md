@@ -21,4 +21,4 @@ If you’re going through a period of intense emotional distress, these exercise
 
 ## Who Reads the Practice
 
-The voice you hear isn’t a synthetic one: I record it myself, with my own voice—the same person who writes the articles (see ["Who’s Behind It"](/en/il-progetto/)). Not all practices have an audio recording yet: when one is missing, the written text—with pauses indicated in parentheses—is still complete and can be used on its own, read aloud in a low voice or simply followed in silence, breath by breath.
+The voice you hear isn’t a synthetic one: I record it myself, with my own voice—the same person who writes the articles (see ["Who’s Behind It"](/il-progetto/)). Not all practices have an audio recording yet: when one is missing, the written text—with pauses indicated in parentheses—is still complete and can be used on its own, read aloud in a low voice or simply followed in silence, breath by breath.
