@@ -1,0 +1,76 @@
+name: Deploy Hugo (interim, github.io)
+
+# Fase interim (handoff 2026-09-21): pubblica il sito sull'URL GitHub
+# Pages provvisorio *.github.io, senza toccare baseURL in hugo.toml (già
+# pronto per il dominio definitivo stamotenti.it). L'override --baseURL
+# qui sotto vale solo per questa build in CI. Il noindex provvisorio
+# (params.noindex in hugo.toml, commit d8f55c7) resta la protezione
+# principale contro l'indicizzazione ed è indipendente da questo workflow.
+#
+# Repo "stamotenti" (non "<username>.github.io") => sito di progetto,
+# servito in sottopercorso: INTERIM_BASE_URL deve includere /stamotenti/
+# con slash finale, altrimenti CSS/JS/immagini con percorsi assoluti si
+# rompono (vedi handoff, sezione "Punto da verificare").
+#
+# Nessun tema esterno in themes/ (directory vuota, non tracciata da git,
+# nessun parametro `theme` in hugo.toml) e nessun .gitmodules: build da
+# layouts/ propri, senza submodule. assets/css/main.css è CSS puro (non
+# SCSS), quindi Dart Sass non serve. HUGO_VERSION allineata alla versione
+# extended usata in locale (v0.164.0) per evitare differenze di
+# comportamento tra build locale e CI.
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: "0.164.0"
+  INTERIM_BASE_URL: "https://pietrofabbri.github.io/stamotenti/"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Hugo CLI
+        run: |
+          curl -sSLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build (baseURL provvisorio, non tocca hugo.toml)
+        run: |
+          hugo --minify --baseURL "${INTERIM_BASE_URL}"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
