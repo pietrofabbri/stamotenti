@@ -1,0 +1,95 @@
+name: Zenodo deposit (DOI)
+
+# Handoff Cowork -> Claude Code, deposito Zenodo, 2026-09-22. Deroga
+# esplicita alla soglia di Fase 4 (automazione editoriale) di
+# PHASE-3-PLAN.md -- decisione registrata in
+# MEMORY/MEM-2026-09-22-01-zenodo-automation-phase-gate-override.md.
+#
+# Per ogni voce approved:true con doi ancora vuoto in
+# data/zenodo-deposits.yaml, scripts/zenodo_deposit.py genera il PDF,
+# compila i metadati dal front matter e PUBBLICA (non bozza) un
+# deposito Zenodo -- azione irreversibile, DOI permanente. Nessun gate
+# di approvazione manuale in CI: automazione completa per scelta
+# esplicita del proprietario (vedi nota di memoria sopra). La sicurezza
+# residua e' nella sequenza sandbox-poi-produzione imposta dal contenuto
+# di data/zenodo-deposits.yaml stesso (una riga sandbox:false va
+# aggiunta solo dopo un run sandbox riuscito), non da un gate qui.
+#
+# Idempotente: script e data/zenodo-deposits.yaml usano (slug, sandbox)
+# come chiave; una voce con doi gia' valorizzato viene sempre saltata,
+# quindi un push che non aggiunge/modifica una voce approvata non
+# deposita nulla (anche se il job gira). Il commit di scrittura del
+# risultato usa "[skip ci]" per non ri-triggerare questo stesso
+# workflow sul proprio commit (data/zenodo-deposits.yaml e' nel path
+# filter sotto).
+#
+# Build del sito SENZA l'override --baseURL del workflow interim
+# (deploy-interim.yml): il PDF viene generato da una build locale
+# servita alla radice (baseURL di hugo.toml, nessun sottopercorso) --
+# un baseURL con sottopercorso romperebbe i link assoluti nella pagina
+# servita in locale, stesso bug gia' corretto per il deploy interim.
+# HUGO_VERSION allineata a deploy-interim.yml.
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "data/zenodo-deposits.yaml"
+      - "content/biblioteca/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  HUGO_VERSION: "0.164.0"
+
+jobs:
+  deposit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Hugo CLI
+        run: |
+          curl -sSLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+
+      - name: Build site (baseURL di produzione, nessun sottopercorso)
+        run: hugo --minify
+
+      - name: Repository doctor (0 errori richiesti prima di procedere)
+        run: python3 scripts/repository-doctor.py
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install requests ruamel.yaml playwright
+
+      - name: Install Playwright Chromium
+        run: playwright install --with-deps chromium
+
+      - name: Run Zenodo deposit script
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+        run: python3 scripts/zenodo_deposit.py
+
+      - name: Commit updated registry (se cambiato)
+        run: |
+          if git diff --quiet -- data/zenodo-deposits.yaml; then
+            echo "Nessuna modifica a data/zenodo-deposits.yaml, niente da committare."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/zenodo-deposits.yaml
+          git commit -m "Scrive DOI Zenodo in data/zenodo-deposits.yaml [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

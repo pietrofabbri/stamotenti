@@ -4,3 +4,5 @@ resources/_gen/
 .hugo_build.lock
 node_modules/
 .env
+__pycache__/
+zenodo-pdf/

@@ -1,0 +1,48 @@
+# data/zenodo-deposits.yaml — registro/trigger per il deposito automatico
+# su Zenodo (DOI) degli articoli approvati dal proprietario.
+#
+# Origine: handoff Cowork -> Claude Code, deposito Zenodo, 2026-09-22.
+# Deroga esplicita alla soglia di Fase 4 (automazione editoriale) di
+# PHASE-3-PLAN.md, decisione registrata in
+# MEMORY/MEM-2026-09-22-01-zenodo-automation-phase-gate-override.md — non
+# precedente generale per altre automazioni.
+#
+# Flusso: quando il proprietario approva un articolo (in chat, con
+# Cowork), una voce con approved: true viene aggiunta/aggiornata qui e
+# pushata su main. Il workflow .github/workflows/zenodo-deposit.yml e lo
+# script scripts/zenodo_deposit.py fanno il resto: build del sito, PDF
+# dell'articolo, metadati dal front matter, chiamata API Zenodo (crea +
+# pubblica, non bozza), scrittura di doi/concept_doi/record_url/
+# deposited_at qui sotto. Idempotente: una voce con doi già valorizzato
+# non viene mai ridepositata.
+#
+# Chiave composita (slug, sandbox): lo stesso slug può avere sia una riga
+# di test (sandbox: true, verso sandbox.zenodo.org, token
+# ZENODO_SANDBOX_TOKEN) sia, in seguito, una riga di produzione
+# (sandbox: false, verso zenodo.org, token ZENODO_TOKEN) — righe
+# indipendenti, stesso codice.
+#
+# Sequenza raccomandata dall'handoff, non opzionale: prima un run
+# riuscito su sandbox, solo dopo si abilita la riga di produzione per lo
+# stesso slug. Per questo qui sotto esiste oggi solo la riga sandbox per
+# il primo articolo — la riga di produzione (sandbox: false) va aggiunta
+# dopo aver verificato l'esito del test.
+#
+# Schema per voce:
+#   slug:          nome cartella sotto content/biblioteca/<slug>/
+#   sandbox:       true = zenodo.org di test (sandbox.zenodo.org, DOI
+#                  finti); false = produzione (zenodo.org, DOI reali)
+#   approved:      true = il proprietario ha approvato questo deposito
+#   doi:           DOI specifico di questa versione, popolato dalla CI
+#   concept_doi:   DOI "concept" (indipendente dalla versione), se
+#                  restituito da Zenodo, popolato dalla CI
+#   record_url:    URL del record Zenodo, popolato dalla CI
+#   deposited_at:  timestamp ISO 8601 UTC del deposito, popolato dalla CI
+
+- slug: dalla-tradizione-al-secolare
+  sandbox: true
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
