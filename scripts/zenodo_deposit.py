@@ -3,6 +3,9 @@
 Cowork -> Claude Code, deposito Zenodo, 2026-09-22; deroga esplicita alla
 soglia di Fase 4 di PHASE-3-PLAN.md, decisione registrata in
 MEMORY/MEM-2026-09-22-01-zenodo-automation-phase-gate-override.md).
+Esteso al deposito EN (handoff "deposito Zenodo anche in inglese",
+2026-09-23): ogni voce ha ora un campo `lang` (it/en, default it per
+compatibilita' con le voci gia' esistenti).
 
 Cosa fa, per ogni voce di data/zenodo-deposits.yaml con `approved: true`
 e `doi` ancora vuoto (idempotente: una voce con `doi` gia' valorizzato
@@ -11,16 +14,30 @@ viene sempre saltata):
 1. Genera il PDF dell'articolo con un browser headless (Playwright/
    Chromium) puntato su una build locale del sito servita da un http
    server temporaneo su localhost -- non dipende dall'URL pubblico live
-   (propagazione DNS, baseURL provvisorio vs definitivo).
-2. Estrae i metadati dal front matter di
-   content/biblioteca/<slug>/index.md (versione italiana, canonica):
-   title, description, temi (mappati a label_it via data/topics.yaml per
-   le keyword Zenodo).
+   (propagazione DNS, baseURL provvisorio vs definitivo). Pagina IT
+   (/biblioteca/<slug>/) o EN (/en/biblioteca/<slug>/) secondo `lang`.
+2. Estrae i metadati dal front matter di content/biblioteca/<slug>/
+   index.md (lang: it) o index.en.md (lang: en): title, description,
+   temi (mappati a label_it o label_en via data/topics.yaml secondo
+   `lang` per le keyword Zenodo).
 3. Legge l'ORCID dell'autore "stamotenti" da data/authors.yaml.
-4. Chiama l'API Zenodo (deposition classica: crea, carica il PDF nel
+4. Se esiste gia', nello stesso file, una voce depositata per lo stesso
+   slug/sandbox nell'ALTRA lingua, collega i due record via
+   related_identifiers -- relazione "isVariantFormOf" (la voce EN e' una
+   forma-variante dell'originale IT) o "isOriginalFormof" (grafia esatta
+   cosi' come documentata da Zenodo, non "isOriginalFormOf" -- verificato
+   contro developers.zenodo.org prima di usarla, non assunta dal nome
+   simmetrico intuitivo). Collegamento in una sola direzione per volta:
+   se il record gia' pubblicato dell'altra lingua non ha ancora questo
+   collegamento all'indietro (es. il record IT dell'articolo 1,
+   pubblicato prima che questa funzionalita' esistesse), non viene
+   corretto retroattivamente qui -- modificare i metadati di un record
+   Zenodo gia' pubblicato richiede creare una nuova versione, un'azione
+   distinta e non richiesta esplicitamente da questo script.
+5. Chiama l'API Zenodo (deposition classica: crea, carica il PDF nel
    bucket, imposta i metadati, esegue l'azione `publish` -- NON lascia
    una bozza).
-5. Scrive doi/concept_doi/record_url/deposited_at nella voce
+6. Scrive doi/concept_doi/record_url/deposited_at nella voce
    corrispondente di data/zenodo-deposits.yaml.
 
 Sandbox vs produzione: ogni voce ha un flag `sandbox` (bool). true ->
@@ -28,7 +45,7 @@ sandbox.zenodo.org, token ZENODO_SANDBOX_TOKEN; false -> zenodo.org,
 token ZENODO_TOKEN. Stesso codice per entrambi, solo endpoint/token
 cambiano -- vedi handoff, sezione "Sicurezza": un run riuscito su
 sandbox e' un prerequisito non opzionale prima di abilitare una voce di
-produzione per lo stesso slug.
+produzione per lo stesso slug (e ora anche per la stessa lingua).
 
 Rischio noto, non eliminabile con un semplice retry (da documentare,
 non da nascondere): se lo script si interrompe DOPO che la chiamata
@@ -90,9 +107,23 @@ PDF_OUT_DIR = ROOT / "zenodo-pdf"
 # registro-pubblicazioni.md v5) -- non riderivate per ogni deposito.
 UPLOAD_TYPE = "other"
 LICENSE_ID = "cc-by-nc-4.0"
-LANGUAGE = "ita"
 AUTHOR_NAME = "StamoTenti"
 AUTHOR_ID = "stamotenti"
+
+# Codici lingua ISO 639-2/B per il campo Zenodo "language" (handoff
+# "deposito Zenodo anche in inglese", 2026-09-23).
+ZENODO_LANGUAGE_CODES = {"it": "ita", "en": "eng"}
+
+# Relazione DataCite/Zenodo per "traduzione dello stesso contenuto" --
+# grafia esatta verificata su developers.zenodo.org (non intuita):
+# "isOriginalFormof" ha una "f" minuscola in "Formof", diversamente da
+# "isVariantFormOf". Usare esattamente queste stringhe, non varianti.
+RELATION_VARIANT_OF_ORIGINAL = "isVariantFormOf"  # lang derivata -> lang originale
+RELATION_ORIGINAL_OF_VARIANT = "isOriginalFormof"  # lang originale -> lang derivata
+# IT e' trattato come lingua originale, EN come variante (traduzione) --
+# coerente con come il sito stesso tratta IT come versione canonica
+# (vedi commenti in scripts/translate-to-en.py).
+ORIGINAL_LANG = "it"
 
 # Aggiornabile in futuro quando cambia il dominio -- nessuna correzione
 # retroattiva automatica dei depositi gia' fatti (handoff, punto 3).
@@ -161,10 +192,11 @@ def load_author_orcid(author_id: str) -> str:
     raise RuntimeError(f"data/authors.yaml: nessuna voce con id '{author_id}'")
 
 
-def load_topic_labels() -> dict:
+def load_topic_labels(lang: str) -> dict:
+    label_key = "label_en" if lang == "en" else "label_it"
     with TOPICS_PATH.open("r", encoding="utf-8") as f:
         topics = yaml_safe.load(f)
-    return {t["id"]: t.get("label_it", t["id"]) for t in (topics or [])}
+    return {t["id"]: t.get(label_key, t["id"]) for t in (topics or [])}
 
 
 def split_front_matter(text: str):
@@ -176,8 +208,9 @@ def split_front_matter(text: str):
     return text[4:end], text[end + 5:]
 
 
-def load_article_metadata(slug: str, topic_labels: dict) -> dict:
-    md_path = ROOT / "content" / "biblioteca" / slug / "index.md"
+def load_article_metadata(slug: str, lang: str) -> dict:
+    filename = "index.en.md" if lang == "en" else "index.md"
+    md_path = ROOT / "content" / "biblioteca" / slug / filename
     if not md_path.exists():
         raise RuntimeError(f"articolo non trovato: {md_path}")
     text = md_path.read_text(encoding="utf-8")
@@ -186,12 +219,18 @@ def load_article_metadata(slug: str, topic_labels: dict) -> dict:
 
     title = front_matter.get("title")
     description = front_matter.get("description")
+    # `temi` non e' un campo testuale da tradurre, e' un riferimento al
+    # vocabolario controllato (data/topics.yaml): scripts/translate-to-en.py
+    # lo ricopia identico in index.en.md, verificato qui sul file reale --
+    # presente e uguale in entrambe le versioni. Solo l'etichetta
+    # visualizzata (label_it/label_en) cambia con `lang`.
     temi = front_matter.get("temi") or []
     if not title or not description:
         raise RuntimeError(
             f"{md_path}: title/description mancanti nel front matter -- "
             f"richiesti per i metadati Zenodo."
         )
+    topic_labels = load_topic_labels(lang)
     keywords = [topic_labels.get(t, t) for t in temi]
     return {"title": title, "description": description, "keywords": keywords}
 
@@ -219,12 +258,13 @@ def start_local_server() -> subprocess.Popen:
     raise RuntimeError(f"http.server locale non pronto entro {HTTP_SERVER_STARTUP_TIMEOUT}s ({url})")
 
 
-def generate_pdf(slug: str) -> Path:
+def generate_pdf(slug: str, lang: str) -> Path:
     from playwright.sync_api import sync_playwright
 
     PDF_OUT_DIR.mkdir(exist_ok=True)
-    pdf_path = PDF_OUT_DIR / f"{slug}.pdf"
-    url = f"http://localhost:{HTTP_SERVER_PORT}/biblioteca/{slug}/"
+    pdf_path = PDF_OUT_DIR / (f"{slug}-en.pdf" if lang == "en" else f"{slug}.pdf")
+    path_prefix = "en/biblioteca" if lang == "en" else "biblioteca"
+    url = f"http://localhost:{HTTP_SERVER_PORT}/{path_prefix}/{slug}/"
 
     server_proc = start_local_server()
     try:
@@ -243,7 +283,19 @@ def generate_pdf(slug: str) -> Path:
     return pdf_path
 
 
-def build_zenodo_metadata(article_meta: dict, orcid: str, slug: str) -> dict:
+def build_zenodo_metadata(article_meta: dict, orcid: str, slug: str, lang: str, sibling_doi: str | None) -> dict:
+    path_prefix = "en/biblioteca" if lang == "en" else "biblioteca"
+    related_identifiers = [
+        {
+            "identifier": f"{ARTICLE_BASE_URL}/{path_prefix}/{slug}/",
+            "relation": "isIdenticalTo",
+            "resource_type": "publication-article",
+        }
+    ]
+    if sibling_doi:
+        relation = RELATION_ORIGINAL_OF_VARIANT if lang == ORIGINAL_LANG else RELATION_VARIANT_OF_ORIGINAL
+        related_identifiers.append({"identifier": sibling_doi, "relation": relation})
+
     return {
         "upload_type": UPLOAD_TYPE,
         "title": article_meta["title"],
@@ -251,16 +303,22 @@ def build_zenodo_metadata(article_meta: dict, orcid: str, slug: str) -> dict:
         "creators": [{"name": AUTHOR_NAME, "orcid": orcid}],
         "keywords": article_meta["keywords"],
         "license": LICENSE_ID,
-        "language": LANGUAGE,
+        "language": ZENODO_LANGUAGE_CODES[lang],
         "publication_date": datetime.date.today().isoformat(),
-        "related_identifiers": [
-            {
-                "identifier": f"{ARTICLE_BASE_URL}/biblioteca/{slug}/",
-                "relation": "isIdenticalTo",
-                "resource_type": "publication-article",
-            }
-        ],
+        "related_identifiers": related_identifiers,
     }
+
+
+def find_sibling_doi(deposits, slug: str, sandbox: bool, other_lang: str):
+    for e in deposits:
+        if (
+            e.get("slug") == slug
+            and bool(e.get("sandbox", False)) == sandbox
+            and e.get("lang", "it") == other_lang
+            and e.get("doi")
+        ):
+            return e["doi"]
+    return None
 
 
 def zenodo_publish(pdf_path: Path, metadata: dict, sandbox: bool) -> dict:
@@ -324,21 +382,25 @@ def zenodo_publish(pdf_path: Path, metadata: dict, sandbox: bool) -> dict:
     }
 
 
-def process_entry(entry, dry_run: bool, topic_labels: dict):
+def process_entry(entry, dry_run: bool, deposits):
     slug = entry["slug"]
     sandbox = bool(entry.get("sandbox", False))
-    label = "sandbox" if sandbox else "PRODUZIONE"
+    lang = entry.get("lang", "it")
+    label = f"{'sandbox' if sandbox else 'PRODUZIONE'}/{lang}"
 
-    article_meta = load_article_metadata(slug, topic_labels)
+    other_lang = "en" if lang == "it" else "it"
+    sibling_doi = find_sibling_doi(deposits, slug, sandbox, other_lang)
+
+    article_meta = load_article_metadata(slug, lang)
     orcid = load_author_orcid(AUTHOR_ID)
-    metadata = build_zenodo_metadata(article_meta, orcid, slug)
+    metadata = build_zenodo_metadata(article_meta, orcid, slug, lang, sibling_doi)
 
     if dry_run:
         print(f"[dry-run] {slug} ({label}): metadati costruiti, nessuna chiamata API/PDF.")
         print(metadata)
         return
 
-    pdf_path = generate_pdf(slug)
+    pdf_path = generate_pdf(slug, lang)
     print(f"{slug} ({label}): PDF generato -> {pdf_path}")
 
     result = zenodo_publish(pdf_path, metadata, sandbox)
@@ -360,7 +422,6 @@ def main():
     args = parser.parse_args()
 
     deposits = load_deposits()
-    topic_labels = load_topic_labels()
 
     pending = [e for e in deposits if e.get("approved") and not e.get("doi")]
     if not pending:
@@ -369,7 +430,11 @@ def main():
 
     any_processed = False
     for entry in pending:
-        process_entry(entry, args.dry_run, topic_labels)
+        # deposits (non pending) passato per il lookup del sibling: cosi'
+        # un secondo entry processato nello stesso run vede gia' il doi
+        # appena scritto dal primo (es. IT e EN dello stesso articolo
+        # nuovo, approvati insieme).
+        process_entry(entry, args.dry_run, deposits)
         any_processed = any_processed or not args.dry_run
 
     if any_processed:

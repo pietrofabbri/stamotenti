@@ -30,6 +30,10 @@
 #
 # Schema per voce:
 #   slug:          nome cartella sotto content/biblioteca/<slug>/
+#   lang:          it o en -- assente = it, per compatibilità con le voci
+#                  esistenti create prima che questo campo esistesse
+#                  (handoff "deposito Zenodo anche in inglese",
+#                  2026-09-23). it letto da index.md, en da index.en.md.
 #   sandbox:       true = zenodo.org di test (sandbox.zenodo.org, DOI
 #                  finti); false = produzione (zenodo.org, DOI reali)
 #   approved:      true = il proprietario ha approvato questo deposito
@@ -38,6 +42,11 @@
 #                  restituito da Zenodo, popolato dalla CI
 #   record_url:    URL del record Zenodo, popolato dalla CI
 #   deposited_at:  timestamp ISO 8601 UTC del deposito, popolato dalla CI
+#
+# Da ora in poi ogni articolo depositato deve avere sia una voce it sia
+# una voce en (handoff 2026-09-23): lo script collega i due record via
+# related_identifiers quando entrambi esistono nello stesso file, per lo
+# stesso slug/sandbox.
 
 - slug: dalla-tradizione-al-secolare
   sandbox: true
@@ -58,3 +67,17 @@
   concept_doi: 10.5281/zenodo.22913962
   record_url: https://zenodo.org/record/22913963
   deposited_at: '2026-09-23T09:17:15Z'
+
+# Deposito EN retroattivo dell'articolo 1 (handoff "deposito Zenodo
+# anche in inglese", 2026-09-23), approvato dal proprietario. Riga
+# sandbox soltanto per ora -- la riga di produzione (sandbox: false) va
+# aggiunta solo dopo aver verificato questo run via l'API pubblica di
+# sandbox.zenodo.org, stessa disciplina già in uso sopra per l'italiano.
+- slug: dalla-tradizione-al-secolare
+  lang: en
+  sandbox: true
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
