@@ -81,3 +81,15 @@
   concept_doi: 10.5072/zenodo.608079
   record_url: https://sandbox.zenodo.org/record/608080
   deposited_at: '2026-09-23T18:18:02Z'
+
+# Riga di produzione EN, aggiunta dopo aver verificato il run sandbox
+# sopra via l'API pubblica di sandbox.zenodo.org (metadati inglesi,
+# collegamento isVariantFormOf al DOI sandbox IT, entrambi confermati).
+- slug: dalla-tradizione-al-secolare
+  lang: en
+  sandbox: false
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
