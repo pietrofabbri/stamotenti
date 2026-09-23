@@ -185,3 +185,5 @@ What follows is not a structured exercise: it’s more like **a small stepping s
 If you’re wondering whether it makes sense to stop for something so small, [we discuss it here](/il-progetto/pratiche-brevi/).
 
 {{< invito-contatto >}}
+
+{{< dona >}}

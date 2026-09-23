@@ -35,5 +35,8 @@ limiti inclusi.
 È gratuito e cresce con calma: non ha nulla da venderti in questa pagina.
 Se vuoi partire subito, la [biblioteca](/biblioteca/) raccoglie gli articoli
 pubblicati finora; se vuoi sapere di più su chi c'è dietro, trovi tutto in
-[il progetto](/il-progetto/). Non sai da dove cominciare? [Inizia da
-qui](/inizia/).
+[il progetto](/il-progetto/).
+
+## Inizia da qui
+
+Scegli un articolo dalla [biblioteca](/biblioteca/) — anche a caso — leggilo, poi prova la pratica breve alla fine (al massimo 3 minuti). Non chiedo denaro per questo: chiedo attenzione, motivazione, la dignità di dare un senso a quello che ho fatto per te. [Scopri di più](/inizia/).

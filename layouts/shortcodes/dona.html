@@ -1,0 +1,16 @@
+{{- /* Menzione donazione Ko-fi a fine articolo, distinta dall'invito
+     epistolare di invito-contatto.html (quello resta "non chiedo nulla
+     in cambio", non toccato da questo shortcode). Testo fisso approvato
+     (handoff "shortcode dona" 2026-09-23, derivato da
+     mailing-list-setup-2026-08-31.md §6; ramo EN aggiunto lo stesso
+     giorno, addendum del proprietario). Shortcode invece di testo
+     ricopiato a mano articolo per articolo, stesso motivo di
+     invito-contatto.html: una correzione futura (es. cambio link Ko-fi)
+     si fa in un solo punto. Link letto da data/site.yaml (kofi.link),
+     stessa fonte già usata da content/no-fuochi/_index.md, non
+     riscritto qui. */ -}}
+{{- if eq .Page.Language.Lang "en" -}}
+<p>If you can and would like to, you can support the project here: <a href="{{ hugo.Data.site.kofi.link }}">Ko-fi</a>.</p>
+{{- else -}}
+<p>Se te lo puoi permettere e ti va, puoi sostenere il progetto qui: <a href="{{ hugo.Data.site.kofi.link }}">Ko-fi</a>.</p>
+{{- end -}}

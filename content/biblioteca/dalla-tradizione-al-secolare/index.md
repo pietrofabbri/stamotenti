@@ -185,3 +185,5 @@ Quello che segue non è una pratica strutturata: è più **un piccolo ponte vers
 Se ti stai chiedendo se abbia senso fermarsi per così poco, [ne parliamo qui](/il-progetto/pratiche-brevi/).
 
 {{< invito-contatto >}}
+
+{{< dona >}}

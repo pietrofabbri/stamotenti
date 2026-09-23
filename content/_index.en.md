@@ -36,3 +36,7 @@ It’s free and growing at a steady pace: there’s nothing to sell you on this 
 If you want to get started right away, the [library](/biblioteca/) collects the articles
 published so far; if you want to know more about who’s behind it, you’ll find everything in
 [the project](/il-progetto/).
+
+## Get Started Here
+
+Pick an article from the [library](/biblioteca/)—even at random—read it, then try the short practice at the end (three minutes at most). I'm not asking for money: I'm asking for attention, motivation, the dignity of knowing this work meant something for you. [Learn more](/inizia/).
