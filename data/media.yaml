@@ -110,3 +110,18 @@
   can_cite: true
   can_publish: true
   can_redistribute: false
+
+- id: chiedere-aiuto-non-e-un-fallimento-pratica
+  type: audio
+  visibility: public
+  title: "Pratica breve — Chiedere aiuto non è un fallimento"
+  creator: "StamoTenti"
+  storage_location: "static/audio/chiedere-aiuto-non-e-un-fallimento-pratica.mp3"
+  url: "/audio/chiedere-aiuto-non-e-un-fallimento-pratica.mp3"
+  format: "audio/mpeg"
+  notes: "Temporaneo in static/ (quindi versionato in git), in attesa di migrazione a Cloudflare R2 al lancio del sito — vedi stamotenti-editorial/handoff-audio-pratica-2026-09-07.md. Voce reale del proprietario, registrata come nota vocale WhatsApp (Opus/Ogg, 3:09) e convertita da Cowork con la stessa catena del primo audio (highpass 80 Hz, normalizzazione a circa -16 LUFS con picco a -1,5 dB, mono, MP3 96 kbps/44,1 kHz). Nessun controllo di corrispondenza testo/audio necessario, stesso principio del primo audio. Specifiche tecniche del file risultante verificate indipendentemente da Claude Code il 2026-10-24 con ffprobe/ffmpeg: durata 3:09.37, mean_volume -20.1 dB, max_volume -1.7 dB, mono, 44100 Hz, 96 kb/s — coerenti con quanto dichiarato da Cowork."
+  can_read: true
+  can_research: true
+  can_cite: true
+  can_publish: true
+  can_redistribute: false
