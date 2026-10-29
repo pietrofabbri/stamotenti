@@ -1,6 +1,7 @@
 ---
 title: "The Project"
 description: "Why StamoTenti exists, how an article comes to be, and who's behind it."
+compact: true
 ---
 
 StamoTenti was born from a simple idea: talking seriously about meditation doesn’t mean choosing between rigor and clarity. Here, we try to bring together science, philosophy, and a critical perspective, without sacrificing any of the three to make the others easier to read quickly.

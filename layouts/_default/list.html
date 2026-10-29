@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<section class="flow">
+<section class="flow{{ if .Params.compact }} flow--compact{{ end }}">
 
     <h1>{{ .Title }}</h1>
 

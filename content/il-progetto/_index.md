@@ -1,6 +1,7 @@
 ---
 title: "Il progetto"
 description: "Perché esiste StamoTenti, come nasce un articolo, e chi c'è dietro."
+compact: true
 ---
 
 StamoTenti nasce da un'idea semplice: parlare di meditazione sul serio non significa scegliere tra rigore e chiarezza. Qui proviamo a tenere insieme scienza, filosofia e sguardo critico, senza sacrificare nessuno dei tre per rendere gli altri più facili da leggere in fretta.

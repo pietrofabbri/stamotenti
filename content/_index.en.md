@@ -22,7 +22,7 @@ language, silence, and the transition from tradition to modernity.
 **Criticism, Society & Education.** How meditation fits into contemporary culture:
 schools, work, digital media.
 
-## Before You Begin
+## What to Expect
 
 You don’t need to be an expert in meditation, nor do you need a scientific or
 philosophical background: each article starts from scratch and guides readers through

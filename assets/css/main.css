@@ -191,6 +191,36 @@ main.wrapper {
     margin-bottom: var(--space-6);
 }
 
+/* Spaziatura compatta per blocchi brevi (classe aggiunta in layouts/home.html
+   per la home, e in layouts/_default/list.html quando il front matter della
+   pagina ha `compact: true`): il ritmo verticale ampio di .flow h2/.flow p
+   (--space-8 sopra i titoli, --space-6 sotto i paragrafi, pensati per
+   separare sezioni piene di testo in un articolo lungo) risultava
+   sproporzionato sui blocchi brevi della home — segnalato dal proprietario
+   dopo verifica visiva in locale (handoff "spaziatura-home-titolo",
+   2026-10-26) — e dello stesso problema su /il-progetto/ e /privacy/
+   (handoff "indici-tassonomie-spaziatura-pagine", 2026-10-29). Non tocca
+   .flow h2/.flow p: vince per specificità solo dentro .flow--home/
+   .flow--compact, quindi le pagine di articolo (comprese quelle con poco
+   testo) restano al ritmo ampio già deciso in una revisione precedente.
+   .flow--home e .flow--compact condividono le stesse regole (stesso
+   problema, pagine diverse): nomi diversi per restare espliciti su quale
+   pagina richiede la classe, un solo blocco di regole per evitare di
+   duplicare i valori. I margini si comprimono al valore più grande dei due
+   adiacenti (collapsing standard): --space-4 sotto i paragrafi qui, non
+   solo --space-5 sopra gli h2, altrimenti il margine maggiore dei paragrafi
+   (--space-6 di .flow p) vincerebbe comunque la compressione e il salto
+   resterebbe largo. */
+.flow--home h2,
+.flow--compact h2 {
+    margin-top: var(--space-5);
+}
+
+.flow--home p,
+.flow--compact p {
+    margin-bottom: var(--space-4);
+}
+
 /* Separatore prima della bibliografia (partials/bibliography.html,
    2026-09-10, handoff "revisione-articolo1" §7e): stile piatto coerente
    con il border-top già usato altrove (footer.wrapper) invece
@@ -287,6 +317,26 @@ details.accademico summary {
    2026-09-10, handoff "revisione-articolo1" §7c/§7f. */
 .flow details.accademico + h2 {
     margin-top: var(--space-6);
+}
+
+/* A blocco aperto, il primo h2 (Abstract/Premessa...) è figlio di
+   <details>, non fratello successivo del blocco chiuso: la regola sopra
+   (.flow details.accademico + h2) non lo riguarda, e senza una regola
+   dedicata riceve il margin-top generico di .flow h2 (--space-8, 6rem),
+   lo stesso salto usato tra due sezioni piene di testo altrove
+   nell'articolo. Segnalato dal proprietario come eccessivo fra
+   l'etichetta "Approfondimento rigoroso" (<summary>) e il titolo che la
+   segue subito dentro il blocco: le due cose vanno percepite come
+   collegate (l'etichetta introduce quel titolo), non separate da un
+   salto da inizio sezione. Selettore sul figlio diretto (`>`) seguito
+   dal fratello immediato (`+`) così da non toccare nessun altro h2
+   interno al blocco (restano al valore ereditato da .flow h2, invariati)
+   né quelli fuori dal blocco. --space-4 scelto dopo verifica visiva in
+   build reale (handoff "spaziatura-home-titolo", 2026-10-26): più
+   stretto di --space-6 (già usato per il caso a blocco chiuso, dove il
+   rapporto è "sezione dopo sezione", non "etichetta e il suo titolo"). */
+.flow details.accademico > summary + h2 {
+    margin-top: var(--space-4);
 }
 
 footer.wrapper {

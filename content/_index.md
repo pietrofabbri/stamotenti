@@ -22,7 +22,7 @@ linguaggio, silenzio, il passaggio dalla tradizione alla modernità.
 **Critica, Società & Educazione.** Come la meditazione entra nella cultura
 contemporanea: scuola, lavoro, media digitali.
 
-## Prima di iniziare
+## Cosa aspettarti
 
 Non serve essere già esperti di meditazione, né avere basi scientifiche o
 filosofiche: ogni articolo parte da zero e accompagna chi legge fino ai
