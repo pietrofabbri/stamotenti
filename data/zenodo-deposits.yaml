@@ -93,3 +93,27 @@
   concept_doi: 10.5281/zenodo.22923407
   record_url: https://zenodo.org/record/22923408
   deposited_at: '2026-09-23T18:19:54Z'
+
+# Deposito articolo 2 "chiedere aiuto non è un fallimento", IT ed EN
+# (handoff "push-zenodo-pubblicazione2", 2026-10-29), approvato dal
+# proprietario. Solo righe sandbox per ora -- le righe di produzione
+# (sandbox: false) vanno aggiunte solo dopo un secondo via libera
+# esplicito del proprietario e dopo aver verificato questi due run via
+# l'API pubblica di sandbox.zenodo.org, stessa disciplina già in uso
+# sopra per l'articolo 1.
+- slug: chiedere-aiuto-non-e-un-fallimento
+  sandbox: true
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
+
+- slug: chiedere-aiuto-non-e-un-fallimento
+  lang: en
+  sandbox: true
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
