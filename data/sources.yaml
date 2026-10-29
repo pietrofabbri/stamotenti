@@ -213,3 +213,298 @@
   # presente nell'handoff, confermata: l'intervento studiato dura 10 minuti,
   # non 3 — la pagina lo dice esplicitamente, non lo presenta come prova
   # diretta sull'efficacia di pratiche da 3 minuti.
+
+# Fonti nuove per la pubblicazione 2 ("L'ideale di autosufficienza e la
+# richiesta di aiuto...", slug chiedere-aiuto-non-e-un-fallimento), 2026-10-13.
+# Trascritte direttamente da scientific_editorial_pipeline/draft_raw.md,
+# sezione "Fonti citate in questa bozza" (gia' verificata dalla pipeline
+# editoriale a monte di questo passo) e da dati-autori-pubblicazione2-
+# 2026-10-05.md per gli elenchi completi di coautori. Nessun dato inventato
+# qui: dove draft_raw.md non riporta un DOI/ISBN, il campo e' omesso, non
+# indovinato.
+
+- id: addis-mahalik2003
+  type: paper
+  title: "Men, Masculinity, and the Contexts of Help Seeking"
+  authors: [addis, mahalik]
+  year: 2003
+  journal: "American Psychologist"
+  volume: "58"
+  issue: "1"
+  pages: "5–14"
+
+- id: ames-rosemont2016
+  type: book
+  title: "Confucian Role Ethics: A Moral Vision for the 21st Century?"
+  authors: [ames, rosemont]
+  year: 2016
+  publisher: "Göttingen: V&R unipress; Taipei: National Taiwan University Press"
+  isbn: "978-3-7370-0605-7"
+
+- id: bellah1985
+  type: book
+  title: "Habits of the Heart: Individualism and Commitment in American Life"
+  authors: [bellah, madsen, sullivan, swidler, tipton]
+  year: "1985/1996"
+  publisher: "Berkeley: University of California Press"
+  edition: "Edizione aggiornata con nuova introduzione"
+  isbn: "0-520-20568-5"
+
+- id: brewster2025
+  type: paper
+  title: "Anticipated Family Treatment Stigma and Help-Seeking Attitudes in Latine, Asian American, and White College Students"
+  authors: [brewster, caplan, chun, gonzalez]
+  year: 2025
+  journal: "Journal of American College Health"
+  volume: "74"
+  issue: "3"
+  pages: "690–700"
+  doi: "10.1080/07448481.2025.2550378"
+
+- id: burns-tomita2015
+  type: paper
+  title: "Traditional and Religious Healers in the Pathway to Care for People with Mental Disorders in Africa: A Systematic Review and Meta-Analysis"
+  authors: [burns, tomita]
+  year: 2015
+  journal: "Social Psychiatry and Psychiatric Epidemiology"
+  volume: "50"
+  issue: "6"
+  pages: "867–877"
+  doi: "10.1007/s00127-014-0989-7"
+
+- id: cassian-conferences
+  type: book
+  title: "The Conferences"
+  authors: [cassian, ramsey]
+  year: 1997
+  publisher: "New York: Paulist Press"
+  # Fonte primaria letta in edizione inglese (traduzione di B. Ramsey, 1997); citazioni
+  # tradotte in italiano da chi scrive la bozza. Traduttore come autore associato
+  # (CITATION-SPEC.md §23).
+
+- id: cernuzio2025
+  type: web
+  title: "Religiosi a Roma per riflettere su abusi e vita consacrata: sfida per tutta la Chiesa"
+  authors: [cernuzio]
+  year: 2025
+  publisher: "Vatican News"
+  url: "https://www.vaticannews.va/it/vaticano/news/2025-11/pontificia-commissione-tutela-minori-abusi-vita-consacrata.html"
+  # Verificato in Zotero (ISUVZEQW), chiave I6VX2A44.
+
+- id: analects-slingerland
+  type: book
+  title: "Analects"
+  authors: [confucio, slingerland]
+  year: 2003
+  publisher: "Indianapolis: Hackett"
+  # Fonte primaria letta in edizione inglese (traduzione di E. Slingerland, 2003);
+  # citazione di Analecta 4.25 tradotta in italiano da chi scrive la bozza.
+
+- id: corrigan-watson2002
+  type: paper
+  title: "Understanding the Impact of Stigma on People With Mental Illness"
+  authors: [corrigan, watson-a]
+  year: 2002
+  journal: "World Psychiatry"
+  volume: "1"
+  issue: "1"
+  pages: "16–20"
+
+- id: demasure2022
+  type: paper
+  title: "The Loss of the Self—Spiritual Abuse of Adults in the Context of the Catholic Church"
+  authors: [demasure]
+  year: 2022
+  journal: "Religions"
+  volume: "13"
+  issue: "6"
+  pages: "509"
+  doi: "10.3390/rel13060509"
+
+- id: fekih-romdhane2023
+  type: paper
+  title: "Cross-Cultural Comparison of Mental Illness Stigma and Help-Seeking Attitudes: A Multinational Population-Based Study from 16 Arab Countries and 10,036 Individuals"
+  authors: [fekih-romdhane, jahrami, stambouli, alhuwailah, helmy, shuwiekh, lemine, radwan, saquib, saquib2, fawaz, zarrouq, naser, obeid, hallit, saleh, haider, daher-nashif, miloud, badrasawi, hamdan-mansour, barbato, bakhiet, sayem, adawi, grein, cherif, chalghaf, husni, alrasheed, cheour]
+  year: 2023
+  journal: "Social Psychiatry and Psychiatric Epidemiology"
+  volume: "58"
+  issue: "4"
+  pages: "641–656"
+  doi: "10.1007/s00127-022-02403-x"
+
+- id: foucault1988
+  type: chapter
+  title: "Technologies of the Self"
+  authors: [foucault]
+  year: 1988
+  book: "Technologies of the Self: A Seminar with Michel Foucault"
+  pages: "16–49"
+  publisher: "Amherst: University of Massachusetts Press"
+
+- id: francesco-di-sales1609
+  type: book
+  title: "Filotea. Introduzione alla vita devota"
+  authors: [francesco-di-sales]
+  year: 1609
+  publisher: "Edizione italiana a cura di R. Balboni (2009), Roma: Città Nuova (Opere complete di Francesco di Sales, vol. 3)"
+  isbn: "978-88-311-1212-3"
+
+- id: ignazio-loyola1548
+  type: book
+  title: "Esercizi spirituali"
+  authors: [ignazio-di-loyola]
+  year: 1548
+  publisher: "Traduzione inglese di E. Mullan (1914), New York: P. J. Kenedy & Sons"
+  # Pubblico dominio.
+
+- id: illouz2008
+  type: book
+  title: "Saving the Modern Soul: Therapy, Emotions, and the Culture of Self-Help"
+  authors: [illouz]
+  year: 2008
+  publisher: "Berkeley: University of California Press"
+  isbn: "978-0-520-22446-9"
+
+- id: komjathy2017
+  type: book
+  title: "Introducing Contemplative Studies"
+  authors: [komjathy]
+  year: 2017
+  publisher: "Chichester: Wiley-Blackwell"
+  isbn: "978-1-119-15669-7"
+
+- id: markus-kitayama1991
+  type: paper
+  title: "Culture and the Self: Implications for Cognition, Emotion, and Motivation"
+  authors: [markus, kitayama]
+  year: 1991
+  journal: "Psychological Review"
+  volume: "98"
+  issue: "2"
+  pages: "224–253"
+
+- id: metz2007
+  type: paper
+  title: "Toward an African Moral Theory"
+  authors: [metz]
+  year: 2007
+  journal: "Journal of Political Philosophy"
+  volume: "15"
+  issue: "3"
+  pages: "321–341"
+
+- id: mohammadifirouzeh2023
+  type: paper
+  title: "Factors Associated with Professional Mental Help-Seeking Among U.S. Immigrants: A Systematic Review"
+  authors: [mohammadifirouzeh, oh, basnyat, gimm]
+  year: 2023
+  journal: "Journal of Immigrant and Minority Health"
+  volume: "25"
+  issue: "5"
+  pages: "1118–1136"
+  doi: "10.1007/s10903-023-01475-4"
+
+- id: papadopoulos2013
+  type: paper
+  title: "Individualism-Collectivism as an Explanatory Device for Mental Illness Stigma"
+  authors: [papadopoulos, foster, caldwell]
+  year: 2013
+  journal: "Community Mental Health Journal"
+  volume: "49"
+  issue: "3"
+  pages: "270–280"
+  doi: "10.1007/s10597-012-9534-x"
+
+- id: ranft2000
+  type: chapter
+  title: "Late Middle Ages: Direction Comes of Age"
+  authors: [ranft]
+  year: 2000
+  book: "A Woman's Way: The Terminology of Spiritual Direction in the Feminine Mystical Tradition"
+  pages: "87–105"
+  publisher: "Palgrave Macmillan"
+  doi: "10.1007/978-1-349-38533-1_6"
+
+- id: rieff1966
+  type: book
+  title: "The Triumph of the Therapeutic: Uses of Faith After Freud"
+  authors: [rieff]
+  year: 1966
+  publisher: "New York: Harper & Row"
+
+- id: roth2008
+  type: paper
+  title: "Against Cognitive Imperialism: A Call for a Non-Ethnocentric Approach to Cognitive Science and Religious Studies"
+  authors: [roth]
+  year: 2008
+  journal: "Religion East & West"
+  volume: "8"
+  pages: "1–26"
+  # Citato in Komjathy (2017), non letto direttamente per questa pubblicazione.
+
+- id: seneca-solinas
+  type: book
+  title: "Lettere a Lucilio"
+  authors: [seneca, solinas]
+  year: 2013
+  # Traduzione italiana di G. Solinas (2013). Nessuna edizione inglese usata come fonte
+  # per questa pubblicazione.
+
+- id: smiles1859
+  type: book
+  title: "Self-Help"
+  authors: [smiles]
+  year: 1859
+  publisher: "Londra: John Murray"
+  # Pubblico dominio.
+
+- id: sum2024
+  type: paper
+  title: "Systematic review and meta-analysis of internalised stigma and stigma resistance in patients with psychosis: The impact of individualism-collectivism culture and other individual factors"
+  authors: [sum, wong, chu, li, lee-aht, chen-eyh, chan]
+  year: 2024
+  journal: "International Journal of Social Psychiatry"
+  doi: "10.1177/00207640231216924"
+
+- id: tocqueville1835
+  type: book
+  title: "De la démocratie en Amérique"
+  authors: [tocqueville]
+  year: "1835/1840"
+  # Pubblico dominio.
+
+- id: upaddha-sutta
+  type: web
+  title: "Upaddha Sutta (Saṃyutta Nikāya 45.2)"
+  authors: [thanissaro-bhikkhu]
+  year: 2010
+  url: "https://www.accesstoinsight.org/"
+  # Fonte primaria canonica, trad. Thanissaro Bhikkhu, Access to Insight.
+
+- id: vogel2006
+  type: paper
+  title: "Measuring the Self-Stigma Associated With Seeking Psychological Help"
+  authors: [vogel, wade, haake]
+  year: 2006
+  journal: "Journal of Counseling Psychology"
+  volume: "53"
+  issue: "3"
+  pages: "325–337"
+
+- id: wyllie1954
+  type: book
+  title: "The Self-Made Man in America: The Myth of Rags to Riches"
+  authors: [wyllie]
+  year: 1954
+  publisher: "New Brunswick: Rutgers University Press"
+
+- id: zhou2021
+  type: paper
+  title: "Shared Cultural Values Influence Mental Health Help-Seeking Behaviors in Asian and Latinx College Students"
+  authors: [zhou, kyeong, cheung, michalska]
+  year: 2021
+  journal: "Journal of Racial and Ethnic Health Disparities"
+  volume: "9"
+  issue: "4"
+  pages: "1325–1334"
+  doi: "10.1007/s40615-021-01073-w"

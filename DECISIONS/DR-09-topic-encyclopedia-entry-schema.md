@@ -126,6 +126,31 @@ Da rivalutare quando la traduzione in blocco delle voci (EN) verrà effettuata, 
 
 ---
 
+## Addendum 2026-10-24 — pagina indice `/temi/` disattivata, voci mantenute
+
+Decisione del proprietario (handoff `handoff-audio-parafrasi-temi-pubblicazione2-2026-10-24.md`): la pagina indice generata automaticamente dalla tassonomia (`/temi/`, e il suo equivalente `/en/temi/`) non deve esistere come punto di accesso generale a tutte le voci — non era una pagina prevista o voluta, solo un effetto collaterale di avere attivato la tassonomia nativa di Hugo (Alternativa A di questa stessa DR). Le pagine di singolo termine (`/temi/<id>/`, con la prosa della voce e il blocco "Articoli" che elenca gli articoli collegati) restano come sono: la decisione riguarda solo la pagina-elenco, non il meccanismo.
+
+**Implementazione**: `content/temi/_index.md` e `_index.en.md`, con front matter:
+
+```yaml
+---
+title: "Temi"   # "Topics" nella versione inglese
+build:
+  render: never
+  list: never
+sitemap:
+  disable: true
+---
+```
+
+Verificato con una build reale (`hugo --minify`): `public/temi/index.html` e `public/temi/index.xml` non vengono più generati (stesso per `en/`), nessuna voce `/temi/` o `/en/temi/` compare più nei sitemap per-lingua, e le dieci pagine di termine (nove voci più `fixture-tema-tecnico`, quest'ultima preesistente e fuori scope di questa modifica) continuano a generarsi correttamente in entrambe le lingue, blocco "Articoli" compreso. Nessun link interno del sito puntava alla pagina indice bare (verificato con una ricerca nei layout e nel contenuto), quindi nessun collegamento si è rotto.
+
+**Perché questa soluzione e non un template dedicato**: `content/<taxonomyPlural>/_index.md` è il meccanismo nativo di Hugo per sovrascrivere la pagina-elenco di una tassonomia. `content/fixtures/` (DR-08) usa un `_index.md` analogo per lo stesso scopo generale (escludere pagine dalla distribuzione pubblica), ma con una combinazione diversa di campi (`cascade.sitemap.disable` + `cascade.outputs: [html]` + `cascade.build.list: local`, perché lì serviva anche sopprimere l'output RSS pur mantenendo l'HTML) — lì `sitemap.disable` da solo non era bastato a escludere l'XML (nota nello stesso file, audit Gate 2 del 2026-08-19). Qui `build.render: never` è più diretto: sopprime sia l'HTML sia l'XML della pagina-elenco in un solo colpo, verificato con la build reale, quindi non ho avuto bisogno del campo `outputs`. Resta comunque coerente con l'Alternativa A già scelta in questa DR (nessuna sezione parallela, nessuna tassonomia tecnica aggiuntiva), ed è reversibile cancellando i due file.
+
+**Nota collaterale, non azionata**: le altre tassonomie del sito (`authors`, `sources`, `sotto_area`, `tags`) generano a loro volta pagine-elenco e pagine di termine pubbliche e raggiungibili (verificato nella build: `/sources/` con 51 pagine di singola fonte, `/authors/` con 2, `/sotto_area/` con 3, `/tags/` con la sola pagina-elenco, nessun termine). Il proprietario potrebbe voler valutare le stesse domande anche per queste — non modificate qui, perché non richiesto da questo handoff.
+
+---
+
 ## Correzione proposta a DR-04 (clausola di rivalutazione)
 
 Sostituire, in `DECISIONS/DR-04-topic-controlled-vocabulary.md`, la clausola "Condizioni di rivalutazione" attuale — che cita ancora `temi`/DR-01 come aperto, non più vero dal 2026-08-16 stesso — con:

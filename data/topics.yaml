@@ -94,3 +94,53 @@
   notes: "Voce enciclopedica pubblica: content/temi/upaya/. Testo di stamotenti-editorial/enciclopedia/voci/upaya.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (upaya.en.md, \"Upāya (Skillful Means)\"): il registro sorgente (registro-candidati.yaml) usa invece \"skillful means\" minuscolo — discrepanza minore segnalata, non un errore di questo file."
   voce_enciclopedica:
     stato: pubblicata
+
+# Quattro nuovi temi reali del vocabolario (handoff "parte tecnica etimologie
+# profonde", 2026-10-09; testo approvato dal proprietario il 2026-10-08).
+# Preparati in locale per DR-09, non ancora pushati: raggiungibili solo dalla
+# pubblicazione 2 ("Chiedere aiuto non è un fallimento"), non ancora
+# pubblicata (steps 7-10 del pipeline ancora da fare) — nessun `temi:` è
+# stato aggiunto a un front matter di articolo in questa tranche, per lo
+# stesso motivo per cui DR-09 non lo fece per le prime 5 voci. Il campo
+# `description` non esiste in enciclopedia/registro-candidati.yaml (che ha
+# solo label_it/label_en): le quattro descrizioni qui sotto sono state
+# scritte da Claude Code a partire dalla "Definizione essenziale" di ciascuna
+# voce, nello stesso registro delle 5 esistenti. Confermate dal proprietario
+# il 2026-10-12 (handoff "correzioni grassetto/aperture/intestazioni") e
+# copiate nel frattempo anche in registro-candidati.yaml.
+
+- id: individualismo
+  label_it: "Individualismo"
+  label_en: "Individualism"
+  description: "Nel linguaggio politico e sociale moderno, tendenza a ritirarsi nella cerchia della famiglia e degli amici lasciando a se stessa la vita comune; distinta dall'egoismo secondo la definizione di Tocqueville (1840), che la presenta come termine recente legato a un'idea nuova."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/individualismo/. Testo di stamotenti-editorial/enciclopedia/voci/individualismo.md (+ .en.md), approvato dal proprietario il 2026-10-08. Vedi DECISIONS/DR-09. description scritta da Claude Code a partire dalla Definizione essenziale della voce (non presente in origine in registro-candidati.yaml); confermata dal proprietario il 2026-10-12 e copiata anche in registro-candidati.yaml."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: cultura-terapeutica
+  label_it: "Cultura terapeutica"
+  label_en: "Therapeutic Culture"
+  description: "Diffusione, soprattutto nel Novecento, di un linguaggio e di pratiche di origine psicologica e psicoterapeutica ben oltre lo studio clinico, fino a diventare un modo ordinario di interpretare la propria vita, le proprie emozioni e le proprie relazioni, con il benessere interiore come obiettivo centrale."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/cultura-terapeutica/. Testo di stamotenti-editorial/enciclopedia/voci/cultura-terapeutica.md (+ .en.md), approvato dal proprietario il 2026-10-08. Vedi DECISIONS/DR-09. description scritta da Claude Code a partire dalla Definizione essenziale della voce (non presente in origine in registro-candidati.yaml); confermata dal proprietario il 2026-10-12 e copiata anche in registro-candidati.yaml. label_en riprende la maiuscola del titolo inglese effettivo generato da DeepL (\"Therapeutic Culture\"), coerente con la convenzione già in uso per mbsr/sila/upaya; il proprietario ha allineato nel frattempo anche registro-candidati.yaml a questa stessa maiuscola (2026-10-12), chiudendo la discrepanza minore segnalata in precedenza."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: studi-contemplativi
+  label_it: "Studi contemplativi (Contemplative Studies)"
+  label_en: "Contemplative Studies"
+  description: "Area interdisciplinare di ricerca ed educazione sulla pratica e sull'esperienza contemplativa (meditazione, preghiera contemplativa e discipline affini) e sulle sue possibili applicazioni, nata negli anni Duemila (Komjathy, 2017)."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/studi-contemplativi/. Testo di stamotenti-editorial/enciclopedia/voci/studi-contemplativi.md (+ .en.md), approvato dal proprietario il 2026-10-08. Vedi DECISIONS/DR-09. description scritta da Claude Code a partire dalla Definizione essenziale della voce (non presente in origine in registro-candidati.yaml); confermata dal proprietario il 2026-10-12 e copiata anche in registro-candidati.yaml."
+  voce_enciclopedica:
+    stato: pubblicata
+
+- id: stigma
+  label_it: "Stigma (pubblico e interiorizzato)"
+  label_en: "Stigma (public and internalized)"
+  description: "Giudizio sociale negativo associato a una malattia mentale o al ricorso a un trattamento psicologico; la ricerca distingue lo stigma pubblico, la reazione della popolazione generale, dall'auto-stigma, il pregiudizio che la persona rivolge a se stessa (Corrigan e Watson, 2002)."
+  status: approvato
+  notes: "Voce enciclopedica pubblica: content/temi/stigma/. Testo di stamotenti-editorial/enciclopedia/voci/stigma.md (+ .en.md), approvato dal proprietario il 2026-10-08. Vedi DECISIONS/DR-09. description scritta da Claude Code a partire dalla Definizione essenziale della voce (non presente in origine in registro-candidati.yaml); confermata dal proprietario il 2026-10-12 e copiata anche in registro-candidati.yaml."
+  voce_enciclopedica:
+    stato: pubblicata

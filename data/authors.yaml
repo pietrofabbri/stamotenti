@@ -226,3 +226,568 @@
   full_name: "Hedy Kober"
   orcid: ""
   affiliation: ""
+
+# Autori nuovi per la pubblicazione 2 (vedi stesso commento in
+# data/sources.yaml), 2026-10-13. name in formato "Cognome Iniziali.",
+# full_name/orcid/affiliation lasciati vuoti: nessuna ricerca biografica
+# aggiuntiva effettuata in questa sessione, solo i dati bibliografici gia'
+# presenti in draft_raw.md e nel file dati-autori.
+
+- id: addis
+  name: "Addis M. E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: mahalik
+  name: "Mahalik J. R."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: ames
+  name: "Ames R. T."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: rosemont
+  name: "Rosemont H. Jr."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: bellah
+  name: "Bellah R. N."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: madsen
+  name: "Madsen R."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: sullivan
+  name: "Sullivan W. M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: swidler
+  name: "Swidler A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: tipton
+  name: "Tipton S. M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: brewster
+  name: "Brewster N."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: caplan
+  name: "Caplan B."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: chun
+  name: "Chun C.-A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: gonzalez
+  name: "Gonzalez A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: burns
+  name: "Burns J. K."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: tomita
+  name: "Tomita A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: cassian
+  name: "Cassiano G."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: ramsey
+  name: "Ramsey B."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: cernuzio
+  name: "Cernuzio S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: confucio
+  name: "Confucio"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: slingerland
+  name: "Slingerland E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: corrigan
+  name: "Corrigan P. W."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: watson-a
+  name: "Watson A. C."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: demasure
+  name: "Demasure K."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: foucault
+  name: "Foucault M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: francesco-di-sales
+  name: "Francesco di Sales"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: balboni
+  name: "Balboni R."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: ignazio-di-loyola
+  name: "Ignazio di Loyola"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: mullan
+  name: "Mullan E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: illouz
+  name: "Illouz E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: komjathy
+  name: "Komjathy L."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: markus
+  name: "Markus H. R."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: kitayama
+  name: "Kitayama S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: metz
+  name: "Metz T."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: oh
+  name: "Oh K. M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: basnyat
+  name: "Basnyat I."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: gimm
+  name: "Gimm G."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: papadopoulos
+  name: "Papadopoulos C."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: foster
+  name: "Foster J."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: caldwell
+  name: "Caldwell K."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: ranft
+  name: "Ranft P."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: rieff
+  name: "Rieff P."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: roth
+  name: "Roth H. D."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: seneca
+  name: "Seneca L. A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: solinas
+  name: "Solinas G."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: smiles
+  name: "Smiles S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: sum
+  name: "Sum M. Y."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: wong
+  name: "Wong C. T. W."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: chu
+  name: "Chu S. T."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: li
+  name: "Li A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: lee-aht
+  name: "Lee A. H. T."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: chen-eyh
+  name: "Chen E. Y. H."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: chan
+  name: "Chan S. K. W."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: tocqueville
+  name: "Tocqueville A. de"
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: vogel
+  name: "Vogel D. L."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: wade
+  name: "Wade N. G."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: haake
+  name: "Haake S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: wyllie
+  name: "Wyllie I. G."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: zhou
+  name: "Zhou E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: kyeong
+  name: "Kyeong Y."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: cheung
+  name: "Cheung C. S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: michalska
+  name: "Michalska K. J."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: mohammadifirouzeh
+  name: "Mohammadifirouzeh M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: fekih-romdhane
+  name: "Fekih-Romdhane F."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: jahrami
+  name: "Jahrami H."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: stambouli
+  name: "Stambouli M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: alhuwailah
+  name: "Alhuwailah A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: helmy
+  name: "Helmy M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: shuwiekh
+  name: "Shuwiekh H.A.M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: lemine
+  name: "Lemine C.M.F.M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: radwan
+  name: "Radwan E."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: saquib
+  name: "Saquib J."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: saquib2
+  name: "Saquib N."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: fawaz
+  name: "Fawaz M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: zarrouq
+  name: "Zarrouq B."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: naser
+  name: "Naser A.Y."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: obeid
+  name: "Obeid S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: hallit
+  name: "Hallit S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: saleh
+  name: "Saleh M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: haider
+  name: "Haider S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: daher-nashif
+  name: "Daher-Nashif S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: miloud
+  name: "Miloud L."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: badrasawi
+  name: "Badrasawi M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: hamdan-mansour
+  name: "Hamdan-Mansour A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: barbato
+  name: "Barbato M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: bakhiet
+  name: "Bakhiet A."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: sayem
+  name: "Sayem N."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: adawi
+  name: "Adawi S."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: grein
+  name: "Grein F."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: cherif
+  name: "Cherif W."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: chalghaf
+  name: "Chalghaf N."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: husni
+  name: "Husni M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: alrasheed
+  name: "Alrasheed M.M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
+- id: cheour
+  name: "Cheour M."
+  full_name: ""
+  orcid: ""
+  affiliation: ""
+
