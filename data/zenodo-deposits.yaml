@@ -117,3 +117,27 @@
   concept_doi: 10.5072/zenodo.628051
   record_url: https://sandbox.zenodo.org/record/628052
   deposited_at: '2026-10-29T22:16:55Z'
+
+# Righe di produzione, aggiunte dopo il fix del ramo chapter in
+# layouts/partials/bibliography.html (handoff
+# "fix-bibliografia-chapter-e-produzione-zenodo", 2026-10-29) e dopo
+# aver riverificato i due record sandbox sopra (10.5072/zenodo.628047
+# IT, 10.5072/zenodo.628052 EN) via l'API pubblica di
+# sandbox.zenodo.org -- via libera di Pietro già dato, condizionato a
+# questa verifica.
+- slug: chiedere-aiuto-non-e-un-fallimento
+  sandbox: false
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
+
+- slug: chiedere-aiuto-non-e-un-fallimento
+  lang: en
+  sandbox: false
+  approved: true
+  doi: null
+  concept_doi: null
+  record_url: null
+  deposited_at: null
