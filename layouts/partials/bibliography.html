@@ -53,6 +53,30 @@
                                 ISBN: {{ . }}
                             {{ end }}
 
+                        {{ else if eq .type "chapter" }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            {{ .title }}.
+                            {{ i18n "chapter_in_label" }}
+                            <em>{{ .book }}</em>.
+                            {{ with .pages }}
+                                pp. {{ . }}.
+                            {{ end }}
+                            {{ .publisher }}.
+
+                            {{ with .doi }}
+                                <a href="https://doi.org/{{ . }}">https://doi.org/{{ . }}</a>
+                            {{ end }}
+
                         {{ else if eq .type "web" }}
 
                             {{ range $i, $authorID := .authors }}
@@ -86,6 +110,23 @@
                             {{ else }}
                                 <a href="{{ .file }}">PDF</a>
                             {{ end }}
+
+                        {{ else }}
+
+                            {{ warnf "bibliography.html: fonte %q ha un type %q non gestito, uso il fallback generico" .id .type }}
+
+                            {{ range $i, $authorID := .authors }}
+                                {{- if $i }}, {{ end -}}
+                                {{- range hugo.Data.authors -}}
+                                    {{- if eq .id $authorID -}}
+                                        {{ .name }}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{ end }}
+
+                            ({{ .year }}).
+                            <em>{{ .title }}</em>.
+                            {{ with .publisher }}{{ . }}.{{ end }}
 
                         {{ end }}
 
