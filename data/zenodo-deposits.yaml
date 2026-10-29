@@ -128,16 +128,16 @@
 - slug: chiedere-aiuto-non-e-un-fallimento
   sandbox: false
   approved: true
-  doi: null
-  concept_doi: null
-  record_url: null
-  deposited_at: null
+  doi: 10.5281/zenodo.23783072
+  concept_doi: 10.5281/zenodo.23783071
+  record_url: https://zenodo.org/record/23783072
+  deposited_at: '2026-10-29T22:35:43Z'
 
 - slug: chiedere-aiuto-non-e-un-fallimento
   lang: en
   sandbox: false
   approved: true
-  doi: null
-  concept_doi: null
-  record_url: null
-  deposited_at: null
+  doi: 10.5281/zenodo.23783075
+  concept_doi: 10.5281/zenodo.23783074
+  record_url: https://zenodo.org/record/23783075
+  deposited_at: '2026-10-29T22:35:48Z'
