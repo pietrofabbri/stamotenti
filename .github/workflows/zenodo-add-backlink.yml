@@ -64,7 +64,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install requests
+        # ruamel.yaml serve solo perché zenodo_deposit.py lo importa a
+        # livello di modulo (per load_deposits/save_deposits, non usate
+        # da --add-backlink) -- comunque richiesto perché l'import gira
+        # prima che argparse scelga la modalità.
+        run: pip install requests ruamel.yaml
 
       - name: Add related identifier
         env:
