@@ -60,6 +60,14 @@
 # (record e metadati confermati validi via l'API pubblica di
 # sandbox.zenodo.org, non solo dal log della CI) -- sequenza richiesta
 # dall'handoff, ora soddisfatta.
+#
+# Collegamento all'indietro (isOriginalFormof verso il DOI EN
+# 10.5281/zenodo.22923408) aggiunto il 2026-10-30 con
+# scripts/zenodo_deposit.py --add-backlink (handoff
+# "backlink-zenodo-spaziatura-pagine", Parte A): non tramite una nuova
+# riga qui, i campi sotto restano quelli del deposito originale. Il
+# record pubblicato ha ora related_identifiers simmetrici con l'EN,
+# verificato via l'API pubblica di zenodo.org.
 - slug: dalla-tradizione-al-secolare
   sandbox: false
   approved: true
@@ -125,6 +133,14 @@
 # IT, 10.5072/zenodo.628052 EN) via l'API pubblica di
 # sandbox.zenodo.org -- via libera di Pietro già dato, condizionato a
 # questa verifica.
+# Collegamento all'indietro (isOriginalFormof verso il DOI EN
+# 10.5281/zenodo.23783075) aggiunto il 2026-10-30 con --add-backlink
+# (handoff "backlink-zenodo-spaziatura-pagine", Parte A). Primo tentativo
+# aveva prodotto un related_identifier duplicato per un confronto di
+# idempotenza case-sensitive nello script (Zenodo normalizza
+# "isOriginalFormof" in "isOriginalFormOf" nella risposta): corretto con
+# un secondo run dopo il fix in scripts/zenodo_deposit.py, verificato
+# via l'API pubblica che related_identifiers ha ora 2 voci, non 3.
 - slug: chiedere-aiuto-non-e-un-fallimento
   sandbox: false
   approved: true
