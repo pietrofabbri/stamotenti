@@ -1,7 +1,6 @@
 ---
 title: "Privacy"
 description: "What data does StamoTenti collect, why, and what rights you have."
-compact: true
 ---
 
 *This page is a draft; it does not constitute legal advice (PRIVACY-SPEC.md §86).*

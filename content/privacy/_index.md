@@ -1,7 +1,6 @@
 ---
 title: "Privacy"
 description: "Quali dati raccoglie StamoTenti, perché, e quali diritti hai."
-compact: true
 ---
 
 *Questa pagina è una bozza editoriale, non una consulenza legale (PRIVACY-SPEC.md §86).*
