@@ -6,7 +6,19 @@
      duplicare markup.
 
      Parametro:
-       id  obbligatorio — id della voce in data/media.yaml (type: audio) */ -}}
+       id  obbligatorio — id della voce in data/media.yaml (type: audio)
+
+     Rete di sicurezza lingua (2026-10-30, handoff "ritmo-verticale-unico",
+     Aggiunta 2): le pratiche audio sono registrate solo in italiano. Se
+     la pagina che richiama questo shortcode è in una lingua diversa dal
+     campo `lang` del media (default "it" se assente), lo shortcode non
+     stampa NULLA — nemmeno il messaggio "media non trovato", che
+     implicherebbe un errore di dato piuttosto che una scelta editoriale
+     deliberata (niente audio inglese finché non esiste davvero). Così un
+     futuro audio in inglese si abilita con una sola voce in
+     data/media.yaml (lang: en) e nessuna pagina EN può mostrare per
+     errore un audio italiano, anche se qualcuno richiamasse lo shortcode
+     lì per sbaglio. */ -}}
 {{- $mediaID := .Get "id" -}}
 
 {{- if not $mediaID -}}
@@ -20,7 +32,17 @@
     {{- end -}}
 {{- end -}}
 
-{{- if not $media -}}
+{{- $mediaLang := "it" -}}
+{{- with $media -}}
+    {{- with .lang -}}
+        {{- $mediaLang = . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if and $media (ne $mediaLang .Page.Language.Lang) -}}
+{{- /* Scelta editoriale (niente audio in questa lingua), non un errore:
+     nessun output, nemmeno il messaggio "media non trovato". */ -}}
+{{- else if not $media -}}
 <strong>[{{ i18n "media_not_found" }}: {{ $mediaID }}]</strong>
 {{- else -}}
 {{- /* (index hugo.Sites 0).Home.RelPermalink, non relURL su $media.url

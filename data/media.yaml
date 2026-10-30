@@ -26,7 +26,18 @@
 #   title:            titolo descrittivo
 #   creator:          autore o creatore (§17)
 #   date:             data del media
-#   language:         lingua, quando pertinente
+#   language:         lingua, quando pertinente (descrittiva, testo libero)
+#   lang:             codice lingua it/en (2026-10-30, handoff
+#                     "ritmo-verticale-unico", Aggiunta 2) — DISTINTO da
+#                     `language` sopra: questo è il codice esatto
+#                     confrontato da layouts/shortcodes/audio-pratica.html
+#                     con `.Page.Language.Lang` per decidere se mostrare il
+#                     player sulla pagina corrente. Default `it` se assente
+#                     (compatibilità con voci esistenti create prima di
+#                     questo campo). Oggi serve solo per gli audio (nessuna
+#                     pratica registrata in inglese), ma non è ristretto al
+#                     type: audio nello schema — si applica a qualunque
+#                     media legato alla lingua della pagina che lo mostra.
 #   provenance:       provenienza
 #   license:          licenza (mai inventata dall'agente, §12)
 #   doi:               identificativo esterno, quando esiste
@@ -100,6 +111,7 @@
   type: audio
   visibility: public
   title: "Pratica breve — Dalla tradizione al secolare"
+  lang: it
   creator: "StamoTenti"
   storage_location: "static/audio/dalla-tradizione-al-secolare-pratica.mp3"
   url: "/audio/dalla-tradizione-al-secolare-pratica.mp3"
@@ -115,6 +127,7 @@
   type: audio
   visibility: public
   title: "Pratica breve — Chiedere aiuto non è un fallimento"
+  lang: it
   creator: "StamoTenti"
   storage_location: "static/audio/chiedere-aiuto-non-e-un-fallimento-pratica.mp3"
   url: "/audio/chiedere-aiuto-non-e-un-fallimento-pratica.mp3"

@@ -369,14 +369,6 @@ The fifth limitation concerns the disciplinary scope. This publication draws on 
 
 {{< accademico-fine >}}
 
-## A Very Small Exercise Inspired by These Topics
-
-{{< audio-pratica id="chiedere-aiuto-non-e-un-fallimento-pratica" >}}
-
-What follows isn’t a structured exercise: it’s more like **a small stepping stone toward a more serious practice**, if you ever feel like exploring it.\
-It starts with a simple idea: what sustains us almost always comes through someone else.\
-If you’re wondering whether it makes sense to pause for something so small, [we discuss it here](/en/il-progetto/pratiche-brevi/).
-
 {{< invito-contatto >}}
 
 {{< dona >}}

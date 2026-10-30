@@ -177,13 +177,6 @@ A human verification of the citations on pages 38–39 and 111–121 of Keown an
 
 {{< accademico-fine >}}
 
-## A Very Small Exercise Inspired by These Topics
-
-{{< audio-pratica id="dalla-tradizione-al-secolare-pratica" >}}
-
-What follows is not a structured exercise: it’s more like **a small stepping stone toward a more serious exercise**, if you ever feel like exploring it.\
-If you’re wondering whether it makes sense to stop for something so small, [we discuss it here](/il-progetto/pratiche-brevi/).
-
 {{< invito-contatto >}}
 
 {{< dona >}}

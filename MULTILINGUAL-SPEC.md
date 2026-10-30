@@ -277,6 +277,17 @@ Il sito deve poter indicare o gestire in modo naturale l'assenza della versione 
 
 Quando la traduzione viene successivamente prodotta, deve essere collegata al contenuto originale.
 
+Caso applicato — pratiche audio (2026-10-30, handoff "ritmo-verticale-unico",
+Aggiunta 2): le pratiche audio di fine articolo sono registrate solo in
+italiano dal proprietario. Nelle traduzioni EN la sezione "pratica" non va
+né tradotta né riprodotta senza audio — va omessa interamente, non lasciata
+come testo introduttivo privo del player a cui rimanda — finché non esiste
+una registrazione in inglese. Rete di sicurezza tecnica in
+`layouts/shortcodes/audio-pratica.html`: il campo `lang` di
+`data/media.yaml` (default `it`) deve corrispondere alla lingua della
+pagina, altrimenti lo shortcode non stampa nulla (nemmeno un avviso di
+errore, trattandosi di una scelta editoriale e non di un dato mancante).
+
 ---
 
 ## 18. Aggiornamento delle traduzioni
