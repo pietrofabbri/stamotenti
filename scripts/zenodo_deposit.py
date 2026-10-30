@@ -404,6 +404,38 @@ def zenodo_publish(pdf_path: Path, metadata: dict, sandbox: bool) -> dict:
     }
 
 
+def _has_relation(related: list, identifier: str, relation: str) -> bool:
+    # Confronto case-insensitive sulla relazione: Zenodo normalizza la
+    # grafia della relazione quando la restituisce (es. l'API pubblica
+    # /api/records/ ha mostrato "isOriginalFormOf" anche quando era stata
+    # scritta come "isOriginalFormof", la grafia esatta richiesta in
+    # scrittura dalla documentazione) -- un confronto case-sensitive qui
+    # avrebbe fatto fallire il controllo di idempotenza e causato il
+    # duplicato osservato la prima volta su 23783072 (handoff
+    # "backlink-zenodo-spaziatura-pagine", 2026-10-29, corretto in
+    # seguito con un secondo run di questa stessa funzione).
+    return any(
+        r.get("identifier") == identifier and (r.get("relation") or "").lower() == relation.lower()
+        for r in related
+    )
+
+
+def _dedupe_related(related: list) -> list:
+    # Rimuove duplicati esatti (stesso identifier, stessa relation case-
+    # insensitive), preservando l'ordine e la prima occorrenza -- usata
+    # sia per il controllo idempotente sia per autocorreggere un record
+    # che ne contiene gia' (vedi _has_relation).
+    seen = set()
+    result = []
+    for r in related:
+        key = (r.get("identifier"), (r.get("relation") or "").lower())
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(r)
+    return result
+
+
 def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relation: str, dry_run: bool) -> None:
     endpoint = ZENODO_ENDPOINTS[sandbox]
 
@@ -417,11 +449,12 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
         resp.raise_for_status()
         current = resp.json()
         related = list(current["metadata"].get("related_identifiers") or [])
-        already_present = any(
-            r.get("identifier") == identifier and r.get("relation") == relation for r in related
-        )
+        deduped = _dedupe_related(related)
+        already_present = _has_relation(deduped, identifier, relation)
+        if len(deduped) != len(related):
+            print(f"[dry-run] record {record_id}: {len(related) - len(deduped)} duplicati da rimuovere in related_identifiers.")
         if already_present:
-            print(f"[dry-run] record {record_id}: related_identifier {identifier} ({relation}) gia' presente -- nulla da fare.")
+            print(f"[dry-run] record {record_id}: related_identifier {identifier} ({relation}) gia' presente -- nulla da fare oltre a un eventuale dedup.")
         else:
             print(f"[dry-run] record {record_id}: aggiungerei {identifier} ({relation}). DOI attuale invariato: {current.get('doi')}. Nessuna chiamata di scrittura.")
         return
@@ -447,15 +480,15 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
     metadata = dict(current["metadata"])
     related = list(metadata.get("related_identifiers") or [])
 
-    already_present = any(
-        r.get("identifier") == identifier and r.get("relation") == relation for r in related
-    )
-    if already_present:
-        print(f"record {record_id}: related_identifier {identifier} ({relation}) gia' presente -- nulla da fare.")
+    deduped = _dedupe_related(related)
+    if not _has_relation(deduped, identifier, relation):
+        deduped.append({"identifier": identifier, "relation": relation})
+
+    if deduped == related:
+        print(f"record {record_id}: related_identifier {identifier} ({relation}) gia' presente, nessun duplicato -- nulla da fare.")
         return
 
-    related.append({"identifier": identifier, "relation": relation})
-    metadata["related_identifiers"] = related
+    metadata["related_identifiers"] = deduped
 
     # 2. Sblocca il record pubblicato per la modifica (NON crea una nuova
     #    versione -- azione "edit", distinta da "newversion").
@@ -479,7 +512,7 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
             f"{published.get('doi')}) -- non atteso per un'azione edit, verificare a mano su Zenodo."
         )
 
-    print(f"record {record_id}: aggiunto related_identifier {identifier} ({relation}). DOI invariato: {published.get('doi')}")
+    print(f"record {record_id}: related_identifiers aggiornati (voce aggiunta e/o duplicati rimossi, {len(related)} -> {len(deduped)}). DOI invariato: {published.get('doi')}")
 
 
 def process_entry(entry, dry_run: bool, deposits):
