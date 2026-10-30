@@ -1,0 +1,79 @@
+name: Zenodo add backlink (metadata only)
+
+# Handoff "backlink-zenodo-spaziatura-pagine", 2026-10-29, Parte A.
+#
+# Aggiunge un related_identifier a un record Zenodo GIA' pubblicato,
+# senza crearne una nuova versione e senza toccare DOI/file/altri
+# metadati (scripts/zenodo_deposit.py, funzione add_related_identifier
+# -- vedi il suo docstring per il dettaglio dell'azione "edit" +
+# publish usata). Pensato per i casi in cui un record IT e' stato
+# pubblicato prima del suo gemello EN e quindi non ha il collegamento
+# all'indietro (isOriginalFormof) che il flusso automatico di
+# zenodo-deposit.yml aggiunge solo in avanti, al momento del deposito.
+#
+# Solo workflow_dispatch, MAI sul push: a differenza di un nuovo
+# deposito (irreversibile ma "additivo", un nuovo DOI), questa modifica
+# tocca un record gia' esistente -- va lanciata esplicitamente da chi
+# ha verificato i parametri (record_id, identifier, relation, sandbox),
+# non scattare come effetto collaterale di un push qualunque.
+#
+# Non genera PDF, non builda il sito: lo script in questa modalita' fa
+# solo chiamate all'API Zenodo sui metadati di un record esistente,
+# nessuna dipendenza da Hugo/Playwright.
+
+on:
+  workflow_dispatch:
+    inputs:
+      record_id:
+        description: "ID del record/deposition Zenodo da modificare (es. 23783072)"
+        required: true
+        type: string
+      identifier:
+        description: "DOI da aggiungere come related_identifier (es. 10.5281/zenodo.23783075)"
+        required: true
+        type: string
+      relation:
+        description: "Relazione DataCite/Zenodo (grafia esatta)"
+        required: false
+        type: string
+        default: "isOriginalFormof"
+      sandbox:
+        description: "true = sandbox.zenodo.org, false = produzione (zenodo.org)"
+        required: true
+        type: boolean
+        default: false
+      dry_run:
+        description: "true = non scrive nulla, mostra solo cosa farebbe (via API pubblica, nessun token richiesto)"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  add-backlink:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install requests
+
+      - name: Add related identifier
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+        run: |
+          python3 scripts/zenodo_deposit.py --add-backlink \
+            --record-id "${{ inputs.record_id }}" \
+            --identifier "${{ inputs.identifier }}" \
+            --relation "${{ inputs.relation }}" \
+            ${{ inputs.sandbox == 'true' && '--sandbox' || '' }} \
+            ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
