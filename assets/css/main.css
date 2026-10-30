@@ -73,6 +73,32 @@ body {
        doveva aumentare ulteriormente rispetto a --space-7 — la scala si
        fermava di nuovo troppo presto. */
     --space-8: 6rem;
+
+    /* Ritmo verticale unico (2026-10-30, handoff "ritmo-verticale-unico"):
+       un solo punto di controllo per lo stacco tra paragrafi e prima di
+       h2/h3 in TUTTO il sito, non più un ritmo "ampio" per gli articoli e
+       uno "compatto" per home/alcune pagine istituzionali (le vecchie
+       classi .flow--home/.flow--compact — rimosse qui sotto). Il
+       proprietario ha segnalato uno stacco doppio percepito tra i
+       paragrafi degli articoli: era letteralmente così, --space-6 (3rem,
+       quasi due righe vuote con line-height 1,6) contro il valore già
+       approvato per home/il-progetto/privacy (--space-4, 1,5rem). Per
+       cambiare lo stacco in futuro (più largo o più stretto) tocca
+       SOLO queste tre righe, non le regole .flow h2/h3/p sotto né i
+       singoli componenti (liste, tabelle, bibliografia...) che le
+       referenziano. */
+    --flow-gap-p: var(--space-4);
+    --flow-gap-h2: var(--space-5);
+    /* h3 oggi compare solo dentro i blocchi "Approfondimento rigoroso"
+       (sottosezioni come Metodologia/Risultati). Stesso valore di
+       --flow-gap-p, non --flow-gap-h2: un h3 introduce una sottosezione
+       dentro un h2 già aperto, un distacco pari a quello tra due
+       paragrafi è risultato sufficiente a leggerlo come nuovo blocco
+       senza renderlo pesante quanto un vero cambio di sezione (verifica
+       visiva su pubblicazione 2, che ne usa 15, la pagina con più h3 del
+       sito). Se in futuro servisse una distinzione più marcata da h2,
+       alzarlo a --space-5 qui è l'unica modifica necessaria. */
+    --flow-gap-h3: var(--space-4);
 }
 
 body {
@@ -157,77 +183,126 @@ main.wrapper {
 }
 
 .flow > * + * {
-    margin-top: var(--space-4);
+    margin-top: var(--flow-gap-p);
 }
 
-/* Ritmo verticale più arioso (2026-08-29, revisione spaziatura in due giri
-   — richiesta ripetuta in fase di mockup, approvata dal proprietario, poi
-   aumentata ancora dopo verifica visiva del sito reale). Gli h2 (unico
-   livello di sottotitolo oggi in uso nei contenuti reali) segnano una
-   pausa netta prima di una nuova sezione, non solo un piccolo distacco dal
-   paragrafo precedente. Il margin-top più specifico prevale su quello
+/* Ritmo verticale unico (2026-10-30, handoff "ritmo-verticale-unico"):
+   un solo valore per h2/h3/p in tutto il sito, tramite le variabili
+   --flow-gap-* definite sopra — niente più ritmo "ampio" per gli
+   articoli contro uno "compatto" per home/il-progetto/privacy (le
+   vecchie regole .flow--home/.flow--compact sono state rimosse, non
+   più necessarie: la base è già al valore che prima serviva solo a
+   loro). Il margin-top più specifico di h2/h3 prevale su quello
    uniforme di `.flow > * + *` sopra; i margini adiacenti si comprimono
-   (collapsing CSS standard) al valore più grande dei due, non si sommano. */
+   (collapsing CSS standard) al valore più grande dei due, non si
+   sommano. */
 .flow h2 {
-    margin-top: var(--space-8);
+    margin-top: var(--flow-gap-h2);
 }
 
 .flow h3 {
-    margin-top: var(--space-7);
+    margin-top: var(--flow-gap-h3);
 }
 
 /* Solo per gli articoli di Biblioteca (classe aggiunta in
    layouts/biblioteca/single.html, non nel _default condiviso da altri
-   tipi di pagina): il gap tra il titolo e il primo paragrafo va aumentato,
-   non ridotto — l'opposto del gap globale menu→contenuto di §7a. Vince
-   per specificità su `.flow > * + *` (--space-4) senza toccare quella
-   regola generica, quindi senza effetti sulle altre pagine.
-   2026-09-10, handoff "revisione-articolo1" §7b/§7f. */
+   tipi di pagina): il gap tra il titolo e il primo paragrafo resta
+   maggiore del generico `.flow > * + *`, ma ridotto da --space-6 (3rem)
+   a --flow-gap-h2 (2rem, 2026-10-30) nello stesso passaggio di
+   compattazione generale — con il nuovo ritmo di base più stretto,
+   3rem risultava sproporzionato rispetto al resto della pagina (verifica
+   visiva, pubblicazione 2). Resta comunque più ampio del gap tra due
+   paragrafi qualsiasi: il titolo merita un distacco named, non lo stacco
+   minimo. 2026-09-10, handoff "revisione-articolo1" §7b/§7f; valore
+   aggiornato 2026-10-30. */
 .article-biblioteca h1 + p {
-    margin-top: var(--space-6);
+    margin-top: var(--flow-gap-h2);
 }
 
 .flow p {
-    margin-bottom: var(--space-6);
-}
-
-/* Spaziatura compatta per blocchi brevi (classe aggiunta in layouts/home.html
-   per la home, e in layouts/_default/list.html quando il front matter della
-   pagina ha `compact: true`): il ritmo verticale ampio di .flow h2/.flow p
-   (--space-8 sopra i titoli, --space-6 sotto i paragrafi, pensati per
-   separare sezioni piene di testo in un articolo lungo) risultava
-   sproporzionato sui blocchi brevi della home — segnalato dal proprietario
-   dopo verifica visiva in locale (handoff "spaziatura-home-titolo",
-   2026-10-26) — e dello stesso problema su /il-progetto/ e /privacy/
-   (handoff "indici-tassonomie-spaziatura-pagine", 2026-10-29). Non tocca
-   .flow h2/.flow p: vince per specificità solo dentro .flow--home/
-   .flow--compact, quindi le pagine di articolo (comprese quelle con poco
-   testo) restano al ritmo ampio già deciso in una revisione precedente.
-   .flow--home e .flow--compact condividono le stesse regole (stesso
-   problema, pagine diverse): nomi diversi per restare espliciti su quale
-   pagina richiede la classe, un solo blocco di regole per evitare di
-   duplicare i valori. I margini si comprimono al valore più grande dei due
-   adiacenti (collapsing standard): --space-4 sotto i paragrafi qui, non
-   solo --space-5 sopra gli h2, altrimenti il margine maggiore dei paragrafi
-   (--space-6 di .flow p) vincerebbe comunque la compressione e il salto
-   resterebbe largo. */
-.flow--home h2,
-.flow--compact h2 {
-    margin-top: var(--space-5);
-}
-
-.flow--home p,
-.flow--compact p {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--flow-gap-p);
 }
 
 /* Separatore prima della bibliografia (partials/bibliography.html,
    2026-09-10, handoff "revisione-articolo1" §7e): stile piatto coerente
    con il border-top già usato altrove (footer.wrapper) invece
-   dell'inset/3D di default del browser per <hr>. */
+   dell'inset/3D di default del browser per <hr>. Margine esplicito
+   (2026-10-30): <hr> ha un margin-block di default del browser (~0.5em)
+   che non seguiva la scala del sito — reso esplicito e coerente con lo
+   stacco generico. */
 .flow hr {
     border: none;
     border-top: 1px solid var(--color-border);
+    margin-block: var(--flow-gap-p);
+}
+
+/* Liste dentro il testo (2026-10-30, handoff "ritmo-verticale-unico" punto
+   3): senza queste regole `ul`/`ol` ereditano solo il margine di default
+   del browser (~1em, non legato alla scala del sito) e i singoli `li` non
+   hanno alcuno stacco tra loro. Lo stacco tra voci della stessa lista è
+   volutamente più stretto di --flow-gap-p (sono elementi dello stesso
+   elenco, non paragrafi distinti) — --space-2 scelto dopo verifica visiva
+   sull'elenco di criteri di pubblicazione 2 (quattro voci), abbastanza per
+   leggerle come voci separate senza il peso di un paragrafo. Lo stacco
+   della lista rispetto a ciò che la precede resta quello generico di
+   `.flow > * + *`/`.flow p`, non toccato qui. */
+.flow ul,
+.flow ol {
+    margin: 0;
+    padding-left: var(--space-4);
+}
+
+.flow li + li {
+    margin-top: var(--space-2);
+}
+
+/* Elenchi di articoli generati dal sito (2026-10-30, handoff
+   "ritmo-verticale-unico", Aggiunta 1): layouts/biblioteca/list.html,
+   layouts/temi/term.html (blocco "Articoli") e layouts/sotto_area/term.html
+   (stesso blocco) stampano un <ul><li> con le voci attaccate — senza
+   questa classe avrebbero ereditato lo stacco stretto di `.flow li + li`
+   sopra, pensato per voci di una lista dentro la prosa (es. criteri
+   elencati in un paragrafo), non per un elenco di articoli distinti (più
+   vicino concettualmente a mini-sezioni che a righe di una stessa lista).
+   Classe dedicata invece di alzare lo stacco generico di `.flow li + li`,
+   che resterebbe comunque troppo ampio per liste di prosa reali. NON
+   applicata a tutti gli `ul` del sito (handoff, esplicito) — solo dove
+   serve, tramite questa classe sul `<ul>`. Non toccati le pagine
+   /sources/…//authors/… (blocco "Articoli che citano questa fonte"): non
+   nell'elenco esplicito dell'handoff, lasciate allo stacco generico di
+   `.flow li + li` — estendibile allo stesso modo in futuro aggiungendo la
+   classe lì, se richiesto. */
+.elenco-articoli li + li {
+    margin-top: var(--flow-gap-p);
+}
+
+/* Tabelle (2026-10-30, stesso punto 3): nessuna regola esisteva prima —
+   pubblicazione 2 ne usa due, rese con i soli default del browser (nessun
+   bordo tra celle, nessun padding). Stile minimo per leggibilità, non una
+   ridisegnazione: bordo singolo (niente doppio bordo da border-collapse
+   separate), padding coerente con la scala, testo allineato in alto per
+   celle di lunghezza diversa. */
+.flow table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.flow th,
+.flow td {
+    border: 1px solid var(--color-border);
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Figure (2026-10-30, stesso punto 3): sia lo shortcode `figure` (immagini)
+   sia `audio-pratica` (player audio) producono un <figure>, che per
+   default del browser ha un margine verticale (~1em) E un rientro
+   orizzontale (~40px) — quest'ultimo rompe l'allineamento con il resto
+   del testo nella colonna. Azzerato qui; lo stacco verticale verso
+   l'elemento precedente resta quello generico di `.flow > * + *`. */
+.flow figure {
+    margin: 0;
 }
 
 @media (max-width: 30em) {
@@ -308,35 +383,34 @@ details.accademico summary {
     cursor: pointer;
 }
 
-/* Il salto standard prima di un h2 (.flow h2, --space-8/6rem sopra) è
-   pensato per separare due sezioni piene di testo — dopo un <details>
-   collassato (una riga sola) risulta sproporzionato. Regola più specifica
-   (vince per specificità sul selettore generico .flow h2), quindi non
-   tocca gli altri h2 dell'articolo, inclusi quelli dentro il blocco stesso
-   (Abstract, Introduzione...), che restano collassati e non coinvolti.
-   2026-09-10, handoff "revisione-articolo1" §7c/§7f. */
-.flow details.accademico + h2 {
-    margin-top: var(--space-6);
-}
+/* A blocco chiuso, il salto prima dell'h2 successivo a <details> era
+   finora ridotto rispetto al generico .flow h2 (--space-6, pensato per
+   un blocco collassato in una riga sola contro il --space-8 allora
+   usato per separare due sezioni piene di testo). Rimossa 2026-10-30
+   (handoff "ritmo-verticale-unico"): col nuovo ritmo di base compatto
+   (--flow-gap-h2, 2rem) il caso speciale era diventato più LARGO del
+   generico invece che più stretto — cioè il motivo della regola si era
+   invertito. Verificato visivamente su pubblicazione 2 a blocco chiuso:
+   il valore generico di .flow h2 già risulta proporzionato per un
+   blocco collassato, nessuna regola dedicata più necessaria. */
 
 /* A blocco aperto, il primo h2 (Abstract/Premessa...) è figlio di
-   <details>, non fratello successivo del blocco chiuso: la regola sopra
-   (.flow details.accademico + h2) non lo riguarda, e senza una regola
-   dedicata riceve il margin-top generico di .flow h2 (--space-8, 6rem),
-   lo stesso salto usato tra due sezioni piene di testo altrove
-   nell'articolo. Segnalato dal proprietario come eccessivo fra
-   l'etichetta "Approfondimento rigoroso" (<summary>) e il titolo che la
-   segue subito dentro il blocco: le due cose vanno percepite come
-   collegate (l'etichetta introduce quel titolo), non separate da un
-   salto da inizio sezione. Selettore sul figlio diretto (`>`) seguito
-   dal fratello immediato (`+`) così da non toccare nessun altro h2
-   interno al blocco (restano al valore ereditato da .flow h2, invariati)
-   né quelli fuori dal blocco. --space-4 scelto dopo verifica visiva in
-   build reale (handoff "spaziatura-home-titolo", 2026-10-26): più
-   stretto di --space-6 (già usato per il caso a blocco chiuso, dove il
-   rapporto è "sezione dopo sezione", non "etichetta e il suo titolo"). */
+   <details>, non fratello successivo del blocco chiuso: senza una
+   regola dedicata riceverebbe il margin-top generico di .flow h2.
+   Segnalato dal proprietario come eccessivo fra l'etichetta
+   "Approfondimento rigoroso" (<summary>) e il titolo che la segue
+   subito dentro il blocco: le due cose vanno percepite come collegate
+   (l'etichetta introduce quel titolo), non separate da un salto da
+   inizio sezione. Selettore sul figlio diretto (`>`) seguito dal
+   fratello immediato (`+`) così da non toccare nessun altro h2 interno
+   al blocco (restano al valore ereditato da .flow h2, invariati) né
+   quelli fuori dal blocco. --flow-gap-p (invece del --space-4 letterale
+   di prima, stesso valore ma ora dal punto di controllo unico): più
+   stretto del nuovo .flow h2 (--flow-gap-h2), la distinzione
+   "etichetta e il suo titolo" vs "sezione dopo sezione" resta leggibile
+   anche col ritmo compatto. 2026-09-10/2026-10-26/2026-10-30. */
 .flow details.accademico > summary + h2 {
-    margin-top: var(--space-4);
+    margin-top: var(--flow-gap-p);
 }
 
 footer.wrapper {

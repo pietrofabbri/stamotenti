@@ -84,6 +84,14 @@ Per i principi visivi:
 `public/` e `resources/` sono artefatti generati dalla build e non sono la
 fonte primaria dei contenuti.
 
+Il ritmo verticale (lo stacco tra paragrafi e prima di h2/h3) si regola
+*solo* tramite le variabili `--flow-gap-p`/`--flow-gap-h2`/`--flow-gap-h3`
+in `assets/css/main.css` (2026-10-30, handoff "ritmo-verticale-unico"): un
+solo punto di controllo per tutto il sito. Non aggiungere `margin` sparsi
+su `p`/`h2`/`h3` altrove, né classi di compattazione per singola pagina
+(il precedente `.flow--home`/`.flow--compact`, rimosso in quello stesso
+giro, è l'errore da non ripetere).
+
 ## Contenuti e dati
 
 Il contenuto editoriale vive in `content/`.

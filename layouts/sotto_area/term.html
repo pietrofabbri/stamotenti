@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<section>
+<section class="flow">
 
     {{ $termID := .Data.Term }}
     {{ $areas := index hugo.Data "editorial-areas" }}
@@ -31,7 +31,7 @@
 
     {{ if .Pages }}
         <h2>{{ i18n "articles_heading" }}</h2>
-        <ul>
+        <ul class="elenco-articoli">
             {{ range .Pages }}
                 <li>
                     <a href="{{ .RelPermalink }}">
