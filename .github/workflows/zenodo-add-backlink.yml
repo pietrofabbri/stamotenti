@@ -1,42 +1,58 @@
-name: Zenodo add backlink (metadata only)
+name: Zenodo edit metadata (backlink or title)
 
 # Handoff "backlink-zenodo-spaziatura-pagine", 2026-10-29, Parte A.
+# Esteso con la modalita' set-title, handoff "zenodo-titolo-articolo1-en",
+# 2026-10-31.
 #
-# Aggiunge un related_identifier a un record Zenodo GIA' pubblicato,
-# senza crearne una nuova versione e senza toccare DOI/file/altri
-# metadati (scripts/zenodo_deposit.py, funzione add_related_identifier
-# -- vedi il suo docstring per il dettaglio dell'azione "edit" +
-# publish usata). Pensato per i casi in cui un record IT e' stato
-# pubblicato prima del suo gemello EN e quindi non ha il collegamento
-# all'indietro (isOriginalFormof) che il flusso automatico di
-# zenodo-deposit.yml aggiunge solo in avanti, al momento del deposito.
+# Modifica i metadati di un record Zenodo GIA' pubblicato, senza crearne
+# una nuova versione e senza toccare DOI/file (scripts/zenodo_deposit.py,
+# funzioni add_related_identifier e set_title -- vedi i loro docstring
+# per il dettaglio dell'azione "edit" + publish usata). Due modalita':
 #
-# Solo workflow_dispatch, MAI sul push: a differenza di un nuovo
-# deposito (irreversibile ma "additivo", un nuovo DOI), questa modifica
-# tocca un record gia' esistente -- va lanciata esplicitamente da chi
-# ha verificato i parametri (record_id, identifier, relation, sandbox),
-# non scattare come effetto collaterale di un push qualunque.
+# - add-backlink: aggiunge un related_identifier (es. il collegamento
+#   all'indietro isOriginalFormof quando un record IT e' stato pubblicato
+#   prima del suo gemello EN).
+# - set-title: cambia solo il campo title (es. per togliere un carattere
+#   vietato introdotto prima che la regola esistesse).
 #
-# Non genera PDF, non builda il sito: lo script in questa modalita' fa
+# Solo workflow_dispatch, MAI sul push: a differenza di un nuovo deposito
+# (irreversibile ma "additivo", un nuovo DOI), questa modifica tocca un
+# record gia' esistente -- va lanciata esplicitamente da chi ha
+# verificato i parametri, non scattare come effetto collaterale di un
+# push qualunque.
+#
+# Non genera PDF, non builda il sito: lo script in queste modalita' fa
 # solo chiamate all'API Zenodo sui metadati di un record esistente,
 # nessuna dipendenza da Hugo/Playwright.
 
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "Cosa modificare"
+        required: true
+        type: choice
+        options:
+          - add-backlink
+          - set-title
+        default: add-backlink
       record_id:
         description: "ID del record/deposition Zenodo da modificare (es. 23783072)"
         required: true
         type: string
       identifier:
-        description: "DOI da aggiungere come related_identifier (es. 10.5281/zenodo.23783075)"
-        required: true
+        description: "[add-backlink] DOI da aggiungere come related_identifier (es. 10.5281/zenodo.23783075)"
+        required: false
         type: string
       relation:
-        description: "Relazione DataCite/Zenodo (grafia esatta)"
+        description: "[add-backlink] Relazione DataCite/Zenodo (grafia esatta)"
         required: false
         type: string
         default: "isOriginalFormof"
+      title:
+        description: "[set-title] Nuovo title esatto"
+        required: false
+        type: string
       sandbox:
         description: "true = sandbox.zenodo.org, false = produzione (zenodo.org)"
         required: true
@@ -52,7 +68,7 @@ permissions:
   contents: read
 
 jobs:
-  add-backlink:
+  edit-metadata:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -66,11 +82,12 @@ jobs:
       - name: Install Python dependencies
         # ruamel.yaml serve solo perché zenodo_deposit.py lo importa a
         # livello di modulo (per load_deposits/save_deposits, non usate
-        # da --add-backlink) -- comunque richiesto perché l'import gira
-        # prima che argparse scelga la modalità.
+        # da --add-backlink/--set-title) -- comunque richiesto perché
+        # l'import gira prima che argparse scelga la modalità.
         run: pip install requests ruamel.yaml
 
       - name: Add related identifier
+        if: inputs.mode == 'add-backlink'
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
           ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
@@ -79,5 +96,17 @@ jobs:
             --record-id "${{ inputs.record_id }}" \
             --identifier "${{ inputs.identifier }}" \
             --relation "${{ inputs.relation }}" \
+            ${{ inputs.sandbox == 'true' && '--sandbox' || '' }} \
+            ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
+
+      - name: Set title
+        if: inputs.mode == 'set-title'
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+        run: |
+          python3 scripts/zenodo_deposit.py --set-title \
+            --record-id "${{ inputs.record_id }}" \
+            --title "${{ inputs.title }}" \
             ${{ inputs.sandbox == 'true' && '--sandbox' || '' }} \
             ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}

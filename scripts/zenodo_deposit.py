@@ -515,6 +515,80 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
     print(f"record {record_id}: related_identifiers aggiornati (voce aggiunta e/o duplicati rimossi, {len(related)} -> {len(deduped)}). DOI invariato: {published.get('doi')}")
 
 
+def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
+    """Cambia SOLO il campo `title` di un record gia' pubblicato (handoff
+    "zenodo-titolo-articolo1-en", 2026-10-31) -- stessa disciplina di
+    add_related_identifier sopra: azione "edit" (nessuna nuova versione),
+    PUT dell'intero oggetto metadata riletto dalla GET corrente con il
+    solo title sostituito, poi "publish" sullo stesso record. Idempotente:
+    se il titolo coincide gia' con quello richiesto, non fa nulla.
+    """
+    endpoint = ZENODO_ENDPOINTS[sandbox]
+
+    if dry_run:
+        # Stesso principio di add_related_identifier: endpoint pubblico,
+        # nessun token richiesto, utile anche senza ZENODO_TOKEN in locale.
+        resp = requests.get(f"{endpoint['api_base']}/records/{record_id}", timeout=30)
+        resp.raise_for_status()
+        current = resp.json()
+        current_title = current["metadata"].get("title")
+        if current_title == title:
+            print(f"[dry-run] record {record_id}: title gia' uguale a quello richiesto -- nulla da fare.")
+        else:
+            print(f"[dry-run] record {record_id}: title cambierebbe da {current_title!r} a {title!r}. DOI attuale invariato: {current.get('doi')}. Nessuna chiamata di scrittura.")
+        return
+
+    token = os.environ.get(endpoint["token_env"])
+    if not token:
+        raise RuntimeError(
+            f"{endpoint['token_env']} mancante nell'ambiente -- richiesto per "
+            f"modificare un record su {'sandbox' if sandbox else 'produzione'}."
+        )
+    headers = {"Authorization": f"Bearer {token}"}
+    api_base = endpoint["api_base"]
+    dep_url = f"{api_base}/deposit/depositions/{record_id}"
+
+    # 1. Legge lo stato attuale -- il PUT successivo rimanda l'intero
+    #    oggetto metadata cosi' com'e' qui, con il solo title sostituito:
+    #    nessun altro campo (doi, description, creators, license,
+    #    related_identifiers, keywords...) viene ricostruito da zero.
+    resp = requests.get(dep_url, headers=headers, timeout=30)
+    resp.raise_for_status()
+    current = resp.json()
+    metadata = dict(current["metadata"])
+
+    if metadata.get("title") == title:
+        print(f"record {record_id}: title gia' uguale a quello richiesto -- nulla da fare.")
+        return
+
+    old_title = metadata.get("title")
+    metadata["title"] = title
+
+    # 2. Sblocca il record pubblicato per la modifica (NON crea una nuova
+    #    versione -- azione "edit", distinta da "newversion").
+    resp = requests.post(f"{dep_url}/actions/edit", headers=headers, timeout=30)
+    if resp.status_code not in (200, 201):
+        raise RuntimeError(f"record {record_id}: azione edit fallita ({resp.status_code}): {resp.text}")
+
+    # 3. Scrive l'intero oggetto metadata aggiornato (solo title diverso).
+    resp = requests.put(dep_url, json={"metadata": metadata}, headers=headers, timeout=30)
+    resp.raise_for_status()
+
+    # 4. Ricommitta sullo stesso record (nessun nuovo DOI, nessuna nuova
+    #    versione -- solo i metadati sono cambiati).
+    resp = requests.post(f"{dep_url}/actions/publish", headers=headers, timeout=30)
+    resp.raise_for_status()
+    published = resp.json()
+
+    if published.get("doi") != current.get("doi"):
+        raise RuntimeError(
+            f"record {record_id}: il DOI e' cambiato dopo publish ({current.get('doi')} -> "
+            f"{published.get('doi')}) -- non atteso per un'azione edit, verificare a mano su Zenodo."
+        )
+
+    print(f"record {record_id}: title aggiornato da {old_title!r} a {title!r}. DOI invariato: {published.get('doi')}")
+
+
 def process_entry(entry, dry_run: bool, deposits):
     slug = entry["slug"]
     sandbox = bool(entry.get("sandbox", False))
@@ -567,14 +641,26 @@ def main():
     parser.add_argument(
         "--sandbox",
         action="store_true",
-        help="Opera su sandbox.zenodo.org invece che produzione (--add-backlink).",
+        help="Opera su sandbox.zenodo.org invece che produzione (--add-backlink, --set-title).",
     )
+    parser.add_argument(
+        "--set-title",
+        action="store_true",
+        help="Modalita' separata: cambia SOLO il title di un record gia' pubblicato (vedi set_title()).",
+    )
+    parser.add_argument("--title", help="Nuovo title da impostare (--set-title).")
     args = parser.parse_args()
 
     if args.add_backlink:
         if not args.record_id or not args.identifier:
             parser.error("--add-backlink richiede --record-id e --identifier.")
         add_related_identifier(args.record_id, args.sandbox, args.identifier, args.relation, args.dry_run)
+        return
+
+    if args.set_title:
+        if not args.record_id or not args.title:
+            parser.error("--set-title richiede --record-id e --title.")
+        set_title(args.record_id, args.sandbox, args.title, args.dry_run)
         return
 
     deposits = load_deposits()
