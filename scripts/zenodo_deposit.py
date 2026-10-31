@@ -498,12 +498,14 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
 
     # 3. Scrive l'intero oggetto metadata aggiornato.
     resp = requests.put(dep_url, json={"metadata": metadata}, headers=headers, timeout=30)
-    resp.raise_for_status()
+    if resp.status_code not in (200, 201):
+        raise RuntimeError(f"record {record_id}: PUT metadata fallito ({resp.status_code}): {resp.text}")
 
     # 4. Ricommitta sullo stesso record (nessun nuovo DOI, nessuna nuova
     #    versione -- solo i metadati sono cambiati).
     resp = requests.post(f"{dep_url}/actions/publish", headers=headers, timeout=30)
-    resp.raise_for_status()
+    if resp.status_code not in (200, 201, 202):
+        raise RuntimeError(f"record {record_id}: publish fallito ({resp.status_code}): {resp.text}")
     published = resp.json()
 
     if published.get("doi") != current.get("doi"):
@@ -572,12 +574,14 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
 
     # 3. Scrive l'intero oggetto metadata aggiornato (solo title diverso).
     resp = requests.put(dep_url, json={"metadata": metadata}, headers=headers, timeout=30)
-    resp.raise_for_status()
+    if resp.status_code not in (200, 201):
+        raise RuntimeError(f"record {record_id}: PUT metadata fallito ({resp.status_code}): {resp.text}")
 
     # 4. Ricommitta sullo stesso record (nessun nuovo DOI, nessuna nuova
     #    versione -- solo i metadati sono cambiati).
     resp = requests.post(f"{dep_url}/actions/publish", headers=headers, timeout=30)
-    resp.raise_for_status()
+    if resp.status_code not in (200, 201, 202):
+        raise RuntimeError(f"record {record_id}: publish fallito ({resp.status_code}): {resp.text}")
     published = resp.json()
 
     if published.get("doi") != current.get("doi"):
