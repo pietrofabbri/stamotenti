@@ -39,4 +39,4 @@ pubblicati finora; se vuoi sapere di più su chi c'è dietro, trovi tutto in
 
 ## Inizia da qui
 
-Scegli un articolo dalla [biblioteca](/biblioteca/) — anche a caso — leggilo, poi prova la pratica breve alla fine (al massimo 3 minuti). Non chiedo denaro per questo: chiedo attenzione, motivazione, la dignità di dare un senso a quello che ho fatto per te. [Scopri di più](/inizia/).
+Scegli un articolo dalla [biblioteca](/biblioteca/), anche a caso, leggilo, poi prova la pratica breve alla fine (al massimo 3 minuti). Non chiedo denaro per questo: chiedo attenzione, motivazione, la dignità di dare un senso a quello che ho fatto per te. [Scopri di più](/inizia/).

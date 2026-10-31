@@ -1,6 +1,6 @@
 ---
 title: "Niente fuochi d'artificio"
-description: "Perché StamoTenti non usa scroll infinito, notifiche, popup o countdown — una scelta, non una dimenticanza."
+description: "Perché StamoTenti non usa scroll infinito, notifiche, popup o countdown: una scelta, non una dimenticanza."
 ---
 
 Non troverai qui scroll infinito, notifiche push, popup o countdown. Non è una dimenticanza, è una scelta, e vogliamo spiegartela.

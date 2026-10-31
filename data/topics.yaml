@@ -82,7 +82,7 @@
   label_en: "Sīla (Buddhist Ethics)"
   description: "Condotta etica nella tradizione buddhista pali, una delle tre componenti classiche del percorso insieme a samadhi (concentrazione) e paññā (comprensione); descritta dalle fonti canoniche come condizione causale, non come regola accessoria."
   status: approvato
-  notes: "Voce enciclopedica pubblica: content/temi/sila/. Testo di stamotenti-editorial/enciclopedia/voci/sila.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (sila.en.md, \"Sīla (Buddhist Ethics)\"): il registro sorgente (registro-candidati.yaml) usa invece \"Buddhist ethics\" minuscolo — discrepanza minore segnalata, non un errore di questo file."
+  notes: "Voce enciclopedica pubblica: content/temi/sila/. Testo di stamotenti-editorial/enciclopedia/voci/sila.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (sila.en.md, \"Sīla (Buddhist Ethics)\"): il registro sorgente (registro-candidati.yaml) usa invece \"Buddhist ethics\" minuscolo: discrepanza minore segnalata, non un errore di questo file."
   voce_enciclopedica:
     stato: pubblicata
 
@@ -91,7 +91,7 @@
   label_en: "Upāya (Skillful Means)"
   description: "Concetto buddhista per cui un insegnamento può essere adattato nella forma al contesto e alle capacità di chi lo riceve, restando fedele nella sostanza."
   status: approvato
-  notes: "Voce enciclopedica pubblica: content/temi/upaya/. Testo di stamotenti-editorial/enciclopedia/voci/upaya.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (upaya.en.md, \"Upāya (Skillful Means)\"): il registro sorgente (registro-candidati.yaml) usa invece \"skillful means\" minuscolo — discrepanza minore segnalata, non un errore di questo file."
+  notes: "Voce enciclopedica pubblica: content/temi/upaya/. Testo di stamotenti-editorial/enciclopedia/voci/upaya.md (+ .en.md), approvato dal proprietario. Vedi DECISIONS/DR-09. label_en riprende la maiuscola del titolo inglese effettivo (upaya.en.md, \"Upāya (Skillful Means)\"): il registro sorgente (registro-candidati.yaml) usa invece \"skillful means\" minuscolo: discrepanza minore segnalata, non un errore di questo file."
   voce_enciclopedica:
     stato: pubblicata
 

@@ -4,7 +4,7 @@ description: "StamoTenti features serious yet accessible articles on meditation,
 ---
 
 StamoTenti brings together in-depth articles on meditation, mindfulness, and
-attention, written to be understood by anyone who is curious—not just
+attention, written to be understood by anyone who is curious, not just
 those who have already studied the subject. It’s not a blog that’s updated every
 day: it’s a project that grows steadily, one article at a time, without
 ever compromising on rigor.
@@ -28,7 +28,7 @@ You don’t need to be an expert in meditation, nor do you need a scientific or
 philosophical background: each article starts from scratch and guides readers through
 even the most technical aspects, one step at a time.
 
-You won’t find motivational advice or promises of quick transformations—
+You won’t find motivational advice or promises of quick transformations,
 just what research, history, and practice truly have to say,
 limitations included.
 
@@ -39,4 +39,4 @@ published so far; if you want to know more about who’s behind it, you’ll fin
 
 ## Get Started Here
 
-Pick an article from the [library](/biblioteca/)—even at random—read it, then try the short practice at the end (three minutes at most). I'm not asking for money: I'm asking for attention, motivation, the dignity of knowing this work meant something for you. [Learn more](/inizia/).
+Pick an article from the [library](/biblioteca/), even at random, read it, then try the short practice at the end (three minutes at most). I'm not asking for money: I'm asking for attention, motivation, the dignity of knowing this work meant something for you. [Learn more](/inizia/).

@@ -70,11 +70,11 @@ But one thing remains clear. **The duty to be self-sufficient is not a natural a
 
 ## Foreword
 
-In contemporary culture, a widespread belief suggests that mature adults should be able to manage their difficulties independently. Seeking help—particularly regarding one’s inner life—is sometimes portrayed as a sign of weakness or personal inadequacy. This notion is often treated as a universal truth, valid across all eras and cultures.
+In contemporary culture, a widespread belief suggests that mature adults should be able to manage their difficulties independently. Seeking help, particularly regarding one’s inner life, is sometimes portrayed as a sign of weakness or personal inadequacy. This notion is often treated as a universal truth, valid across all eras and cultures.
 
 This publication examines this presumed universality from a historical perspective. The ideal of self-sufficiency as a moral virtue has recognizable origins in early nineteenth-century American culture. Contemporary psychology also examines it as a possible factor associated with difficulty in asking for help. A comparison with older contemplative and philosophical traditions shows, however, that in many contexts, relationships with others have been considered a normal part of inner practice and moral life.
 
-The study draws on *Contemplative Studies*, an interdisciplinary field that examines contemplative practice and experience—including meditation, contemplative prayer, and related disciplines—using historical, textual, comparative, and scientific methods {{< cite "komjathy2017" >}}. This approach does not replace cultural history, sociology, or empirical psychology. In this publication, it is used in conjunction with them.
+The study draws on *Contemplative Studies*, an interdisciplinary field that examines contemplative practice and experience, including meditation, contemplative prayer, and related disciplines, using historical, textual, comparative, and scientific methods {{< cite "komjathy2017" >}}. This approach does not replace cultural history, sociology, or empirical psychology. In this publication, it is used in conjunction with them.
 
 History and sociology help reconstruct the origins and transformations of this ideal, while empirical psychology documents some of its contemporary consequences. In addition, contemplative studies allow us to compare it with traditions that have developed systematic forms of inner practice across diverse eras and societies. Comparing these three levels enables us to ask whether self-sufficiency is an anthropological constant or a historically situated construct.
 
@@ -88,7 +88,7 @@ Psychology studies this same ideal as a possible factor associated with the diff
 
 The study employs the comparative method of contemplative studies {{< cite "komjathy2017" >}}, viewing it as one of the approaches necessary to complete the picture, not the only one. The historical genealogy is compared with five earlier and culturally distant contemplative and philosophical traditions: monastic Christianity, ancient Buddhism, Confucianism, Ubuntu, and Roman Stoicism. In all of them, the relationship with other people is treated as a condition of practice or moral life, albeit with different purposes and costs. A brief mention of medieval and modern Christianity and a synthesis of contemporary cross-cultural data on asking for help round out the picture.
 
-The conclusion is not that asking for help has universally been considered a virtue; rather, it is that the opposing ideal—the duty of self-sufficiency—appears to be a historically recent and limited construct, rather than a natural given.
+The conclusion is not that asking for help has universally been considered a virtue; rather, it is that the opposing ideal, the duty of self-sufficiency, appears to be a historically recent and limited construct, rather than a natural given.
 
 ## Introduction and Theoretical Framework
 
@@ -96,13 +96,13 @@ In the second volume of *Democracy in America* (1840), Alexis de Tocqueville tre
 
 Rather than presenting it as a constant of human nature, Tocqueville links it to specific historical conditions: democratic equality, the dissolution of stable aristocratic ties, and social mobility.
 
-Over the course of the nineteenth century, a cultural genre developed on this basis. In 1859, Samuel Smiles published *Self-Help*, the text that gave its name to the self-help genre, opening with the maxim “Heaven helps those who help themselves” {{< cite "smiles1859" >}}. Nearly a century later, historian Irvin Wyllie demonstrated in a now-classic study that the *self-made man*—the man who made himself without owing anything to anyone—was a myth of American culture and not an accurate description of how society functioned {{< cite "wyllie1954" >}}.
+Over the course of the nineteenth century, a cultural genre developed on this basis. In 1859, Samuel Smiles published *Self-Help*, the text that gave its name to the self-help genre, opening with the maxim “Heaven helps those who help themselves” {{< cite "smiles1859" >}}. Nearly a century later, historian Irvin Wyllie demonstrated in a now-classic study that the *self-made man*, the man who made himself without owing anything to anyone, was a myth of American culture and not an accurate description of how society functioned {{< cite "wyllie1954" >}}.
 
-This publication neither denies the value of personal autonomy nor reduces individualism to mere ideology. Rather, it focuses specifically on radical self-sufficiency—that is, the idea that a mature person should not rely on others.
+This publication neither denies the value of personal autonomy nor reduces individualism to mere ideology. Rather, it focuses specifically on radical self-sufficiency: the idea that a mature person should not rely on others.
 
 This raises a broader question. If radical self-sufficiency were a constant of human nature, it should manifest in similar forms even within traditions older and more distant from nineteenth-century Western culture. If, on the other hand, such traditions systematically contradict it, it becomes plausible to view it as a local historical construct.
 
-Addressing this question requires multiple approaches. Cultural history and sociology trace the origins of the ideal and its transformation during the twentieth century. Empirical psychology examines the relationship between this ideal—or the self-concept underpinning it—and the decision to seek help. Finally, contemplative studies compares traditions that have developed explicit forms of inner practice over the centuries.
+Addressing this question requires multiple approaches. Cultural history and sociology trace the origins of the ideal and its transformation during the twentieth century. Empirical psychology examines the relationship between this ideal, or the self-concept underpinning it, and the decision to seek help. Finally, contemplative studies compares traditions that have developed explicit forms of inner practice over the centuries.
 
 ## Methodology
 
@@ -145,7 +145,7 @@ In addition to the five main traditions, two elements are included for the purpo
 
 The method involves two caveats. The first is that none of the traditions examined asserts, in their original terms, that “asking for help” is a virtue in the modern psychological sense. Each has its own specific framework: monastic obedience, liberation from *dukkha*, Confucian social harmony, shared identity in *ubuntu*, and Stoic philosophical friendship.
 
-The second is that this comparison does not aim to demonstrate that asking for help was easier or more accepted in the past. It merely shows that the opposite idea—namely, the duty to be self-sufficient—is not a necessary condition of human experience.
+The second is that this comparison does not aim to demonstrate that asking for help was easier or more accepted in the past. It merely shows that the opposite idea, namely the duty to be self-sufficient, is not a necessary condition of human experience.
 
 ### Sources and Translations
 
@@ -163,9 +163,9 @@ His study is not celebratory in nature. In his acknowledgments, Wyllie judges th
 
 The myth of the *self-made man* did not accurately describe nineteenth-century social mobility. It prescribed an ideal and cast suspicion on those who did not achieve it or who needed the support of others.
 
-More than forty years later, Robert Bellah and his co-authors revisited the concept of individualism in the introduction to the updated edition of *Habits of the Heart*, published in 1985. They distinguish a “hard,” utilitarian form—centered on practical results and economic success as proof of character—from a “soft,” expressive form, often experienced in a therapeutic context {{< cite "bellah1985" >}}.
+More than forty years later, Robert Bellah and his co-authors revisited the concept of individualism in the introduction to the updated edition of *Habits of the Heart*, published in 1985. They distinguish a “hard,” utilitarian form, centered on practical results and economic success as proof of character, from a “soft,” expressive form, often experienced in a therapeutic context {{< cite "bellah1985" >}}.
 
-This distinction is significant because it links American individualism to twentieth-century therapeutic culture. Bellah and his co-authors also note that individualism has not entirely eliminated other moral traditions—including the biblical and civic-republican traditions—which emphasized the social dimension of the person {{< cite "bellah1985" >}}.
+This distinction is significant because it links American individualism to twentieth-century therapeutic culture. Bellah and his co-authors also note that individualism has not entirely eliminated other moral traditions, including the biblical and civic-republican traditions, which emphasized the social dimension of the person {{< cite "bellah1985" >}}.
 
 The focus of this publication, however, is more specific. It is not American individualism as a whole, but rather the ideal of radical self-sufficiency and its genealogy.
 
@@ -191,7 +191,7 @@ David Vogel, Nathaniel Wade, and Shawn Haake developed a tool to measure self-di
 
 Patrick Corrigan and Amy Watson analyze the impact of stigma on people with mental illness {{< cite "corrigan-watson2002" >}}.
 
-The conceptual framework linking these works to historical genealogy is the distinction proposed by Hazel Markus and Shinobu Kitayama between an “independent” self—separate from others and defined by one’s internal attributes—and an “interdependent” self—defined by one’s relationships {{< cite "markus-kitayama1991" >}}. The American ideal of self-reliance is an example of the former construct.
+The conceptual framework linking these works to historical genealogy is the distinction proposed by Hazel Markus and Shinobu Kitayama between an “independent” self, separate from others and defined by one’s internal attributes, and an “interdependent” self, defined by one’s relationships {{< cite "markus-kitayama1991" >}}. The American ideal of self-reliance is an example of the former construct.
 
 More collectivist cultures, however, are not automatically more supportive of seeking help. A study of four cultural groups in the United Kingdom, involving a sample of 305 people, found higher levels of internalized stigma in the more collectivist groups, at least within that sample {{< cite "papadopoulos2013" >}}.
 
@@ -199,11 +199,11 @@ A more recent meta-analysis, based on studies of patients diagnosed with psychos
 
 These findings do not invalidate the general thesis but rather refine it. The issue is not simply a matter of the opposition between individualism and collectivism. A context in which one depends on others can still impose a social cost on the act of seeking help. This cost differs from that produced by the ideal of the self-sufficient individual.
 
-To examine what it means to depend on others when dependence is part of the practice—and not a trait to be hidden—we must turn to traditions that have systematically explored this relationship.
+To examine what it means to depend on others when dependence is part of the practice, and not a trait to be hidden, we must turn to traditions that have systematically explored this relationship.
 
 ### 4. Monastic Christianity
 
-In early monastic Christianity, *exagoreusis*—that is, the continuous verbalization of one’s thoughts to a spiritual guide—is not a remedy reserved for exceptional cases. It is an ordinary practice of communal life, as Michel Foucault shows in his analysis of the technologies of the self in ancient Christianity {{< cite "foucault1988" >}}.
+In early monastic Christianity, *exagoreusis*, the continuous verbalization of one’s thoughts to a spiritual guide, is not a remedy reserved for exceptional cases. It is an ordinary practice of communal life, as Michel Foucault shows in his analysis of the technologies of the self in ancient Christianity {{< cite "foucault1988" >}}.
 
 In John Cassian’s *Conferences*, an elderly monk recounts the story of Abba Serapion, who for years secretly stole a piece of bread every night, held back by shame. A spiritual conference finally led him to confess in tears before everyone. The elder replies: “Your confession freed you from this captivity even before I spoke” (Cassian, *Conferences* II, chap. XI; Ramsey 1997).
 
@@ -219,13 +219,13 @@ In the *Upaddha Sutta* (Saṃyutta Nikāya 45.2), a dialogue between the Buddha 
 
 The Buddha corrects him: it is not half, but “the whole of the holy life” (Thanissaro Bhikkhu’s translation). The text goes on to identify the Buddha himself as the friend through whom beings are liberated from suffering.
 
-This passage is significant because the spiritual friend is not relegated to the margins of the path as a mere accessory. The relationship is part of the practice. The framework differs from that of contemporary psychology: the stated goal is liberation from *dukkha*—the suffering and dissatisfaction inherent in conditioned existence—not merely individual well-being.
+This passage is significant because the spiritual friend is not relegated to the margins of the path as a mere accessory. The relationship is part of the practice. The framework differs from that of contemporary psychology: the stated goal is liberation from *dukkha*, the suffering and dissatisfaction inherent in conditioned existence, not merely individual well-being.
 
 ### 6. Confucianism
 
 In the Confucian tradition, the self is not conceived as an isolated unit. The *Analects* state that “Virtue is never alone; it always has neighbors” (*Analects* 4.25; my translation from Slingerland’s 2003 English version).
 
-Roger Ames and Henry Rosemont develop an ethics of roles on this basis. The person is defined through relationships such as those of child, parent, friend, student, and citizen, not prior to them. In the introduction, the two authors reject “foundational” individualism—that is, the idea of the autonomous and rational individual as the starting point for ethical reflection. They consider it a fiction incapable of describing the way in which people experience their relationships {{< cite "ames-rosemont2016" >}}.
+Roger Ames and Henry Rosemont develop an ethics of roles on this basis. The person is defined through relationships such as those of child, parent, friend, student, and citizen, not prior to them. In the introduction, the two authors reject “foundational” individualism: the idea of the autonomous and rational individual as the starting point for ethical reflection. They consider it a fiction incapable of describing the way in which people experience their relationships {{< cite "ames-rosemont2016" >}}.
 
 Here, too, it is necessary to point out the limitations. Confucian roles are differentiated and often hierarchical, and they do not describe relationships among equals. The key point, however, remains clear: within this framework, there is no “self” that can be fully conceived of or evaluated independently of relationships. Consequently, absolute independence cannot constitute the primary moral ideal.
 
@@ -281,7 +281,7 @@ The frameworks remain specific and should not be considered equivalent.
 
 The contemporary data from Section 10 do not appear in the tables because they do not describe a tradition with its own norms regarding relationships with others, but rather attitudes and behaviors observed in current populations.
 
-On a specific variable—namely, the role of relationships in religious practice or moral life—traditions largely lacking direct historical connections converge toward a position different from that of the nineteenth-century ideal. They do not do so in the same way. The interlocutor, the purpose, the costs, and the degree of accepted dependence vary.
+On a specific variable, namely the role of relationships in religious practice or moral life, traditions largely lacking direct historical connections converge toward a position different from that of the nineteenth-century ideal. They do not do so in the same way. The interlocutor, the purpose, the costs, and the degree of accepted dependence vary.
 
 ### 10. Contemporary Cross-Cultural Data on Seeking Help
 
@@ -289,7 +289,7 @@ Section 3 presented evidence on the relationship between individualism, collecti
 
 A study conducted in 16 Arab countries involving 10,036 participants, with data collected between June and November 2021, found stigmatizing attitudes toward mental illness in 26.5% of participants and negative attitudes toward seeking help in 28.0% {{< cite "fekih-romdhane2023" >}}. Differences between countries were wide-ranging, even within the same cultural region. Factors associated with more favorable attitudes toward seeking help included being female, older age, greater knowledge of mental illness, and biomedical or psychosocial explanations. Conversely, a family history of psychiatric disorders and religious or supernatural explanations were associated with more negative attitudes.
 
-In a study of Asian and Latino college students in the United States, the more participants adhered to interdependent orientation values—that is, a conception of the self defined primarily by relationships with others {{< cite "markus-kitayama1991" >}}— the less they perceived a need for mental health treatment, and the more negative their attitudes toward seeking professional help were {{< cite "zhou2021" >}}. A subsequent study of 1,039 college students at a U.S. public university (649 Latinos, 244 Asian Americans, and 146 whites) found that Latino and Asian American students reported higher levels of anticipated family stigma, that is, the fear of the stigma that psychological treatment would provoke within the family, and more negative attitudes toward seeking help compared to their white peers {{< cite "brewster2025" >}}.
+In a study of Asian and Latino college students in the United States, the more participants adhered to interdependent orientation values, that is, a conception of the self defined primarily by relationships with others {{< cite "markus-kitayama1991" >}}, the less they perceived a need for mental health treatment, and the more negative their attitudes toward seeking professional help were {{< cite "zhou2021" >}}. A subsequent study of 1,039 college students at a U.S. public university (649 Latinos, 244 Asian Americans, and 146 whites) found that Latino and Asian American students reported higher levels of anticipated family stigma, that is, the fear of the stigma that psychological treatment would provoke within the family, and more negative attitudes toward seeking help compared to their white peers {{< cite "brewster2025" >}}.
 
 A systematic review of immigrants in the United States, including asylum seekers and refugees, indicates that stigma, cultural beliefs, and distrust of mental health professionals reduce the likelihood of seeking professional help {{< cite "mohammadifirouzeh2023" >}}. The review adopts the Theory of Planned Behavior, a model that explains behavior through attitudes, subjective norms, and perceived control. Within this framework, subjective norms and family support play a central role: willingness to seek mental health services is linked to family members and friends, who are considered the primary source of support, and a lower level of stigma is among the factors that facilitate seeking care.
 
@@ -303,7 +303,7 @@ Section 4 examined ancient monastic Christianity. To avoid presenting the West a
 
 Spiritual direction, understood as a regular relationship between a spiritual director and a person seeking to deepen their inner life, is documented during this period by various sources. Ranft studies its terminology within the late medieval female mystical tradition {{< cite "ranft2000" >}}. In Ignatius of Loyola’s *Spiritual Exercises*, the practice is based on a relationship between the one who guides the exercises and the one who performs them {{< cite "ignazio-loyola1548" >}}. In *Introduction to the Devout Life*, addressed to people living in the world rather than to specialists in the mystical life, Francis de Sales devotes a chapter to the need for guidance for those beginning the devout life and cites the biblical example of Tobias {{< cite "francesco-di-sales1609|Part I, chap. 4" >}}. The practice is therefore not reserved for a mystical elite: Francis de Sales’s work is addressed to lay believers engaged on a path of prayer and moral conversion.
 
-Here, too, the framework is not that of contemporary mental health. The stated goal is growth in the spiritual life, discernment in decision-making, and adherence to a religious moral code. The costs may include submission to a spiritual guide, navigating asymmetrical power relationships, and the risk of abuse. Demasure describes spiritual abuse of adults within the context of the Catholic Church as being perpetrated by a spiritual leader who has power over the individual and uses spiritual means—including the abuse of conscience—to make that person dependent {{< cite "demasure2022" >}}. Recently, the Pontifical Commission for the Protection of Minors organized a meeting in Rome on abuse and consecrated life, presented as a challenge for the entire Church {{< cite "cernuzio2025" >}}.
+Here, too, the framework is not that of contemporary mental health. The stated goal is growth in the spiritual life, discernment in decision-making, and adherence to a religious moral code. The costs may include submission to a spiritual guide, navigating asymmetrical power relationships, and the risk of abuse. Demasure describes spiritual abuse of adults within the context of the Catholic Church as being perpetrated by a spiritual leader who has power over the individual and uses spiritual means, including the abuse of conscience, to make that person dependent {{< cite "demasure2022" >}}. Recently, the Pontifical Commission for the Protection of Minors organized a meeting in Rome on abuse and consecrated life, presented as a challenge for the entire Church {{< cite "cernuzio2025" >}}.
 
 Including this tradition serves to show that, even within the West and in both premodern and modern times, there are forms of interior practice that presuppose an explicit dependence on another person. This further complicates the idea that self-sufficiency is the default condition even within the Western tradition.
 
@@ -311,33 +311,33 @@ Including this tradition serves to show that, even within the West and in both p
 
 The three approaches described in the methodology yield compatible results. Cultural history and sociology show that the ideal of radical self-sufficiency has a recognizable origin and legacy in twentieth-century therapeutic culture.
 
-Empirical psychology studies that ideal—or the cultural construction of the self associated with it—as a potential obstacle to seeking help. It also shows that the relationship between individualism, collectivism, and stigma is not linear.
+Empirical psychology studies that ideal, or the cultural construction of the self associated with it, as a potential obstacle to seeking help. It also shows that the relationship between individualism, collectivism, and stigma is not linear.
 
 A comparison of traditions distant in time and space indicates that relationships with others have often been regarded as a prerequisite for inner practice. None of these findings, taken alone, proves that self-sufficiency is a contingent construct. Taken together, they make this interpretation more plausible than the view that the duty to be self-sufficient is a universal characteristic.
 
 The traditions compared, however, do not describe a condition without costs. In Christian monasticism, openness entails obedience. In Confucianism, roles are differentiated and often hierarchical. In therapeutic culture, according to the communitarian critics cited by Illouz, shared bonds can be replaced by an individualistic form of self-care {{< cite "illouz2008" >}}.
 
-Contemporary cross-cultural data also show that the request for help does not follow a simple pattern. In the contexts examined in Section 10—including immigrant populations in the United States and the African countries considered by Burns and Tomita—some individuals turn first to family, religious, or traditional networks {{< cite "burns-tomita2015" >}}. This does not eliminate stigma—which affects more than a quarter of participants in Arab countries {{< cite "fekih-romdhane2023" >}}—but it indicates that dependence on others can be organized in different ways, with varying costs and benefits.
+Contemporary cross-cultural data also show that the request for help does not follow a simple pattern. In the contexts examined in Section 10, including immigrant populations in the United States and the African countries considered by Burns and Tomita, some individuals turn first to family, religious, or traditional networks {{< cite "burns-tomita2015" >}}. This does not eliminate stigma, which affects more than a quarter of participants in Arab countries {{< cite "fekih-romdhane2023" >}}, but it indicates that dependence on others can be organized in different ways, with varying costs and benefits.
 
 The comparison therefore does not show that dependence is always positive or risk-free. It shows that cultures may accept the costs of dependence rather than those of isolation and shame. The difference lies in the distribution of costs, not their absence.
 
 The comparison leaves open a question concerning contemporary contemplative practice. Komjathy expresses concern about the trivialization, commodification, and corporatization of contemplative practices when they are separated from the radical challenges of the traditions from which they originate {{< cite "komjathy2017" >}}.
 
-If, in the traditions examined, the practice was linked to teachers, friends, and communities, we must ask to what extent contemporary forms of [meditation](/en/temi/meditazione/)—presented as exclusively individual activities—reproduce the ideal of self-sufficiency that those traditions called into question. This publication cannot resolve the issue. It can, however, point it out as a direction for future research.
+If, in the traditions examined, the practice was linked to teachers, friends, and communities, we must ask to what extent contemporary forms of [meditation](/en/temi/meditazione/), presented as exclusively individual activities, reproduce the ideal of self-sufficiency that those traditions called into question. This publication cannot resolve the issue. It can, however, point it out as a direction for future research.
 
 Finally, the finding regarding collectivist cultures requires that we not confuse levels of analysis. A communal context is not automatically one in which asking for help is easy. Similarly, an individualistic context does not necessarily make it impossible to receive support.
 
-What this comparison reveals is more specific. When dependence on others is part of the explicit framework of the practice—and is not treated as a deviation from it—the act of asking for help takes on a different meaning. It changes the conception of the person who practices.
+What this comparison reveals is more specific. When dependence on others is part of the explicit framework of the practice, and is not treated as a deviation from it, the act of asking for help takes on a different meaning. It changes the conception of the person who practices.
 
 ## Conclusions
 
 The argument of this publication rests on three interconnected elements.
 
-The first is that the ideal of radical self-sufficiency has a recognizable historical lineage, ranging from nineteenth-century American individualism—as exemplified by Tocqueville, Smiles, and Wyllie—to twentieth-century therapeutic culture, as represented by Bellah and his co-authors, Illouz, and Rieff.
+The first is that the ideal of radical self-sufficiency has a recognizable historical lineage, ranging from nineteenth-century American individualism, as exemplified by Tocqueville, Smiles, and Wyllie, to twentieth-century therapeutic culture, as represented by Bellah and his co-authors, Illouz, and Rieff.
 
-The second is that this ideal—or the cultural construction of the self that accompanies it—is studied as a factor associated with the difficulty of seeking psychological help. The relationship with the individualism-collectivism continuum, however, is complex and nonlinear {{< cite "addis-mahalik2003" "vogel2006" "corrigan-watson2002" "papadopoulos2013" "sum2024" >}}.
+The second is that this ideal, or the cultural construction of the self that accompanies it, is studied as a factor associated with the difficulty of seeking psychological help. The relationship with the individualism-collectivism continuum, however, is complex and nonlinear {{< cite "addis-mahalik2003" "vogel2006" "corrigan-watson2002" "papadopoulos2013" "sum2024" >}}.
 
-The third point is that a comparison with older contemplative and philosophical traditions—including the Western tradition prior to the nineteenth century—shows that radical self-sufficiency was not the only way of conceiving the person. In many of the systems examined, the relationship with teachers, friends, family, or community is part of the practice or moral life. Contemporary cross-cultural data also indicate that, even today, the act of seeking help takes different forms depending on the context and that, in the contexts examined, it can occur through family, religious, or traditional networks alongside professional services.
+The third point is that a comparison with older contemplative and philosophical traditions, including the Western tradition prior to the nineteenth century, shows that radical self-sufficiency was not the only way of conceiving the person. In many of the systems examined, the relationship with teachers, friends, family, or community is part of the practice or moral life. Contemporary cross-cultural data also indicate that, even today, the act of seeking help takes different forms depending on the context and that, in the contexts examined, it can occur through family, religious, or traditional networks alongside professional services.
 
 The most prudent conclusion is not that seeking help has always and everywhere been considered a virtue. Each tradition examined has its own framework, which cannot be reduced to the contemporary language of mental health.
 
@@ -363,7 +363,7 @@ The fourth limitation concerns the interpretation of the sources. The quotations
 
 The quotation from Seneca, on the other hand, comes from a published Italian translation (Solinas 2013).
 
-The sources in Section 11 are used only in passing. Francis de Sales is paraphrased, with a reference to the chapter, without direct quotations. Ranft and Ignatius of Loyola’s *Spiritual Exercises*—the latter in Mullan’s (1914) English translation—are cited for their general theme rather than specific passages, and were not examined in their entirety for this publication {{< cite "ranft2000" "ignazio-loyola1548" >}}.
+The sources in Section 11 are used only in passing. Francis de Sales is paraphrased, with a reference to the chapter, without direct quotations. Ranft and Ignatius of Loyola’s *Spiritual Exercises*, the latter in Mullan’s (1914) English translation, are cited for their general theme rather than specific passages, and were not examined in their entirety for this publication {{< cite "ranft2000" "ignazio-loyola1548" >}}.
 
 The fifth limitation concerns the disciplinary scope. This publication draws on psychological literature to document the subject of study and its cultural context, not to evaluate the effectiveness of clinical interventions. Similarly, it references contemplative studies in the third person and does not pass judgment on the value of these practices for those who engage in them.
 
