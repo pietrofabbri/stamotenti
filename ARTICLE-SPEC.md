@@ -337,6 +337,14 @@ Devono essere evitati:
 
 La complessità dell'argomento non deve diventare complessità artificiale della scrittura.
 
+**Punteggiatura** (aggiunto 2026-10-31, handoff "rimozione-trattini-lunghi",
+2026-10-30): mai il trattino lungo (—) né sostituti equivalenti (" - ",
+"--") come segno di punteggiatura, in nessuna lingua. Usare virgole, due
+punti, punti o parentesi secondo quello che la sintassi richiede. Il
+trattino medio (–) resta ammesso solo negli intervalli numerici (pagine,
+anni). Controllo bloccante in `scripts/repository-doctor.py`, nessuna
+eccezione.
+
 ---
 
 ## 16. Titolo e apertura
