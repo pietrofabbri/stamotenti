@@ -91,22 +91,37 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
           ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+          RECORD_ID: ${{ inputs.record_id }}
+          IDENTIFIER: ${{ inputs.identifier }}
+          RELATION: ${{ inputs.relation }}
+          SANDBOX: ${{ inputs.sandbox }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        # Flag costruiti in bash, non con un ternario "{{ ... == 'true' &&
+        # ... || ... }}" lato GitHub Actions: con input di tipo boolean
+        # quel confronto confronta un booleano nativo con la stringa
+        # 'true' e fallisce silenziosamente (risolve sempre al ramo
+        # falso) -- scoperto qui il 2026-10-31, un run reale con
+        # sandbox=true/dry_run=true ha chiamato l'API di produzione senza
+        # --dry-run perché nessuno dei due flag veniva aggiunto. In bash,
+        # gli input arrivano comunque come stringa "true"/"false", quindi
+        # il confronto `[ "$VAR" = "true" ]` e' affidabile.
         run: |
-          python3 scripts/zenodo_deposit.py --add-backlink \
-            --record-id "${{ inputs.record_id }}" \
-            --identifier "${{ inputs.identifier }}" \
-            --relation "${{ inputs.relation }}" \
-            ${{ inputs.sandbox == 'true' && '--sandbox' || '' }} \
-            ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
+          ARGS=(--add-backlink --record-id "$RECORD_ID" --identifier "$IDENTIFIER" --relation "$RELATION")
+          if [ "$SANDBOX" = "true" ]; then ARGS+=(--sandbox); fi
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          python3 scripts/zenodo_deposit.py "${ARGS[@]}"
 
       - name: Set title
         if: inputs.mode == 'set-title'
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
           ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+          RECORD_ID: ${{ inputs.record_id }}
+          TITLE: ${{ inputs.title }}
+          SANDBOX: ${{ inputs.sandbox }}
+          DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          python3 scripts/zenodo_deposit.py --set-title \
-            --record-id "${{ inputs.record_id }}" \
-            --title "${{ inputs.title }}" \
-            ${{ inputs.sandbox == 'true' && '--sandbox' || '' }} \
-            ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
+          ARGS=(--set-title --record-id "$RECORD_ID" --title "$TITLE")
+          if [ "$SANDBOX" = "true" ]; then ARGS+=(--sandbox); fi
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          python3 scripts/zenodo_deposit.py "${ARGS[@]}"
