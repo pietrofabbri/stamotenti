@@ -559,16 +559,20 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
     current = resp.json()
     metadata = dict(current["metadata"])
 
-    # L'idempotenza si basa su `submitted` (True = pubblicato e bloccato),
-    # non solo sul confronto del title: un run precedente puo' aver
-    # sbloccato il record ed eseguito il PUT con successo ma fallito il
-    # publish successivo (visto davvero il 2026-10-31, record sandbox
-    # 608080 -- il PUT aveva gia' scritto il nuovo title nella bozza, ma
-    # l'endpoint pubblico mostrava ancora il vecchio finche' il publish
-    # non e' stato completato). Se si guardasse solo il title, un secondo
-    # run si fermerebbe qui pensando di aver gia' finito, lasciando il
-    # record pubblico non aggiornato a tempo indeterminato.
-    already_published_with_title = metadata.get("title") == title and bool(current.get("submitted"))
+    # L'idempotenza si basa su `state == "done"` (pubblicato e bloccato),
+    # NON su `submitted`: verificato contro developers.zenodo.org dopo un
+    # run reale andato storto -- `submitted` e' True per sempre una volta
+    # che la deposition e' stata pubblicata ALMENO una volta, anche
+    # mentre e' sbloccata per una modifica in corso (`state: inprogress`).
+    # Un primo tentativo di questa funzione usava `submitted` e si e'
+    # fermato pensando che il record fosse gia' a posto, quando in realta'
+    # un run precedente aveva sbloccato il record e scritto il nuovo
+    # title nella bozza (PUT riuscito) ma fallito il publish successivo
+    # (visto davvero il 2026-10-31, record sandbox 608080): l'endpoint
+    # pubblico e' rimasto col vecchio title indefinitamente, perche'
+    # nessun run successivo completava mai il publish mancante.
+    is_locked_and_published = current.get("state") == "done"
+    already_published_with_title = metadata.get("title") == title and is_locked_and_published
     if already_published_with_title:
         print(f"record {record_id}: title gia' uguale a quello richiesto e record pubblicato -- nulla da fare.")
         return
@@ -576,18 +580,18 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
     old_title = metadata.get("title")
     metadata["title"] = title
 
-    if current.get("submitted"):
+    if is_locked_and_published:
         # 2. Sblocca il record pubblicato per la modifica (NON crea una
         #    nuova versione -- azione "edit", distinta da "newversion").
         resp = requests.post(f"{dep_url}/actions/edit", headers=headers, timeout=30)
         if resp.status_code not in (200, 201):
             raise RuntimeError(f"record {record_id}: azione edit fallita ({resp.status_code}): {resp.text}")
     else:
-        # Gia' sbloccato (submitted: false) -- run precedente interrotto
+        # Gia' sbloccato (state: inprogress) -- run precedente interrotto
         # dopo l'edit/PUT ma prima di un publish riuscito. Richiamare di
         # nuovo "edit" su un record gia' in modifica darebbe errore:
         # si riparte direttamente dal PUT, con gli stessi metadata.
-        print(f"record {record_id}: risulta gia' sbloccato (submitted: false) -- probabile publish non completato in un run precedente. Riparto dal PUT, non richiamo 'edit'.")
+        print(f"record {record_id}: risulta gia' sbloccato (state: {current.get('state')!r}) -- probabile publish non completato in un run precedente. Riparto dal PUT, non richiamo 'edit'.")
 
     # 3. Scrive l'intero oggetto metadata aggiornato (solo title diverso).
     resp = requests.put(dep_url, json={"metadata": metadata}, headers=headers, timeout=30)
