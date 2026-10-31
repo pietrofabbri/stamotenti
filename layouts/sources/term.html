@@ -14,7 +14,7 @@
     <h1>{{ with $source }}{{ .title }}{{ else }}{{ $.Title }}{{ end }}</h1>
 
     {{ with $source }}
-        <p>{{ .type }}{{ with .year }} — {{ . }}{{ end }}</p>
+        <p>{{ .type }}{{ with .year }}, {{ . }}{{ end }}</p>
 
         {{ with .doi }}
             <p>DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a></p>

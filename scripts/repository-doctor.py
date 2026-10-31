@@ -648,8 +648,87 @@ if redundant_h1_errors == 0:
         f"duplicata ({len(content_files)} file controllati)",
     )
 
+print("\n[18] EM DASH BAN")
+
+# Regola assoluta del proprietario (handoff "rimozione-trattini-lunghi",
+# 2026-10-30): nessun trattino lungo (—, U+2014) in nessun contenuto
+# visibile, in nessuna lingua. Zero eccezioni sul testo che un lettore
+# può vedere -- ma i commenti di codice (righe "# ...", blocchi
+# "{{/* ... */}}", blocchi "<!-- ... -->") non sono contenuto visibile e
+# vanno esclusi, altrimenti ogni nota tecnica nei layout/dati andrebbe
+# riscritta solo per soddisfare questo controllo.
+
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+# "-?" dopo "{{" e prima di "}}": sintassi Hugo con trim degli spazi
+# bianchi ("{{- /* ... */ -}}"), usata ovunque in questo repo accanto alla
+# forma piatta "{{/* ... */}}" -- verificato sui file reali, non assunto.
+HUGO_COMMENT_RE = re.compile(r"\{\{-?\s*/\*.*?\*/\s*-?\}\}", re.DOTALL)
+
+
+def _strip_hash_comment_lines(text: str) -> str:
+    """Rimuove le righe che sono un commento YAML/i18n (solo '#', non
+    markdown "# Titolo": qui serve solo per data/*.yaml e i18n/*.toml,
+    dove '#' a inizio riga (spazi a parte) è sempre un commento, mai testo
+    editoriale -- content/**.md non passa da questa funzione."""
+    return "\n".join(
+        line for line in text.splitlines() if not line.lstrip().startswith("#")
+    )
+
+
+def _strip_template_comments(text: str) -> str:
+    text = HUGO_COMMENT_RE.sub("", text)
+    text = HTML_COMMENT_RE.sub("", text)
+    return text
+
+
+em_dash_violations = []
+
+for p in content_files:
+    text = p.read_text(encoding="utf-8")
+    if "—" in text:
+        n = text.count("—")
+        em_dash_violations.append((p.relative_to(ROOT), n))
+
+i18n_files = sorted((ROOT / "i18n").glob("*.toml")) if (ROOT / "i18n").exists() else []
+for p in i18n_files:
+    text = _strip_hash_comment_lines(p.read_text(encoding="utf-8"))
+    if "—" in text:
+        n = text.count("—")
+        em_dash_violations.append((p.relative_to(ROOT), n))
+
+data_files_all = sorted((ROOT / "data").glob("*.yaml")) if (ROOT / "data").exists() else []
+for p in data_files_all:
+    text = _strip_hash_comment_lines(p.read_text(encoding="utf-8"))
+    if "—" in text:
+        n = text.count("—")
+        em_dash_violations.append((p.relative_to(ROOT), n))
+
+layouts_files = sorted((ROOT / "layouts").rglob("*.html")) if (ROOT / "layouts").exists() else []
+for p in layouts_files:
+    text = _strip_template_comments(p.read_text(encoding="utf-8"))
+    if "—" in text:
+        n = text.count("—")
+        em_dash_violations.append((p.relative_to(ROOT), n))
+
+if em_dash_violations:
+    for rel_path, n in em_dash_violations:
+        error(
+            f"{rel_path}",
+            f"{n} trattino/i lungo/lunghi (—, U+2014) nel testo visibile — vietato "
+            "senza eccezioni (regola del proprietario, 2026-10-30): riscrivere con "
+            "virgole, due punti, punti o parentesi, non sostituire meccanicamente "
+            "con \" - \" o \"--\" (stessa cosa sotto altra forma, vietati anche loro)",
+        )
+else:
+    ok(
+        "Em dash ban",
+        f"nessun trattino lungo nel testo visibile di content/ ({len(content_files)} file), "
+        f"i18n/ ({len(i18n_files)} file), data/*.yaml ({len(data_files_all)} file) e "
+        f"layouts/ ({len(layouts_files)} file), commenti esclusi",
+    )
+
 # ---------------------------------------------------------------------
-# 18. Final report
+# 19. Final report
 # ---------------------------------------------------------------------
 
 print("\n" + "=" * 72)

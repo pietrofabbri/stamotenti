@@ -155,7 +155,19 @@ def _deepl_translate(text: str, api_key: str) -> str:
     )
     response.raise_for_status()
     data = response.json()
-    return data["translations"][0]["text"]
+    result = data["translations"][0]["text"]
+    # Rete di sicurezza deterministica (handoff "rimozione-trattini-lunghi",
+    # 2026-10-30): DeepL non accetta istruzioni di stile (solo testo/lingua),
+    # quindi non c'e' un prompt in cui vietare il trattino lungo. Fallisce
+    # rumorosamente invece di correggere alla cieca: la punteggiatura giusta
+    # dipende dal contesto sintattico, va decisa a mano.
+    if "—" in result:
+        raise RuntimeError(
+            f"Traduzione DeepL contiene {result.count('—')} trattino/i lungo/lunghi "
+            "(—, U+2014), vietato: riscrivere a mano con virgole/due punti/parentesi "
+            "prima di usare questo output."
+        )
+    return result
 
 
 def translate_body(body: str, api_key: str | None, dry_run: bool) -> str:
