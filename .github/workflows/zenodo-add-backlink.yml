@@ -109,6 +109,7 @@ jobs:
           ARGS=(--add-backlink --record-id "$RECORD_ID" --identifier "$IDENTIFIER" --relation "$RELATION")
           if [ "$SANDBOX" = "true" ]; then ARGS+=(--sandbox); fi
           if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          echo "Flag effettivi (handoff zenodo-titolo-pids-doi, regole di sicurezza punto 3): ${ARGS[*]}"
           python3 scripts/zenodo_deposit.py "${ARGS[@]}"
 
       - name: Set title
@@ -124,4 +125,5 @@ jobs:
           ARGS=(--set-title --record-id "$RECORD_ID" --title "$TITLE")
           if [ "$SANDBOX" = "true" ]; then ARGS+=(--sandbox); fi
           if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          echo "Flag effettivi (handoff zenodo-titolo-pids-doi, regole di sicurezza punto 3): ${ARGS[*]}"
           python3 scripts/zenodo_deposit.py "${ARGS[@]}"

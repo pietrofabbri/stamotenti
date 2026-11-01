@@ -420,6 +420,24 @@ def _has_relation(related: list, identifier: str, relation: str) -> bool:
     )
 
 
+# Chiavi gestite da Zenodo stesso, mai da riscrivere in un PUT che
+# rilegge `metadata` dalla GET e lo ririnvia quasi invariato (handoff
+# "zenodo-titolo-pids-doi", 2026-10-31): `metadata.doi` e' presente nella
+# GET di QUALUNQUE deposito gia' pubblicato (verificato su piu' record,
+# inclusi quelli dove add_related_identifier ha gia' pubblicato con
+# successo in precedenza -- la sua sola presenza non e' quindi la causa
+# unica dell'errore "pids.doi ... managed by Zenodo"), ma rimandarla
+# indietro nel PUT e' comunque concettualmente sbagliato: il DOI di un
+# record gia' pubblicato non va mai ridichiarato come se fosse un valore
+# da assegnare. Fonte di verita' unica, usata da add_related_identifier
+# e set_title entrambe, cosi' un domani non diverge piu' tra le due.
+_METADATA_KEYS_MANAGED_BY_ZENODO = ("doi", "prereserve_doi", "conceptdoi", "conceptrecid")
+
+
+def _clean_metadata_for_put(metadata: dict) -> dict:
+    return {k: v for k, v in metadata.items() if k not in _METADATA_KEYS_MANAGED_BY_ZENODO}
+
+
 def _dedupe_related(related: list) -> list:
     # Rimuove duplicati esatti (stesso identifier, stessa relation case-
     # insensitive), preservando l'ordine e la prima occorrenza -- usata
@@ -477,7 +495,7 @@ def add_related_identifier(record_id: int, sandbox: bool, identifier: str, relat
     resp = requests.get(dep_url, headers=headers, timeout=30)
     resp.raise_for_status()
     current = resp.json()
-    metadata = dict(current["metadata"])
+    metadata = _clean_metadata_for_put(dict(current["metadata"]))
     related = list(metadata.get("related_identifiers") or [])
 
     deduped = _dedupe_related(related)
@@ -526,21 +544,24 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
     se il titolo coincide gia' con quello richiesto, non fa nulla.
     """
     endpoint = ZENODO_ENDPOINTS[sandbox]
+    token = os.environ.get(endpoint["token_env"])
 
-    if dry_run:
-        # Stesso principio di add_related_identifier: endpoint pubblico,
-        # nessun token richiesto, utile anche senza ZENODO_TOKEN in locale.
+    if dry_run and not token:
+        # Senza token: solo l'endpoint pubblico, nessuna chiamata
+        # autenticata -- utile per un controllo rapido in locale, ma non
+        # mostra il payload PUT reale (quello richiede la GET autenticata
+        # del deposito, non del record pubblico: i due possono differire,
+        # vedi _clean_metadata_for_put).
         resp = requests.get(f"{endpoint['api_base']}/records/{record_id}", timeout=30)
         resp.raise_for_status()
         current = resp.json()
         current_title = current["metadata"].get("title")
         if current_title == title:
-            print(f"[dry-run] record {record_id}: title gia' uguale a quello richiesto -- nulla da fare.")
+            print(f"[dry-run, senza token] record {record_id}: title gia' uguale a quello richiesto -- nulla da fare.")
         else:
-            print(f"[dry-run] record {record_id}: title cambierebbe da {current_title!r} a {title!r}. DOI attuale invariato: {current.get('doi')}. Nessuna chiamata di scrittura.")
+            print(f"[dry-run, senza token] record {record_id}: title cambierebbe da {current_title!r} a {title!r}. DOI attuale invariato: {current.get('doi')}. Nessuna chiamata di scrittura.")
         return
 
-    token = os.environ.get(endpoint["token_env"])
     if not token:
         raise RuntimeError(
             f"{endpoint['token_env']} mancante nell'ambiente -- richiesto per "
@@ -557,7 +578,26 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
     resp = requests.get(dep_url, headers=headers, timeout=30)
     resp.raise_for_status()
     current = resp.json()
-    metadata = dict(current["metadata"])
+    metadata = _clean_metadata_for_put(dict(current["metadata"]))
+
+    if dry_run:
+        # Dry-run CON token: mostra il payload PUT reale (quello che
+        # andrebbe scritto) e il diff rispetto ai metadata attuali --
+        # handoff "zenodo-titolo-pids-doi", 2026-10-31, punto 3: deve
+        # differire SOLO per title. Nessuna chiamata di scrittura.
+        preview = dict(metadata)
+        preview["title"] = title
+        diff_keys = sorted(
+            k for k in set(preview) | set(current["metadata"])
+            if preview.get(k) != current["metadata"].get(k)
+        )
+        print(f"[dry-run] record {record_id}: chiavi rimosse dal payload rispetto alla GET grezza: {[k for k in _METADATA_KEYS_MANAGED_BY_ZENODO if k in current['metadata']]}")
+        print(f"[dry-run] record {record_id}: chiavi che differiscono tra payload PUT e metadata attuali: {diff_keys}")
+        if diff_keys == ["title"]:
+            print(f"[dry-run] record {record_id}: OK, il payload differisce SOLO per title. Nessuna chiamata di scrittura.")
+        else:
+            print(f"[dry-run] record {record_id}: ATTENZIONE, differisce anche per altre chiavi oltre a title -- da verificare prima di scrivere.")
+        return
 
     # L'idempotenza si basa su `state == "done"` (pubblicato e bloccato),
     # NON su `submitted`: verificato contro developers.zenodo.org dopo un
