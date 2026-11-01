@@ -591,12 +591,24 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
             k for k in set(preview) | set(current["metadata"])
             if preview.get(k) != current["metadata"].get(k)
         )
-        print(f"[dry-run] record {record_id}: chiavi rimosse dal payload rispetto alla GET grezza: {[k for k in _METADATA_KEYS_MANAGED_BY_ZENODO if k in current['metadata']]}")
+        removed_keys = [k for k in _METADATA_KEYS_MANAGED_BY_ZENODO if k in current["metadata"]]
+        # Le chiavi rimosse deliberatamente (removed_keys) compaiono sempre
+        # nel diff grezzo (sono in current["metadata"] ma non in preview,
+        # per costruzione) -- non sono un'anomalia, sono la pulizia
+        # voluta. L'unica cosa da segnalare come ATTENZIONE e' una
+        # differenza che non sia ne' "title" ne' una delle chiavi rimosse
+        # deliberatamente (es. se la GET avesse gia' il title nuovo da un
+        # run precedente interrotto, "title" potrebbe non comparire affatto
+        # nel diff pur essendo tutto corretto -- visto davvero sul record
+        # sandbox 608080, la cui bozza aveva gia' il title aggiornato da
+        # un edit/PUT riuscito in un tentativo precedente).
+        unexpected = [k for k in diff_keys if k != "title" and k not in _METADATA_KEYS_MANAGED_BY_ZENODO]
+        print(f"[dry-run] record {record_id}: chiavi rimosse dal payload rispetto alla GET grezza (deliberato): {removed_keys}")
         print(f"[dry-run] record {record_id}: chiavi che differiscono tra payload PUT e metadata attuali: {diff_keys}")
-        if diff_keys == ["title"]:
-            print(f"[dry-run] record {record_id}: OK, il payload differisce SOLO per title. Nessuna chiamata di scrittura.")
+        if not unexpected:
+            print(f"[dry-run] record {record_id}: OK, nessuna differenza inattesa oltre a title e alle chiavi rimosse deliberatamente. Nessuna chiamata di scrittura.")
         else:
-            print(f"[dry-run] record {record_id}: ATTENZIONE, differisce anche per altre chiavi oltre a title -- da verificare prima di scrivere.")
+            print(f"[dry-run] record {record_id}: ATTENZIONE, differenze inattese: {unexpected} -- da verificare prima di scrivere.")
         return
 
     # L'idempotenza si basa su `state == "done"` (pubblicato e bloccato),
