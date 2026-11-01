@@ -581,6 +581,16 @@ def set_title(record_id: int, sandbox: bool, title: str, dry_run: bool) -> None:
     metadata = _clean_metadata_for_put(dict(current["metadata"]))
 
     if dry_run:
+        # Diagnostica (handoff "zenodo-titolo-pids-doi", 2026-10-31,
+        # regole di sicurezza: "riportare lo stato esatto, GET completa"):
+        # chiavi di primo livello della GET autenticata, non solo
+        # current["metadata"] -- l'errore "pids.doi" riguarda un campo
+        # "pids" che potrebbe vivere fuori da metadata, nello schema
+        # InvenioRDM piu' recente, mai ispezionato finora.
+        print(f"[dry-run] record {record_id}: chiavi di primo livello della GET: {sorted(current.keys())}")
+        if "pids" in current:
+            print(f"[dry-run] record {record_id}: campo 'pids' (fuori da metadata): {current['pids']}")
+        print(f"[dry-run] record {record_id}: state={current.get('state')!r}, submitted={current.get('submitted')!r}")
         # Dry-run CON token: mostra il payload PUT reale (quello che
         # andrebbe scritto) e il diff rispetto ai metadata attuali --
         # handoff "zenodo-titolo-pids-doi", 2026-10-31, punto 3: deve
